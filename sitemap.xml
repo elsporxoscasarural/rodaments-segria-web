@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+  <url>
+    <loc>https://www.rodsegria.es/</loc>
+    <lastmod>2026-07-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://www.rodsegria.es/img/hero.jpg</image:loc>
+      <image:title>Rodaments Segrià — Rodamientos y suministro industrial en Lleida</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.rodsegria.es/img/gallery-1.jpg</image:loc>
+      <image:title>Rodamientos industriales en stock</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.rodsegria.es/img/gallery-2.jpg</image:loc>
+      <image:title>Correas de transmisión</image:title>
+    </image:image>
+  </url>
+</urlset>
