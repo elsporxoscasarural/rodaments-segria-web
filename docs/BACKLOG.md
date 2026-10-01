@@ -21,7 +21,7 @@ Estado: ✅ hecho · 🔲 pendiente · ❓ decisión abierta
 - ✅ Datos de empresa centralizados en `src/data/empresa.ts`
 - ✅ Textos de Inicio y Empresa, con la historia escrita por el cliente (`docs/TEXTOS.md`)
 - 🔲 Textos de Contacto y Buscar referencia
-- 🔲 Textos legales: necesitan razón social, CIF y datos registrales
+- 🔲 Textos legales: razón social y CIF ✅ · falta la inscripción en el Registro Mercantil (tomo, folio, hoja)
 - 🔲 Número de WhatsApp
 - ✅ Selección provisional de fotos reales en `src/assets/img/fotos/` (ver `docs/FOTOS.md`)
 - 🔲 Sesión de fotos: fachada, mostrador, equipo y serie de producto sobre fondo claro (lista en `docs/FOTOS.md`)

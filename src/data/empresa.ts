@@ -3,6 +3,11 @@
 
 export const empresa = {
 	nombre: 'Rodaments Segrià',
+	// Datos legales (aviso legal, LSSI art. 10).
+	razonSocial: 'Rodaments Segria, S.L.',
+	cif: 'B25337767',
+	// TODO: datos de inscripción en el Registro Mercantil de Lleida (tomo, folio, hoja).
+	registroMercantil: null as string | null,
 	fundacion: 1988,
 	referenciasEnStock: 500_000,
 	metrosAlmacen: 2000,
