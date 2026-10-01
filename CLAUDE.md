@@ -59,6 +59,16 @@ public/         archivos que se copian tal cual (favicons)
 docs/           BACKLOG.md con fases y datos pendientes
 ```
 
+## Catálogo (colecciones de contenido)
+El catálogo son **datos, no páginas**. El esquema está en `src/content.config.ts` y las páginas se generan solas.
+- `src/content/familias/*.md`: una familia por archivo. El nombre del archivo es la URL (`/productos/<archivo>`).
+- `src/content/categorias/*.md`: una categoría por archivo, con `familia`, `orden`, `resumen`, `tipos`, `sectores` y `marcas`.
+- `src/content/marcas/*.md`: solo se muestran en la web las que tienen `publicar: true` (permiso confirmado).
+- **Mover una categoría** = cambiar su `familia`. **Nueva familia** = nuevo archivo. **Ocultar** = borrar el archivo.
+- `sectores` (`industria`, `agricola`, `taller`): una familia con `sectorRelacionado` muestra también las categorías de otras familias de ese sector, sin duplicarlas.
+- `borrador: true` = texto provisional pendiente de revisión por el cliente.
+- **Después del lanzamiento**, cambiar o borrar una URL de familia exige una redirección 301. Antes del lanzamiento se puede cambiar libremente.
+
 ## Convenciones
 - **Idioma:** textos, commits y documentación en castellano. Código (variables, componentes, clases) en inglés.
 - **Nombres:** componentes en `PascalCase.astro`; rutas, imágenes y slugs en `kebab-case` sin acentos (`/productos/rodamientos`).

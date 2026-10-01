@@ -1,0 +1,27 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const familias = (await getCollection('familias')).sort((a, b) => a.data.orden - b.data.orden);
+const categorias = await getCollection('categorias');
+---
+
+<BaseLayout title="Productos" description="Catálogo de suministro industrial de Rodaments Segrià.">
+	<h1>Productos</h1>
+	{
+		familias.map((familia) => {
+			const propias = categorias
+				.filter((c) => c.data.familia.id === familia.id)
+				.sort((a, b) => a.data.orden - b.data.orden);
+			return (
+				<section>
+					<h2>
+						<a href={`/productos/${familia.id}`}>{familia.data.nombre}</a>
+					</h2>
+					<p>{familia.data.resumen}</p>
+					<ul>{propias.map((c) => <li>{c.data.nombre}</li>)}</ul>
+				</section>
+			);
+		})
+	}
+</BaseLayout>

@@ -10,6 +10,10 @@ Estado: ✅ hecho · 🔲 pendiente · ❓ decisión abierta
 - ✅ Datos de contacto recuperados de la web anterior (ver CLAUDE.md)
 
 ## Fase 1 — Estructura y contenido
+- ✅ Modelo del catálogo: 6 familias, 22 categorías y marcas como datos editables (`src/content/`)
+- ✅ Familias aprobadas: Rodamientos y soportes · Transmisión de potencia · Estanqueidad y fluidos · Taller e industria · Agrícola · Gases industriales (Carburos Metálicos)
+- 🔲 Revisar con el cliente los textos `borrador` de cada familia y categoría (resúmenes y tipos)
+- 🔲 SEO/GEO de contenido: elegir para cada página la búsqueda principal a la que responde (ver «SEO y GEO desde el principio»)
 - 🔲 Reservar en el mapa del sitio la sección **"Buscador de referencias"**. Mientras tanto: formulario de "¿Buscas una referencia?" que genera presupuestos (ver `docs/BUSCADOR-REFERENCIAS.md`)
 - 🔲 Definir el mapa del sitio. Propuesta: Inicio · Productos (índice + una página por categoría) · Empresa · Contacto/Presupuesto · Aviso legal · Privacidad · Cookies
 - 🔲 Montar la colección `productos` en `src/content/`: nombre, descripción, marcas, imagen y aplicaciones de cada categoría
@@ -32,7 +36,13 @@ Estado: ✅ hecho · 🔲 pendiente · ❓ decisión abierta
 - 🔲 Animación de entrada del hero, apariciones al hacer scroll y transiciones entre páginas (View Transitions de Astro)
 - 🔲 Comprobar `prefers-reduced-motion` y el rendimiento en móvil
 
-## Fase 4 — SEO
+## SEO y GEO desde el principio
+El SEO (Google) y el GEO (aparecer en respuestas de IA como ChatGPT, Gemini o los resúmenes de Google) **se trabajan desde la fase 1**. La fase 4 es solo la parte técnica y la revisión final.
+- **Fase 1 (ahora):** URLs limpias y estables, una página por intención de búsqueda, textos con información concreta (qué, para quién, dónde, desde cuándo), preguntas frecuentes reales.
+- **Fase 2-3:** HTML semántico, encabezados correctos, velocidad (las animaciones no deben penalizarla), imágenes optimizadas con `alt`.
+- **Fuera de la web (en paralelo, ya):** ficha de Google Business completa y coherente (nombre, dirección y teléfono idénticos en todas partes), reseñas, directorios del sector.
+
+## Fase 4 — SEO técnico
 - 🔲 Título, descripción, Open Graph y URL canónica en cada página (desde el layout)
 - 🔲 Datos estructurados `LocalBusiness` (dirección, horario, teléfono)
 - 🔲 `robots.txt` y `sitemap.xml` (@astrojs/sitemap), antes del lanzamiento

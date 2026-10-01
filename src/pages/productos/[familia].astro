@@ -1,0 +1,64 @@
+---
+import { getCollection, type CollectionEntry } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+export async function getStaticPaths() {
+	const familias = await getCollection('familias');
+	return familias.map((familia) => ({ params: { familia: familia.id }, props: { familia } }));
+}
+
+interface Props {
+	familia: CollectionEntry<'familias'>;
+}
+const { familia } = Astro.props;
+
+const todas = await getCollection('categorias');
+const familias = await getCollection('familias');
+const nombreFamilia = (id: string) => familias.find((f) => f.id === id)?.data.nombre;
+
+const propias = todas
+	.filter((c) => c.data.familia.id === familia.id)
+	.sort((a, b) => a.data.orden - b.data.orden);
+
+// Categorías de otras familias que también sirven a este sector (p. ej. Agrícola → correas, cadenas…).
+const sector = familia.data.sectorRelacionado;
+const relacionadas = sector
+	? todas.filter((c) => c.data.familia.id !== familia.id && c.data.sectores.includes(sector))
+	: [];
+---
+
+<BaseLayout title={familia.data.nombre} description={familia.data.resumen}>
+	<p><a href="/productos">← Productos</a></p>
+	<h1>{familia.data.nombre}</h1>
+	<p>{familia.data.resumen}</p>
+
+	{
+		propias.map((c) => (
+			<section id={c.id}>
+				<h2>{c.data.nombre}</h2>
+				<p>{c.data.resumen}</p>
+				{c.data.tipos.length > 0 && <ul>{c.data.tipos.map((t) => <li>{t}</li>)}</ul>}
+			</section>
+		))
+	}
+
+	{
+		relacionadas.length > 0 && (
+			<section>
+				<h2>Componentes para maquinaria agrícola</h2>
+				<p>
+					Además de los productos específicos del campo, suministramos los componentes que utiliza la
+					maquinaria agrícola. Los encontrará en su familia correspondiente del catálogo:
+				</p>
+				<ul>
+					{relacionadas.map((c) => (
+						<li>
+							<a href={`/productos/${c.data.familia.id}#${c.id}`}>{c.data.nombre}</a> ·{' '}
+							{nombreFamilia(c.data.familia.id)}
+						</li>
+					))}
+				</ul>
+			</section>
+		)
+	}
+</BaseLayout>
