@@ -5,28 +5,36 @@ Las fotos del repo están en `src/assets/img/fotos/`. Son versiones a 2560 px **
 
 ## Selección actual
 
-**Fotos nuevas (octubre 2026)**. Son de mejor calidad, pero llegaron reducidas a 2000 px al pasar por el chat. Los originales del móvil son más grandes y conviene sustituirlas por ellos (mismo nombre de archivo). Hay copia en `~/Desktop/Botiga/Rodaments segria/fotos-nuevas-2026-10/`.
+Todas las fotos tienen un **nombre descriptivo** de lo que se ve (ayuda al SEO y a encontrarlas). Si se sustituye una foto, se mantiene su nombre. Los originales están en `~/Desktop/Botiga/Rodaments segria/`.
 
 | Archivo | Qué es | Uso previsto | Estado |
 |---|---|---|---|
-| `almacen-nave.jpg` | Nave completa, pasillo central con camión al fondo | **Hero del inicio (escritorio)** | ✅ Excelente |
-| `almacen-pasillo-rodamientos.jpg` | Pasillo de rodamientos SKF/FAG/Timken, vertical | **Hero en móvil** / Rodamientos | ✅ Excelente |
-| `almacen-pasillo-rodamientos-2.jpg` | Otro pasillo de rodamientos, vertical | Stock / Empresa | ✅ Muy buena |
-| `almacen-pasillo-cajas.jpg` | Pasillo con soportes y cajas Timken/SNR | Soportes / stock | ✅ Muy buena |
-| `stock-pinones-poleas.jpg` | Piñones y poleas en estantería | Piñones / Poleas | 🟡 Parece retocada con IA (ver nota) |
-| `mostrador.jpg` | Mostrador completo, con el cartel de Carburos | **Empresa / Contacto** / Carburos | ✅ Muy buena |
-| `mostrador-cerca.jpg` | Mostrador más cerca | Contacto | ✅ Buena (sale una persona al fondo, ver nota) |
-| `mostrador-vertical.jpg` | Mostrador, vertical | Móvil / Contacto | ✅ Buena (sale una persona al fondo) |
-
-**Anteriores** (siguen disponibles como alternativa): `almacen-vista-general`, `almacen-vista-alta`, `almacen-pasillo`, `almacen-pasillo-d`, `almacen-estanterias`, `stock-rodamientos`, `stock-poleas`, `stock-correas`, `exterior`. Pendientes de mejorar: **fachada** (pequeña) y **correas** (no hay foto nueva).
+| `fachada-rodaments-segria-lleida.jpg` | Fachada con el logo | **Portada (hero)** · Empresa · Contacto | ✅ Elegida por el cliente. Solo 1419 px (ver nota) |
+| `nave-almacen-suministro-industrial.jpg` | Nave completa, camión al fondo | Inicio («El almacén es nuestro mejor argumento») · Empresa | ✅ Excelente |
+| `pasillo-almacen-rodamientos.jpg` | Pasillo de rodamientos, vertical | Portada en móvil (alternativa) · Rodamientos | ✅ Excelente |
+| `estanterias-rodamientos-en-stock.jpg` | Pasillo de rodamientos, vertical | Stock · Empresa | ✅ Muy buena |
+| `pasillo-almacen-soportes-rodamientos.jpg` | Pasillo de soportes y unidades de rodamiento | Soportes · stock | ✅ Muy buena |
+| `estanteria-pinones-y-poleas.jpg` | Piñones y poleas | Piñones · Poleas | 🟡 Retocada con IA, 1448 px |
+| `mostrador-atencion-cliente.jpg` | Mostrador completo con cartel de Carburos | Empresa · Contacto · Carburos | ✅ Muy buena |
+| `mostrador-tienda-suministro-industrial.jpg` | Mostrador más cerca | Contacto | ✅ Buena |
+| `mostrador-atencion-cliente-vertical.jpg` | Mostrador, vertical | Móvil · Contacto | ✅ Buena |
+| `nave-almacen-pasillo-central.jpg` | Nave, pasillo central (foto anterior) | Alternativa | 🟡 |
+| `nave-almacen-vista-elevada.jpg` | Nave desde arriba (foto anterior) | Empresa · instalaciones | 🟡 |
+| `pasillo-almacen-estanterias.jpg` | Pasillo en perspectiva (foto anterior) | Alternativa | 🟡 |
+| `pasillo-almacen-recambios-industriales.jpg` | Pasillo D (foto anterior) | Alternativa | 🟡 |
+| `estanterias-poleas-y-recambios.jpg` | Estanterías con poleas (foto anterior) | Alternativa | 🟡 |
+| `cajas-rodamientos-en-stock.jpg` | Cajas de rodamientos de marca | Rodamientos · marcas | ✅ |
+| `estanteria-poleas.jpg` | Poleas en estantería | Poleas | ✅ |
+| `estanteria-correas-de-transmision.jpg` | Correas en estantería | **Correas** (única foto de correas) | ✅ |
 
 **Notas**
-- `stock-pinones-poleas`: las texturas muy lisas y algunas etiquetas ilegibles apuntan a un retoque con IA. Si es así y la foto refleja fielmente el almacén, vale. Si no, mejor repetirla.
-- En `mostrador-cerca` y `mostrador-vertical` se ve a una persona trabajando al fondo, tras el cristal. Es pequeña, pero se reconoce. Si no queréis que salga nadie, uso `mostrador.jpg` o la difumino.
+- **Fachada en portada:** tiene **1419 px de ancho**. En pantallas grandes o retina, a pantalla completa, se verá algo blanda. En el diseño se compensa: encuadre, degradado sobre la imagen, que no ocupe el 100 % en monitores grandes… Lo ideal es una foto nueva a máxima resolución, con el mismo encuadre.
+- Las personas que aparecen al fondo del mostrador no son reconocibles: el cliente da el visto bueno.
 
 ## Descartadas
 - **Las 12 imágenes de producto de la web anterior** (`Rodaments segria *.png`). Están generadas con IA, son pequeñas (~700 px) y algunas muestran laboratorios y fábricas que no son la empresa. Dan imagen genérica y pueden confundir al cliente. No se usan.
 - Duplicadas: `Exterior Rodaments Segria 2.png` es idéntica a la otra, y `ALmacen Rodaments segria.JPG` es casi igual que la vista general.
+- La fachada antigua (`Exterior Rodaments Segria.png`), sustituida por la versión mejorada.
 
 ## Mejora con IA: sí, pero solo retoque
 - ✅ **Sí:** corregir perspectiva (verticales rectas), exposición, balance de blancos y ruido, y ampliar un poco una foto pequeña (como la fachada).

@@ -22,7 +22,7 @@ Estado: ✅ hecho · 🔲 pendiente · ❓ decisión abierta
 - ✅ Textos de Inicio y Empresa, con la historia escrita por el cliente (`docs/TEXTOS.md`)
 - ✅ Textos de Contacto y Buscar referencia (formularios, mensajes y texto RGPD)
 - 🔲 Mapa de Google cargado solo bajo demanda (evita el banner de cookies)
-- 🔲 Textos legales: razón social y CIF ✅ · falta la inscripción en el Registro Mercantil (tomo, folio, hoja)
+- 🔲 Textos legales: razón social y CIF ✅ · Registro Mercantil de Lleida, tomo 337, folio 205 ✅ · falta el número de hoja (L-…)
 - 🔲 Número de WhatsApp
 - ✅ Selección provisional de fotos reales en `src/assets/img/fotos/` (ver `docs/FOTOS.md`)
 - 🔲 Sesión de fotos: fachada, mostrador, equipo y serie de producto sobre fondo claro (lista en `docs/FOTOS.md`)

@@ -12,6 +12,7 @@ v2 con las correcciones del cliente. **Trato de tú.** Los datos (año, referenc
 - Descripción: `Empresa familiar de Lleida desde 1988. Más de 500.000 referencias en stock: rodamientos, soportes, correas, transmisión, retenes y material de taller para industria y agricultura.`
 
 ### 1. Portada (hero)
+- *(foto de fondo: fachada-rodaments-segria-lleida)*
 - Antetítulo: **Lleida · Desde 1988**
 - **H1: Rodamientos y suministro industrial en Lleida**
 - Subtítulo: Más de 500.000 referencias en stock para la industria, el campo y el taller. Tenemos la pieza cuando la necesitas.
@@ -45,15 +46,15 @@ v2 con las correcciones del cliente. **Trato de tú.** Los datos (año, referenc
 - **Talleres.** Herramienta, extractores, almacenaje, vestuario laboral y todos los recambios mecánicos en un mismo sitio.
 
 ### 6. Carburos Metálicos
-- Antetítulo: **Distribuidor oficial**
+- Antetítulo: **Distribuidor autorizado**
 - Título: **Carburos Metálicos en Lleida**
-- Texto: Somos distribuidores oficiales de Carburos Metálicos. Suministramos gases industriales y de soldadura y corte, y gestionamos el alquiler, la recarga y el cambio de botellas.
+- Texto: Somos distribuidores autorizados de Carburos Metálicos. Suministramos gases industriales y de soldadura y corte, y gestionamos el alquiler, la recarga y el cambio de botellas.
 - Botón: **Ver gases industriales →**
 
 ### 7. El almacén
 - Título: **El almacén es nuestro mejor argumento**
 - Texto: Más de 2.000 m² en el Polígono Camí dels Frares de Lleida dedicados a tener stock de verdad, con aparcamiento para coches, furgonetas y camiones. Ven a vernos: muchas veces la pieza que buscas está a unos pasos del mostrador.
-- *(foto: almacen-vista-general / almacen-pasillo)*
+- *(foto: nave-almacen-suministro-industrial)*
 
 ### 8. Preguntas frecuentes
 - **¿Vendéis a particulares o solo a empresas?** A los dos. Atendemos a profesionales, empresas y particulares.

@@ -65,7 +65,7 @@ URL: `/productos/agricola`
 | **Nudos agrícolas** | Brazos con nudos y nudos para empacadoras. | Brazos con nudos · Nudos | Agrícola |  |
 
 ## 6. Carburos Metálicos
-*Distribuidores oficiales de Carburos Metálicos en Lleida: gases industriales, gases de soldadura y corte y alquiler de botellas.*  
+*Distribuidores autorizados de Carburos Metálicos en Lleida: gases industriales, gases de soldadura y corte y alquiler de botellas.*  
 URL: `/productos/gases-industriales`
 
 | Categoría | Resumen | Tipos | Sectores | También se busca como |

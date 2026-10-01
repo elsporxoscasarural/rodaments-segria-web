@@ -74,7 +74,7 @@ El catálogo son **datos, no páginas**. El esquema está en `src/content.config
 - `sectores` (`industria`, `agricola`, `taller`): una familia con `sectorRelacionado` muestra también las categorías de otras familias de ese sector, sin duplicarlas.
 - `borrador: true` = texto provisional pendiente de revisión por el cliente.
 - `sinonimos`: otros nombres con los que buscan los clientes (rodamientos → cojinetes). Se usan en SEO y en el buscador.
-- **Carburos Metálicos:** en el ámbito del gas la empresa actúa **bajo la marca Carburos Metálicos** (distribuidor oficial), no como Rodaments Segrià. Esa familia tiene identidad propia y su contenido sigue la oferta de Carburos (gases, soldadura y corte, alquiler de botellas). No se mencionan contratos ni condiciones comerciales con Carburos.
+- **Carburos Metálicos:** en el ámbito del gas la empresa actúa **bajo la marca Carburos Metálicos** (**«distribuidor autorizado»**, término exacto del cartel de Carburos; no usar «oficial»), no como Rodaments Segrià. Esa familia tiene identidad propia y su contenido sigue la oferta de Carburos (gases, soldadura y corte, alquiler de botellas). No se mencionan contratos ni condiciones comerciales con Carburos.
 - **Después del lanzamiento**, cambiar o borrar una URL de familia exige una redirección 301. Antes del lanzamiento se puede cambiar libremente.
 
 ## Convenciones
