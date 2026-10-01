@@ -2,8 +2,10 @@
 nombre: "Nudos agrícolas"
 familia: "agricola"
 orden: 1
-resumen: "Nudos y anudadores para empacadoras y maquinaria agrícola."
-tipos: []
+resumen: "Brazos con nudos y nudos para empacadoras."
+tipos:
+  - "Brazos con nudos"
+  - "Nudos"
 sectores:
   - "agricola"
 marcas: []

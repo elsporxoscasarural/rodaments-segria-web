@@ -32,6 +32,8 @@ const categorias = defineCollection({
 			orden: z.number(),
 			resumen: z.string(),
 			tipos: z.array(z.string()).default([]),
+			// Otros nombres con los que el cliente busca la categoría (p. ej. rodamientos → cojinetes). Para SEO y el buscador.
+			sinonimos: z.array(z.string()).default([]),
 			sectores: z.array(sectores).default([]),
 			marcas: z.array(reference('marcas')).default([]),
 			imagen: image().optional(),

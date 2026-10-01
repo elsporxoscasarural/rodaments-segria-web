@@ -43,6 +43,7 @@ npm install        # instalar dependencias (Node >= 22.12, ver .nvmrc)
 npm run dev        # servidor de desarrollo → http://localhost:4321
 npm run build      # genera la web estática en dist/
 npm run preview    # sirve dist/ para revisar el resultado final
+npm run revision   # regenera docs/REVISION-CATALOGO.md desde src/content/
 ```
 
 ## Estructura
@@ -67,6 +68,8 @@ El catálogo son **datos, no páginas**. El esquema está en `src/content.config
 - **Mover una categoría** = cambiar su `familia`. **Nueva familia** = nuevo archivo. **Ocultar** = borrar el archivo.
 - `sectores` (`industria`, `agricola`, `taller`): una familia con `sectorRelacionado` muestra también las categorías de otras familias de ese sector, sin duplicarlas.
 - `borrador: true` = texto provisional pendiente de revisión por el cliente.
+- `sinonimos`: otros nombres con los que buscan los clientes (rodamientos → cojinetes). Se usan en SEO y en el buscador.
+- **Carburos Metálicos:** en el ámbito del gas la empresa actúa **bajo la marca Carburos Metálicos** (agente), no como Rodaments Segrià. Esa familia tiene identidad propia y su contenido sigue la oferta de Carburos (gases, soldadura y corte, alquiler de botellas).
 - **Después del lanzamiento**, cambiar o borrar una URL de familia exige una redirección 301. Antes del lanzamiento se puede cambiar libremente.
 
 ## Convenciones

@@ -15,5 +15,7 @@ sectores:
   - "agricola"
   - "taller"
 marcas: []
+sinonimos:
+  - "cojinetes"
 borrador: true
 ---

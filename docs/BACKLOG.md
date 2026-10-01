@@ -59,6 +59,12 @@ El SEO (Google) y el GEO (aparecer en respuestas de IA como ChatGPT, Gemini o lo
 - 🔲 Quitar el `noindex` provisional
 - 🔲 HTTPS, redirecciones desde la web antigua y analítica respetuosa con la privacidad (si se quiere)
 
+## Ideas para estudiar en la empresa
+- Servicios de valor añadido (montaje, corte de correas a medida, prensado de mangueras, asesoramiento in situ). Ahora no se ofrecen. Si algún día se ofrecen, darían mucho valor a la web y al SEO.
+
+## Versión en catalán (futuro)
+- Usar el vocabulario real de los clientes también en catalán (rodaments, coixinets, corretges, politges…). Revisarlo con la empresa antes de traducir.
+
 ## Proyecto paralelo — Buscador de referencias
 - 🔲 Piloto con 1-2 marcas. Detalle y plan en `docs/BUSCADOR-REFERENCIAS.md`
 

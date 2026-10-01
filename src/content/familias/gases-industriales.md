@@ -1,7 +1,7 @@
 ---
-nombre: "Gases industriales · Carburos Metálicos"
+nombre: "Carburos Metálicos"
 orden: 6
-resumen: "Distribuidores de Carburos Metálicos en Lleida: gases industriales para soldadura, corte y procesos productivos."
+resumen: "Agentes de Carburos Metálicos en Lleida: gases industriales, gases de soldadura y corte y alquiler de botellas."
 destacada: true
 borrador: true
 ---

@@ -1,7 +1,7 @@
 ---
 nombre: "Agrícola"
 orden: 5
-resumen: "Nudos agrícolas y componentes para maquinaria del campo."
+resumen: "Brazos con nudos para empacadoras y todos los componentes de transmisión para maquinaria agrícola."
 sectorRelacionado: "agricola"
 borrador: true
 ---
