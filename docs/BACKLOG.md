@@ -20,7 +20,8 @@ Estado: ✅ hecho · 🔲 pendiente · ❓ decisión abierta
 - 🔲 Montar la colección `productos` en `src/content/`: nombre, descripción, marcas, imagen y aplicaciones de cada categoría
 - ✅ Datos de empresa centralizados en `src/data/empresa.ts`
 - ✅ Textos de Inicio y Empresa, con la historia escrita por el cliente (`docs/TEXTOS.md`)
-- 🔲 Textos de Contacto y Buscar referencia
+- ✅ Textos de Contacto y Buscar referencia (formularios, mensajes y texto RGPD)
+- 🔲 Mapa de Google cargado solo bajo demanda (evita el banner de cookies)
 - 🔲 Textos legales: razón social y CIF ✅ · falta la inscripción en el Registro Mercantil (tomo, folio, hoja)
 - 🔲 Número de WhatsApp
 - ✅ Selección provisional de fotos reales en `src/assets/img/fotos/` (ver `docs/FOTOS.md`)

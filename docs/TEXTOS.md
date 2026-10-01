@@ -1,4 +1,4 @@
-# Textos — Inicio y Empresa (v3)
+# Textos — Inicio, Empresa, Contacto y Buscar referencia (v3)
 
 v2 con las correcciones del cliente. **Trato de tú.** Los datos (año, referencias, horario, teléfono, m²) salen de `src/data/empresa.ts`, así que si cambian no hay que tocar estos textos. Los años de trayectoria se calculan solos.
 - **[ ]** = pendiente.
@@ -110,6 +110,81 @@ v2 con las correcciones del cliente. **Trato de tú.** Los datos (año, referenc
 
 ### 6. Llamada final
 - **Ven a conocernos o escríbenos.** → Contacto
+
+---
+
+## CONTACTO `/contacto`
+
+**SEO**
+- Título: `Contacto y presupuestos | Rodaments Segrià · Lleida`
+- Descripción: `Pide presupuesto sin compromiso o ven a vernos al Pol. Ind. Camí dels Frares de Lleida. Teléfono 973 20 80 64. De lunes a viernes, de 8:00 a 13:30 y de 15:00 a 18:00.`
+
+### 1. Cabecera
+- **H1: Hablemos de lo que necesitas**
+- Entradilla: Pídenos presupuesto sin compromiso, llámanos o ven al almacén. Te respondemos lo antes posible.
+
+### 2. Formulario «Pedir presupuesto»
+| Campo | Obligatorio | Ayuda / ejemplo |
+|---|---|---|
+| Nombre | ✅ | |
+| Empresa | — | *Si nos escribes como particular, déjalo en blanco* |
+| Email | ✅ | |
+| Teléfono | — | *Para llamarte si es más rápido* |
+| ¿Qué necesitas? | ✅ | *Referencias, cantidades, para qué máquina es… Cuanto más detalle, más rápido te respondemos.* |
+| ¿Cómo prefieres que te contactemos? | — | Email · Teléfono · WhatsApp *(WhatsApp solo cuando tengamos el número)* |
+| Acepto la política de privacidad | ✅ | casilla + enlace |
+
+- Botón: **Enviar consulta**
+- ✅ Enviado: **¡Recibido!** Te responderemos lo antes posible, de lunes a viernes en horario de tienda. Si es urgente, llámanos al 973 20 80 64.
+- ❌ Error: No hemos podido enviar tu consulta. Vuelve a intentarlo o escríbenos a rodsegria@rodsegria.es.
+- Antispam invisible, sin captchas molestos.
+
+### 3. Datos de contacto *(salen de `empresa.ts`)*
+- **Teléfono:** 973 20 80 64 · **Email:** rodsegria@rodsegria.es · **WhatsApp:** [cuando esté]
+- **Dirección:** Pol. Ind. Camí dels Frares, Carrer d'Alcarràs, 78 · 25191 Lleida
+- **Horario:** De lunes a viernes, de 8:00 a 13:30 y de 15:00 a 18:00
+- **Cómo llegar:** Aparcamiento para coches, furgonetas y camiones. Botón **Cómo llegar** (abre Google Maps).
+- **Mapa:** se carga solo cuando el usuario lo pide, al pulsar «Ver mapa». Así no hacen falta cookies de Google ni banner de cookies solo por el mapa.
+
+---
+
+## BUSCAR REFERENCIA `/buscar-referencia`
+
+**SEO**
+- Título: `¿Buscas una referencia? Rodamientos, correas y más | Rodaments Segrià`
+- Descripción: `Escríbenos la referencia que buscas y te diremos si la tenemos o podemos conseguirla. Más de 500.000 referencias y miles de equivalencias entre marcas.`
+
+### 1. Cabecera
+- **H1: ¿Buscas una referencia concreta?**
+- Entradilla: Escríbenos la referencia y te decimos si la tenemos, si podemos conseguirla o qué equivalente te sirve. Trabajamos con más de 500.000 referencias.
+
+### 2. Formulario
+| Campo | Obligatorio | Ayuda / ejemplo |
+|---|---|---|
+| Referencia(s) | ✅ | *Una por línea, con la cantidad si la sabes. Ej.: 6205-2RS x 10* |
+| Marca | — | *Si la conoces. Ej.: SKF, FAG, NTN…* |
+| ¿Para qué es? | — | *Máquina o aplicación. Nos ayuda a proponerte un equivalente.* |
+| Foto de la pieza | — | *Si no lees bien la referencia, una foto nos basta* (si el servicio de formularios lo permite) |
+| Nombre | ✅ | |
+| Email | ✅ | |
+| Teléfono | — | |
+| Acepto la política de privacidad | ✅ | |
+
+- Botón: **Consultar disponibilidad**
+- ✅ Enviado: **¡Recibido!** Revisamos la referencia y te decimos algo lo antes posible.
+- Desde el buscador rápido del inicio, el campo «Referencia(s)» llega ya relleno.
+
+### 3. Bloque de confianza (junto al formulario)
+- **+500.000 referencias** en stock y en catálogo
+- **Equivalencias entre marcas:** si la tuya no está, te proponemos una equivalente
+- **¿Prefieres hablar?** 973 20 80 64 · WhatsApp [cuando esté]
+
+> En el futuro el buscador automático (`docs/BUSCADOR-REFERENCIAS.md`) se añadirá **encima** de este formulario, en la misma página. El formulario seguirá ahí para lo que no encuentre.
+
+---
+
+## TEXTO LEGAL BAJO LOS FORMULARIOS (obligatorio, RGPD)
+> **Información básica sobre protección de datos.** Responsable: Rodaments Segria, S.L. Finalidad: responder a tu consulta y, si lo pides, enviarte un presupuesto. Legitimación: tu consentimiento. Destinatarios: no cedemos tus datos a terceros, salvo obligación legal [y el proveedor técnico del formulario]. Derechos: puedes acceder, rectificar y suprimir tus datos escribiendo a rodsegria@rodsegria.es. Más información en la [política de privacidad].
 
 ---
 
