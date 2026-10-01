@@ -1,3 +1,35 @@
+# build output
+dist/
+# generated types
+.astro/
+
+# dependencies
+node_modules/
+
+# logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# environment variables / secretos (nunca se suben)
+.env
+.env.*
+!.env.example
+
+# sistema
 .DS_Store
-*.mov
 Thumbs.db
+
+# editores
+.idea/
+.vscode/*
+!.vscode/extensions.json
+
+# Claude Code: ajustes locales
+.claude/settings.local.json
+
+# originales pesados: viven fuera del repo (ver docs/BACKLOG.md)
+*.mov
+*.mp4
+*.psd
