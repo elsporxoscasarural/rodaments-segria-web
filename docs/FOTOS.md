@@ -3,20 +3,26 @@
 Las fotos del repo están en `src/assets/img/fotos/`. Son versiones a 2560 px **sin datos EXIF**: se les ha quitado la ubicación GPS del móvil. Astro genera automáticamente las versiones ligeras (WebP/AVIF) de cada tamaño.
 **Para cambiar una foto por otra mejor:** se sustituye el archivo manteniendo el mismo nombre y no hay que tocar nada más. Los originales están fuera del repo, en `~/Desktop/Botiga/Rodaments segria/`.
 
-## Selección provisional
+## Selección actual
+
+**Fotos nuevas (octubre 2026)**. Son de mejor calidad, pero llegaron reducidas a 2000 px al pasar por el chat. Los originales del móvil son más grandes y conviene sustituirlas por ellos (mismo nombre de archivo). Hay copia en `~/Desktop/Botiga/Rodaments segria/fotos-nuevas-2026-10/`.
 
 | Archivo | Qué es | Uso previsto | Estado |
 |---|---|---|---|
-| `almacen-vista-general.jpg` | Nave completa, pasillo central | Hero del inicio (escritorio) / Empresa | ✅ Buena |
-| `almacen-pasillo.jpg` | Pasillo en perspectiva, vertical | Hero en móvil / sección stock | ✅ Muy buena |
-| `almacen-vista-alta.jpg` | Nave desde arriba | Empresa / instalaciones | ✅ Buena |
-| `almacen-pasillo-d.jpg` | Pasillo D con producto | Empresa / stock | 🟡 Válida |
-| `almacen-estanterias.jpg` | Estanterías con poleas y cajas | Stock | 🟡 Válida |
-| `stock-rodamientos.jpg` | Cajas de rodamientos de marcas | Categoría Rodamientos / marcas | ✅ Buena |
-| `stock-correas.jpg` | Correas en estantería | Categoría Correas | ✅ Buena |
-| `stock-poleas.jpg` | Poleas en estantería | Categoría Poleas | ✅ Buena |
-| `mostrador.jpg` | Zona de mostrador | Empresa / contacto | 🟠 Desordenada: mejor repetirla |
-| `exterior.jpg` | Fachada | Empresa / contacto | 🟠 Solo 1419 px: se queda pequeña a pantalla completa |
+| `almacen-nave.jpg` | Nave completa, pasillo central con camión al fondo | **Hero del inicio (escritorio)** | ✅ Excelente |
+| `almacen-pasillo-rodamientos.jpg` | Pasillo de rodamientos SKF/FAG/Timken, vertical | **Hero en móvil** / Rodamientos | ✅ Excelente |
+| `almacen-pasillo-rodamientos-2.jpg` | Otro pasillo de rodamientos, vertical | Stock / Empresa | ✅ Muy buena |
+| `almacen-pasillo-cajas.jpg` | Pasillo con soportes y cajas Timken/SNR | Soportes / stock | ✅ Muy buena |
+| `stock-pinones-poleas.jpg` | Piñones y poleas en estantería | Piñones / Poleas | 🟡 Parece retocada con IA (ver nota) |
+| `mostrador.jpg` | Mostrador completo, con el cartel de Carburos | **Empresa / Contacto** / Carburos | ✅ Muy buena |
+| `mostrador-cerca.jpg` | Mostrador más cerca | Contacto | ✅ Buena (sale una persona al fondo, ver nota) |
+| `mostrador-vertical.jpg` | Mostrador, vertical | Móvil / Contacto | ✅ Buena (sale una persona al fondo) |
+
+**Anteriores** (siguen disponibles como alternativa): `almacen-vista-general`, `almacen-vista-alta`, `almacen-pasillo`, `almacen-pasillo-d`, `almacen-estanterias`, `stock-rodamientos`, `stock-poleas`, `stock-correas`, `exterior`. Pendientes de mejorar: **fachada** (pequeña) y **correas** (no hay foto nueva).
+
+**Notas**
+- `stock-pinones-poleas`: las texturas muy lisas y algunas etiquetas ilegibles apuntan a un retoque con IA. Si es así y la foto refleja fielmente el almacén, vale. Si no, mejor repetirla.
+- En `mostrador-cerca` y `mostrador-vertical` se ve a una persona trabajando al fondo, tras el cristal. Es pequeña, pero se reconoce. Si no queréis que salga nadie, uso `mostrador.jpg` o la difumino.
 
 ## Descartadas
 - **Las 12 imágenes de producto de la web anterior** (`Rodaments segria *.png`). Están generadas con IA, son pequeñas (~700 px) y algunas muestran laboratorios y fábricas que no son la empresa. Dan imagen genérica y pueden confundir al cliente. No se usan.
