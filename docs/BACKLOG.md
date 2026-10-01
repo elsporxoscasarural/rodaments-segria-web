@@ -25,7 +25,7 @@ Estado: ✅ hecho · 🔲 pendiente · ❓ decisión abierta
 - 🔲 Textos legales: razón social y CIF ✅ · Registro Mercantil de Lleida, tomo 337, folio 205 ✅ · falta el número de hoja (L-…)
 - 🔲 Número de WhatsApp
 - ✅ Selección provisional de fotos reales en `src/assets/img/fotos/` (ver `docs/FOTOS.md`)
-- 🔲 **Foto nueva de la fachada** sin retoque con IA (la actual tiene el nombre alterado: «RODAMIENTS»)
+- ✅ Fachada con el letrero corregido, en portada
 - 🔲 Sesión de fotos: fachada, mostrador, equipo y serie de producto sobre fondo claro (lista en `docs/FOTOS.md`)
 - 🔲 Textos legales (RGPD/LSSI). Son obligatorios si hay formulario
 - ❓ Lista de marcas que se pueden mostrar (¿logos con permiso?)

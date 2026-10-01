@@ -9,7 +9,8 @@ Todas las fotos tienen un **nombre descriptivo** de lo que se ve (ayuda al SEO y
 
 | Archivo | Qué es | Uso previsto | Estado |
 |---|---|---|---|
-| `nave-almacen-suministro-industrial.jpg` | Nave completa, camión al fondo | **Portada (hero) provisional** · Empresa | ✅ Excelente |
+| `fachada-rodaments-segria-lleida.jpg` | Fachada con el letrero corregido | **Portada (hero)** · Empresa · Contacto | ✅ 2000 px |
+| `nave-almacen-suministro-industrial.jpg` | Nave completa, camión al fondo | Inicio («El almacén…») · Empresa | ✅ Excelente |
 | `pasillo-almacen-rodamientos.jpg` | Pasillo de rodamientos, vertical | Portada en móvil (alternativa) · Rodamientos | ✅ Excelente |
 | `estanterias-rodamientos-en-stock.jpg` | Pasillo de rodamientos, vertical | Stock · Empresa | ✅ Muy buena |
 | `pasillo-almacen-soportes-rodamientos.jpg` | Pasillo de soportes y unidades de rodamiento | Soportes · stock | ✅ Muy buena |
@@ -27,7 +28,7 @@ Todas las fotos tienen un **nombre descriptivo** de lo que se ve (ayuda al SEO y
 | `estanteria-correas-de-transmision.jpg` | Correas en estantería | **Correas** (única foto de correas) | ✅ |
 
 **Notas**
-- ❌ **Fachada retirada:** todas las versiones disponibles (la antigua y las mejoradas con IA) muestran «RODAMIENTS» en el letrero: la IA alteró el nombre, que en la realidad es «RODAMENTS». No se usan en ningún sitio. **Pendiente: foto nueva de la fachada con el móvil** (mismo encuadre, día soleado, sin retoque con IA). Cuando llegue, será la portada (`fachada-rodaments-segria-lleida.jpg`).
+- ✅ **Fachada:** versión mejorada y con el letrero corregido («RODAMENTS SEGRIÀ»), revisada letra a letra. Es la portada. 2000 px: en monitores muy grandes el diseño compensa la resolución. Original en `Botiga/Rodaments segria/fachada-rodaments-segria-corregida.jpg`.
 - **Regla:** no usar fotos mejoradas con IA donde salgan textos, logos o marcas. Las IAs reescriben lo que no leen bien.
 - Las personas que aparecen al fondo del mostrador no son reconocibles: el cliente da el visto bueno.
 
