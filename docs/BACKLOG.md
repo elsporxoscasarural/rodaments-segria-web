@@ -19,7 +19,8 @@ Estado: ✅ hecho · 🔲 pendiente · ❓ decisión abierta
 - 🔲 Definir el mapa del sitio. Propuesta: Inicio · Productos (índice + una página por categoría) · Empresa · Contacto/Presupuesto · Aviso legal · Privacidad · Cookies
 - 🔲 Montar la colección `productos` en `src/content/`: nombre, descripción, marcas, imagen y aplicaciones de cada categoría
 - 🔲 Redactar los textos: historia (+30 años, empresa familiar), servicios y marcas con las que trabajan
-- 🔲 Seleccionar y optimizar fotos reales desde `~/Desktop/Botiga/Rodaments segria/`
+- ✅ Selección provisional de fotos reales en `src/assets/img/fotos/` (ver `docs/FOTOS.md`)
+- 🔲 Sesión de fotos: fachada, mostrador, equipo y serie de producto sobre fondo claro (lista en `docs/FOTOS.md`)
 - 🔲 Textos legales (RGPD/LSSI). Son obligatorios si hay formulario
 - ❓ Lista de marcas que se pueden mostrar (¿logos con permiso?)
 
