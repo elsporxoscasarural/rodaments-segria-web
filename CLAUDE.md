@@ -7,11 +7,12 @@ Rodaments Segrià es una empresa familiar de suministros industriales en Lleida 
 
 ## Decisiones tomadas
 - **Stack:** Astro, con salida estática (HTML, CSS y JS). No depende de ningún proveedor de hosting.
-- **Hosting y dominio:** pendientes. No asumas ningún proveedor ni añadas adaptadores o archivos de configuración de un host concreto.
+- **Dominio:** `rodsegria.es` (definitivo; se mantiene por el email, la antigüedad y el material impreso). La web principal es `https://www.rodsegria.es`. `rodamentssegria.es` y `.com` se comprarán para redirigir a él.
+- **Hosting:** pendiente. No asumas ningún proveedor ni añadas adaptadores o archivos de configuración de un host concreto.
 - **Repo propio:** `elsporxoscasarural/rodaments-segria-web`. No se anidan repos dentro de este.
 - **Web anterior:** guardada en la etiqueta git `v1-legacy`. Era un HTML único con fondo oscuro y acentos azules.
 - **Idioma:** castellano en la raíz (`/`). El catalán llegará más adelante en `/ca/` (ver `i18n` en `astro.config.mjs`). Escribe las URLs y los textos pensando en que se traducirán.
-- **`robots.txt` y `sitemap.xml`:** se crean cuando el dominio esté confirmado. Hasta entonces la página provisional lleva `noindex`.
+- **`robots.txt` y `sitemap.xml`:** se crean en la fase de SEO. Hasta el lanzamiento, las páginas llevan `noindex`.
 - **Formulario de presupuesto:** la interfaz se diseña con el resto de la web. El envío (servicio o funciones del hosting) se decide junto al hosting.
 
 ## Identidad visual
@@ -31,7 +32,6 @@ Rodaments Segrià es una empresa familiar de suministros industriales en Lleida 
 - Pol. Ind. Camí dels Frares, Carrer d'Alcarràs, 78 · 25191 Lleida (coordenadas 41.5912, 0.5897)
 - Teléfono: 973 20 80 64 (+34973208064) · Email: rodsegria@rodsegria.es
 - Horario: de lunes a viernes, 8:30–13:30 y 15:00–18:30
-- Dominio de la web anterior: `rodsegria.es` (pendiente de confirmar que es el definitivo)
 - Marcas, proveedores y textos de empresa: se definen más adelante. No te los inventes.
 
 ## Forma de trabajar en el diseño

@@ -34,17 +34,18 @@ Estado: ✅ hecho · 🔲 pendiente · ❓ decisión abierta
 ## Fase 4 — SEO
 - 🔲 Título, descripción, Open Graph y URL canónica en cada página (desde el layout)
 - 🔲 Datos estructurados `LocalBusiness` (dirección, horario, teléfono)
-- 🔲 `robots.txt` y `sitemap.xml` (@astrojs/sitemap), **solo cuando el dominio esté confirmado**
+- 🔲 `robots.txt` y `sitemap.xml` (@astrojs/sitemap), antes del lanzamiento
 - 🔲 Ficha de Google Business coherente con la web
 - 🔲 Revisión con Lighthouse: rendimiento, accesibilidad y SEO
 
 ## Fase 5 — Hosting y dominio
 - ❓ Elegir hosting estático. Cualquiera sirve porque la salida es HTML estático
-- ❓ Dominio: el de la web anterior es `rodsegria.es`. Confirmar que es el definitivo
+- ✅ Dominio: `rodsegria.es` (definitivo, `site` ya configurado en `astro.config.mjs`)
+- 🔲 Comprar `rodamentssegria.es` (y `.com`) y redirigirlos con 301 a `www.rodsegria.es`
 - ⚠️ **No romper el email** `rodsegria@rodsegria.es`: al cambiar los DNS hay que conservar los registros MX del correo. Revisarlo antes de tocar nada
 - 🔲 Recomendado: publicar una versión de pruebas (sin indexar) al terminar la fase 2 para revisarla en móviles reales y probar el formulario. El dominio se conecta en el lanzamiento
 - ❓ **Envío del formulario de presupuesto.** Una web estática no puede enviar emails. Opciones: un servicio externo (Formspree, Web3Forms…), funciones del hosting o un `mailto:` provisional. Se decide junto al hosting
-- 🔲 Añadir `site` en `astro.config.mjs` y quitar el `noindex` provisional
+- 🔲 Quitar el `noindex` provisional
 - 🔲 HTTPS, redirecciones desde la web antigua y analítica respetuosa con la privacidad (si se quiere)
 
 ## Fase 6 — Lanzamiento
@@ -62,7 +63,7 @@ Estado: ✅ hecho · 🔲 pendiente · ❓ decisión abierta
 | Teléfono | 973 20 80 64 ✅ |
 | Email de contacto (donde llegan los presupuestos) | rodsegria@rodsegria.es ✅ (confirmar que los presupuestos van aquí) |
 | Horario | Lunes a viernes, 8:30–13:30 y 15:00–18:30 ✅ |
-| Dominio | `rodsegria.es` ❓ confirmar |
+| Dominio | `rodsegria.es` ✅ |
 | Carpeta de imágenes | Originales en `~/Desktop/Botiga/Rodaments segria/` (fuera del repo). Confirmar si es la definitiva y si hay más fotos |
 | Logo vectorial | ✅ SVG limpio (calco). Si existe el original del diseñador, mejor |
 | Marcas, proveedores y textos de empresa | 🔲 más adelante |
