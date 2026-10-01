@@ -12,6 +12,30 @@ Rodaments Segrià es una empresa familiar de suministros industriales en Lleida 
 - **Web anterior:** guardada en la etiqueta git `v1-legacy`. Era un HTML único con fondo oscuro y acentos azules.
 - **Idioma:** castellano en la raíz (`/`). El catalán llegará más adelante en `/ca/` (ver `i18n` en `astro.config.mjs`). Escribe las URLs y los textos pensando en que se traducirán.
 - **`robots.txt` y `sitemap.xml`:** se crean cuando el dominio esté confirmado. Hasta entonces la página provisional lleva `noindex`.
+- **Formulario de presupuesto:** la interfaz se diseña con el resto de la web. El envío (servicio o funciones del hosting) se decide junto al hosting.
+
+## Identidad visual
+- **Paleta:** los azules del logo como protagonistas, sobre fondos y complementos en una escala de grises claros que tira a blanco. Es una web **clara**, no oscura como la anterior.
+  - Azul intenso (el texto "RODAMENTS"): `#015BFE`
+  - Azul índigo (el texto "SEGRIÀ" y el símbolo RS): `#282B98`
+  - Neutros: escala de grises muy claros y fríos hasta el blanco. Se define en la fase de diseño en `src/styles/`.
+- **Logo** en `src/assets/brand/`:
+  - `logo.svg`: logotipo a color, sin el rodamiento. Es el que se usa en la web.
+  - `logo-mono.svg`: monocromo con `currentColor`, para fondos de color o para el pie.
+  - `simbolo.svg`: solo el símbolo RS (favicon, avatar, detalles).
+  - `logo-con-rodamiento.webp`: versión completa en imagen, de 2000 px.
+  - Los SVG salen de un calco automático del logo. Si aparece el vectorial original del diseñador, se sustituyen.
+
+## Datos del negocio
+- Fundada en 1989 en Lleida. Empresa familiar con más de 50.000 referencias en stock. Da servicio a talleres, industria y agricultura.
+- Pol. Ind. Camí dels Frares, Carrer d'Alcarràs, 78 · 25191 Lleida (coordenadas 41.5912, 0.5897)
+- Teléfono: 973 20 80 64 (+34973208064) · Email: rodsegria@rodsegria.es
+- Horario: de lunes a viernes, 8:30–13:30 y 15:00–18:30
+- Dominio de la web anterior: `rodsegria.es` (pendiente de confirmar que es el definitivo)
+- Marcas, proveedores y textos de empresa: se definen más adelante. No te los inventes.
+
+## Forma de trabajar en el diseño
+Se avanza **por pasos pequeños, con revisión en cada uno**, para cuidar el resultado. Usa las mejores skills disponibles: `design-taste-frontend`, `impeccable`, `emil-design-eng`, `frontend-design`, `gsap-*` y `web-design-guidelines`. Usa también los conectores (Unsplash) cuando aporten. Primero propón la dirección visual y espera aprobación antes de construir.
 
 ## Comandos
 ```bash
@@ -44,6 +68,4 @@ docs/           BACKLOG.md con fases y datos pendientes
 - **JS:** el mínimo posible. Astro no envía JS al navegador por defecto, así que mantenlo así salvo para las animaciones y el formulario.
 - **Accesibilidad y SEO:** HTML semántico, `alt` en todas las imágenes, un solo `<h1>` por página, y título y descripción propios en cada página.
 - **Git:** commits pequeños y descriptivos en castellano. Nada de `push --force` a `main`. Nunca guardes tokens ni credenciales en archivos (el push se hace con `gh auth`).
-
-## Skills de diseño recomendadas
-`impeccable` o `frontend-design` para diseñar, `gsap-*` para animaciones y `web-design-guidelines` para revisar. Las fotos de apoyo pueden venir del conector de Unsplash, pero se priorizan las fotos reales de la tienda.
+- **Fotos:** se priorizan las fotos reales de la tienda y el almacén. Unsplash solo como apoyo.
