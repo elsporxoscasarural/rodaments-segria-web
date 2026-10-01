@@ -7,10 +7,11 @@ export const empresa = {
 	referenciasEnStock: 500_000,
 	metrosAlmacen: 2000,
 	personas: 7,
+	generacionActual: 3,
 	web: 'https://www.rodsegria.es',
 	email: 'rodsegria@rodsegria.es',
 	telefono: { visible: '973 20 80 64', enlace: '+34973208064' },
-	// TODO: número de WhatsApp pendiente de confirmar.
+	// TODO: número de WhatsApp (móvil) en proceso de alta. Mientras sea null, la web no muestra WhatsApp.
 	whatsapp: null as { visible: string; enlace: string } | null,
 	direccion: {
 		poligono: 'Pol. Ind. Camí dels Frares',

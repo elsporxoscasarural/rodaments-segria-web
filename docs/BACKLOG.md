@@ -19,8 +19,9 @@ Estado: ✅ hecho · 🔲 pendiente · ❓ decisión abierta
 - 🔲 Definir el mapa del sitio. Propuesta: Inicio · Productos (índice + una página por categoría) · Empresa · Contacto/Presupuesto · Aviso legal · Privacidad · Cookies
 - 🔲 Montar la colección `productos` en `src/content/`: nombre, descripción, marcas, imagen y aplicaciones de cada categoría
 - ✅ Datos de empresa centralizados en `src/data/empresa.ts`
-- 🔄 Textos de Inicio y Empresa (`docs/TEXTOS.md`, v2 revisada por el cliente)
-- 🔲 Historia de la empresa: la escribe el cliente
+- ✅ Textos de Inicio y Empresa, con la historia escrita por el cliente (`docs/TEXTOS.md`)
+- 🔲 Textos de Contacto y Buscar referencia
+- 🔲 Textos legales: necesitan razón social, CIF y datos registrales
 - 🔲 Número de WhatsApp
 - ✅ Selección provisional de fotos reales en `src/assets/img/fotos/` (ver `docs/FOTOS.md`)
 - 🔲 Sesión de fotos: fachada, mostrador, equipo y serie de producto sobre fondo claro (lista en `docs/FOTOS.md`)

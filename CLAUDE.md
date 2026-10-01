@@ -30,10 +30,10 @@ Rodaments Segrià es una empresa familiar de suministros industriales en Lleida 
 ## Datos del negocio
 > **Fuente única:** `src/data/empresa.ts`. La web lee de ahí estos datos. Si cambia alguno, se cambia allí (y aquí).
 
-- Fundada en **1988** en Lleida. Empresa familiar, unas 7 personas, con **más de 500.000 referencias en stock** y miles de equivalencias entre marcas. Da servicio a talleres, industria y agricultura.
+- Fundada en **1988** en Lleida. Empresa familiar, hoy dirigida por la **tercera generación**, unas 7 personas, con **más de 500.000 referencias en stock** y miles de equivalencias entre marcas. Da servicio a talleres, industria y agricultura.
 - Vende a **profesionales y particulares**. Envíos a toda España por agencias de transporte profesionales.
 - Almacén de **más de 2.000 m²** con aparcamiento para coches, furgonetas y camiones.
-- Atiende consultas por **WhatsApp** (número pendiente).
+- Atiende consultas por **WhatsApp** (móvil en proceso de alta; número pendiente).
 - Pol. Ind. Camí dels Frares, Carrer d'Alcarràs, 78 · 25191 Lleida (coordenadas 41.5912, 0.5897)
 - Teléfono: 973 20 80 64 (+34973208064) · Email: rodsegria@rodsegria.es
 - Horario: de lunes a viernes, 8:00–13:30 y 15:00–18:00

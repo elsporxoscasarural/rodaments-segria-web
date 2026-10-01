@@ -1,4 +1,4 @@
-# Textos — Inicio y Empresa (v2)
+# Textos — Inicio y Empresa (v3)
 
 v2 con las correcciones del cliente. **Trato de tú.** Los datos (año, referencias, horario, teléfono, m²) salen de `src/data/empresa.ts`, así que si cambian no hay que tocar estos textos. Los años de trayectoria se calculan solos.
 - **[ ]** = pendiente.
@@ -27,8 +27,7 @@ v2 con las correcciones del cliente. **Trato de tú.** Los datos (año, referenc
 > He cambiado «22 categorías» y «3 sectores» por **m² de almacén** y **equivalencias**: son más potentes y diferenciadores. Las categorías ya se ven justo debajo.
 
 ### 3. Catálogo
-- **Título:** **Todo lo que mueve tu maquinaria** ← propuesta
-  - Alternativas: *«Del rodamiento a la herramienta, en un mismo sitio»* · *«Lo que tu máquina necesita, en stock»* · *«Piezas para que nada se pare»*
+- **Título: Todo lo que mueve la maquinaria** ✅
 - Texto: Rodamientos, soportes, correas, cadenas, retenes, motores y material de taller. Todo en stock en nuestro almacén de Lleida.
 - *(Tarjetas de las 6 familias, generadas desde los datos)*
 - Enlace: **Ver todo el catálogo →**
@@ -82,11 +81,19 @@ v2 con las correcciones del cliente. **Trato de tú.** Los datos (año, referenc
 
 ### 1. Cabecera
 - **H1: Una empresa familiar al servicio de la industria desde 1988**
-- Entradilla: Rodaments Segrià nació en Lleida en 1988 para algo muy concreto: que talleres, industria y agricultores encontraran la pieza que necesitan, cuando la necesitan.
+- Entradilla: Tres generaciones y un mismo compromiso: que ninguna máquina se pare por falta de una pieza.
+  > Cambiada: la anterior repetía la primera frase de la historia.
 
 ### 2. Nuestra historia
-[La escribe el cliente.]
-> Estructura sugerida: *los inicios (1988)* → *el crecimiento (nuevas familias de producto, la nave actual)* → *hoy (más de 500.000 referencias, distribuidor oficial de Carburos Metálicos)*.
+✅ Texto del cliente. Único cambio: «más de 35 años» lo calcula la web (`{años}`), para que no caduque.
+
+> Rodaments Segrià nació en 1988 con un propósito claro: ser un apoyo de confianza para la industria, la producción, la agricultura y los talleres de nuestro entorno.
+>
+> Desde el principio entendimos algo que sigue guiando nuestro día a día: cuando una máquina se para por una avería, cada hora cuenta. Por eso no nos limitamos a vender una pieza. Buscamos la mejor solución para cada cliente, ya sea resolver una urgencia o planificar un mantenimiento que alargue la vida de sus equipos y evite paradas inesperadas.
+>
+> Hoy, más de {años} años después, trabajamos con cientos de miles de referencias. Tenemos un amplio stock propio y la capacidad de conseguir aquello que no está en nuestro almacén, y colaboramos con algunas de las mejores marcas del mundo.
+>
+> Pero lo que de verdad nos diferencia es el conocimiento. Décadas escuchando a nuestros clientes y resolviendo sus problemas nos han dado una experiencia que no se encuentra en un catálogo. Ese saber hacer ha pasado de padres a hijos, y hoy ya es la tercera generación quien está al frente. Seguimos siendo una empresa familiar, con el trato cercano y el compromiso de siempre.
 
 ### 3. Cómo trabajamos
 - Título: **Familia, oficio y stock**
@@ -107,7 +114,4 @@ v2 con las correcciones del cliente. **Trato de tú.** Los datos (año, referenc
 ---
 
 ## Pendiente
-1. **Título del catálogo:** elige una de las propuestas o dime otra idea.
-2. **Número de WhatsApp.** ¿Es el mismo 973 20 80 64 (WhatsApp Business en el fijo) o un móvil?
-3. **Historia:** la escribes tú y yo la integro.
-4. ¿Te parecen bien las **cifras nuevas** (m² y equivalencias en lugar de categorías y sectores)?
+1. **Número de WhatsApp** (un móvil, en proceso de alta). Mientras no esté, la web no muestra WhatsApp.
