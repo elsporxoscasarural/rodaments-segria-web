@@ -86,4 +86,4 @@ El catálogo son **datos, no páginas**. El esquema está en `src/content.config
 - **JS:** el mínimo posible. Astro no envía JS al navegador por defecto, así que mantenlo así salvo para las animaciones y el formulario.
 - **Accesibilidad y SEO:** HTML semántico, `alt` en todas las imágenes, un solo `<h1>` por página, y título y descripción propios en cada página.
 - **Git:** commits pequeños y descriptivos en castellano. Nada de `push --force` a `main`. Nunca guardes tokens ni credenciales en archivos (el push se hace con `gh auth`).
-- **Fotos:** se priorizan las fotos reales de la tienda y el almacén. Unsplash solo como apoyo.
+- **Fotos:** se priorizan las fotos reales de la tienda y el almacén. Unsplash solo como apoyo. **Nunca usar fotos retocadas con IA donde se vean textos, logos o marcas** (la IA los altera: ya pasó con el letrero de la fachada).

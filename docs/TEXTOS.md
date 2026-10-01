@@ -12,7 +12,7 @@ v2 con las correcciones del cliente. **Trato de tú.** Los datos (año, referenc
 - Descripción: `Empresa familiar de Lleida desde 1988. Más de 500.000 referencias en stock: rodamientos, soportes, correas, transmisión, retenes y material de taller para industria y agricultura.`
 
 ### 1. Portada (hero)
-- *(foto de fondo: fachada-rodaments-segria-lleida)*
+- *(foto de fondo: fachada-rodaments-segria-lleida cuando exista la foto nueva; mientras tanto, nave-almacen-suministro-industrial)*
 - Antetítulo: **Lleida · Desde 1988**
 - **H1: Rodamientos y suministro industrial en Lleida**
 - Subtítulo: Más de 500.000 referencias en stock para la industria, el campo y el taller. Tenemos la pieza cuando la necesitas.
@@ -54,7 +54,7 @@ v2 con las correcciones del cliente. **Trato de tú.** Los datos (año, referenc
 ### 7. El almacén
 - Título: **El almacén es nuestro mejor argumento**
 - Texto: Más de 2.000 m² en el Polígono Camí dels Frares de Lleida dedicados a tener stock de verdad, con aparcamiento para coches, furgonetas y camiones. Ven a vernos: muchas veces la pieza que buscas está a unos pasos del mostrador.
-- *(foto: nave-almacen-suministro-industrial)*
+- *(foto: nave-almacen-suministro-industrial, o pasillo-almacen-rodamientos si la nave va en la portada)*
 
 ### 8. Preguntas frecuentes
 - **¿Vendéis a particulares o solo a empresas?** A los dos. Atendemos a profesionales, empresas y particulares.

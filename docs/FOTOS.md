@@ -9,8 +9,7 @@ Todas las fotos tienen un **nombre descriptivo** de lo que se ve (ayuda al SEO y
 
 | Archivo | Qué es | Uso previsto | Estado |
 |---|---|---|---|
-| `fachada-rodaments-segria-lleida.jpg` | Fachada con el logo | **Portada (hero)** · Empresa · Contacto | 🟠 Versión mejorada (2000 px). **Revisar el letrero** (ver nota) |
-| `nave-almacen-suministro-industrial.jpg` | Nave completa, camión al fondo | Inicio («El almacén es nuestro mejor argumento») · Empresa | ✅ Excelente |
+| `nave-almacen-suministro-industrial.jpg` | Nave completa, camión al fondo | **Portada (hero) provisional** · Empresa | ✅ Excelente |
 | `pasillo-almacen-rodamientos.jpg` | Pasillo de rodamientos, vertical | Portada en móvil (alternativa) · Rodamientos | ✅ Excelente |
 | `estanterias-rodamientos-en-stock.jpg` | Pasillo de rodamientos, vertical | Stock · Empresa | ✅ Muy buena |
 | `pasillo-almacen-soportes-rodamientos.jpg` | Pasillo de soportes y unidades de rodamiento | Soportes · stock | ✅ Muy buena |
@@ -28,8 +27,8 @@ Todas las fotos tienen un **nombre descriptivo** de lo que se ve (ayuda al SEO y
 | `estanteria-correas-de-transmision.jpg` | Correas en estantería | **Correas** (única foto de correas) | ✅ |
 
 **Notas**
-- ⚠️ **Letrero de la fachada:** en todas las versiones (también en la antigua de 1419 px) se lee «RODAM**I**ENTS», mientras que el logo dice «RODAMENTS». Si el letrero real dice RODAMENTS, la imagen la ha alterado una IA y **no puede ir en portada** con el nombre mal escrito. Hay que confirmarlo o repetir la foto.
-- **Fachada en portada:** tiene **1419 px de ancho**. En pantallas grandes o retina, a pantalla completa, se verá algo blanda. En el diseño se compensa: encuadre, degradado sobre la imagen, que no ocupe el 100 % en monitores grandes… Lo ideal es una foto nueva a máxima resolución, con el mismo encuadre.
+- ❌ **Fachada retirada:** todas las versiones disponibles (la antigua y las mejoradas con IA) muestran «RODAMIENTS» en el letrero: la IA alteró el nombre, que en la realidad es «RODAMENTS». No se usan en ningún sitio. **Pendiente: foto nueva de la fachada con el móvil** (mismo encuadre, día soleado, sin retoque con IA). Cuando llegue, será la portada (`fachada-rodaments-segria-lleida.jpg`).
+- **Regla:** no usar fotos mejoradas con IA donde salgan textos, logos o marcas. Las IAs reescriben lo que no leen bien.
 - Las personas que aparecen al fondo del mostrador no son reconocibles: el cliente da el visto bueno.
 
 ## Descartadas
