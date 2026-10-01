@@ -10,6 +10,7 @@ Estado: ✅ hecho · 🔲 pendiente · ❓ decisión abierta
 - ✅ Datos de contacto recuperados de la web anterior (ver CLAUDE.md)
 
 ## Fase 1 — Estructura y contenido
+- 🔲 Reservar en el mapa del sitio la sección **"Buscador de referencias"**. Mientras tanto: formulario de "¿Buscas una referencia?" que genera presupuestos (ver `docs/BUSCADOR-REFERENCIAS.md`)
 - 🔲 Definir el mapa del sitio. Propuesta: Inicio · Productos (índice + una página por categoría) · Empresa · Contacto/Presupuesto · Aviso legal · Privacidad · Cookies
 - 🔲 Montar la colección `productos` en `src/content/`: nombre, descripción, marcas, imagen y aplicaciones de cada categoría
 - 🔲 Redactar los textos: historia (+30 años, empresa familiar), servicios y marcas con las que trabajan
@@ -47,6 +48,9 @@ Estado: ✅ hecho · 🔲 pendiente · ❓ decisión abierta
 - ❓ **Envío del formulario de presupuesto.** Una web estática no puede enviar emails. Opciones: un servicio externo (Formspree, Web3Forms…), funciones del hosting o un `mailto:` provisional. Se decide junto al hosting
 - 🔲 Quitar el `noindex` provisional
 - 🔲 HTTPS, redirecciones desde la web antigua y analítica respetuosa con la privacidad (si se quiere)
+
+## Proyecto paralelo — Buscador de referencias
+- 🔲 Piloto con 1-2 marcas. Detalle y plan en `docs/BUSCADOR-REFERENCIAS.md`
 
 ## Fase 6 — Lanzamiento
 - 🔲 Revisión final en móvil y escritorio
