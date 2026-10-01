@@ -1,7 +1,7 @@
 # Rodaments Segrià — Web
 
 ## Negocio
-Rodaments Segrià es una empresa familiar de suministros industriales en Lleida con más de 30 años de trayectoria. Vende rodamientos, correas, piñones, cadenas, retenes, soportes, reductores, motores eléctricos, extractores y material de taller.
+Rodaments Segrià es una empresa familiar de suministros industriales en Lleida fundada en 1988. Vende rodamientos, soportes, correas, piñones, cadenas, retenes, soportes, reductores, motores eléctricos, extractores y material de taller.
 
 **La web no muestra precios**, porque varían según el cliente. Es un **catálogo con solicitud de presupuesto y contacto**. No añadas precios, carrito ni checkout.
 
@@ -28,10 +28,15 @@ Rodaments Segrià es una empresa familiar de suministros industriales en Lleida 
   - Los SVG salen de un calco automático del logo. Si aparece el vectorial original del diseñador, se sustituyen.
 
 ## Datos del negocio
-- Fundada en 1989 en Lleida. Empresa familiar con más de 50.000 referencias en stock. Da servicio a talleres, industria y agricultura.
+> **Fuente única:** `src/data/empresa.ts`. La web lee de ahí estos datos. Si cambia alguno, se cambia allí (y aquí).
+
+- Fundada en **1988** en Lleida. Empresa familiar, unas 7 personas, con **más de 500.000 referencias en stock** y miles de equivalencias entre marcas. Da servicio a talleres, industria y agricultura.
+- Vende a **profesionales y particulares**. Envíos a toda España por agencias de transporte profesionales.
+- Almacén de **más de 2.000 m²** con aparcamiento para coches, furgonetas y camiones.
+- Atiende consultas por **WhatsApp** (número pendiente).
 - Pol. Ind. Camí dels Frares, Carrer d'Alcarràs, 78 · 25191 Lleida (coordenadas 41.5912, 0.5897)
 - Teléfono: 973 20 80 64 (+34973208064) · Email: rodsegria@rodsegria.es
-- Horario: de lunes a viernes, 8:30–13:30 y 15:00–18:30
+- Horario: de lunes a viernes, 8:00–13:30 y 15:00–18:00
 - Marcas, proveedores y textos de empresa: se definen más adelante. No te los inventes.
 
 ## Forma de trabajar en el diseño
@@ -73,7 +78,7 @@ El catálogo son **datos, no páginas**. El esquema está en `src/content.config
 - **Después del lanzamiento**, cambiar o borrar una URL de familia exige una redirección 301. Antes del lanzamiento se puede cambiar libremente.
 
 ## Convenciones
-- **Idioma:** textos, commits y documentación en castellano. Código (variables, componentes, clases) en inglés.
+- **Idioma:** textos, commits y documentación en castellano. **La web trata al cliente de tú.** Los años de trayectoria se calculan (`anosTrayectoria()`), nunca se escriben a mano. Código (variables, componentes, clases) en inglés.
 - **Nombres:** componentes en `PascalCase.astro`; rutas, imágenes y slugs en `kebab-case` sin acentos (`/productos/rodamientos`).
 - **Estilos:** CSS propio con variables en `src/styles/`. Usa los tokens y no pongas colores sueltos en los componentes. Sin frameworks de CSS salvo que se decida lo contrario.
 - **Imágenes:** los originales están en `~/Desktop/Botiga/Rodaments segria/`, fuera del repo. Al repo solo entran versiones optimizadas en `src/assets/img/`, y se usan con `<Image />` de `astro:assets`. Nunca subas vídeos ni originales pesados.

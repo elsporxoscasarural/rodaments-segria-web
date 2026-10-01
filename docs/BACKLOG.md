@@ -10,7 +10,7 @@ Estado: ✅ hecho · 🔲 pendiente · ❓ decisión abierta
 - ✅ Datos de contacto recuperados de la web anterior (ver CLAUDE.md)
 
 ## Fase 1 — Estructura y contenido
-- ✅ Modelo del catálogo: 6 familias, 22 categorías y marcas como datos editables (`src/content/`)
+- ✅ Modelo del catálogo: 6 familias, 23 categorías y marcas como datos editables (`src/content/`)
 - ✅ Familias aprobadas: Rodamientos y soportes · Transmisión de potencia · Estanqueidad y fluidos · Taller e industria · Agrícola · Gases industriales (Carburos Metálicos)
 - ✅ Catálogo revisado con el cliente: familias, categorías y tipos cerrados (`docs/REVISION-CATALOGO.md`)
 - 🔲 Logo oficial de Carburos Metálicos y normas de uso (el cliente lo tiene). Ahora se usa un JPG provisional
@@ -18,7 +18,10 @@ Estado: ✅ hecho · 🔲 pendiente · ❓ decisión abierta
 - 🔲 Reservar en el mapa del sitio la sección **"Buscador de referencias"**. Mientras tanto: formulario de "¿Buscas una referencia?" que genera presupuestos (ver `docs/BUSCADOR-REFERENCIAS.md`)
 - 🔲 Definir el mapa del sitio. Propuesta: Inicio · Productos (índice + una página por categoría) · Empresa · Contacto/Presupuesto · Aviso legal · Privacidad · Cookies
 - 🔲 Montar la colección `productos` en `src/content/`: nombre, descripción, marcas, imagen y aplicaciones de cada categoría
-- 🔲 Redactar los textos: historia (+30 años, empresa familiar), servicios y marcas con las que trabajan
+- ✅ Datos de empresa centralizados en `src/data/empresa.ts`
+- 🔄 Textos de Inicio y Empresa (`docs/TEXTOS.md`, v2 revisada por el cliente)
+- 🔲 Historia de la empresa: la escribe el cliente
+- 🔲 Número de WhatsApp
 - ✅ Selección provisional de fotos reales en `src/assets/img/fotos/` (ver `docs/FOTOS.md`)
 - 🔲 Sesión de fotos: fachada, mostrador, equipo y serie de producto sobre fondo claro (lista en `docs/FOTOS.md`)
 - 🔲 Textos legales (RGPD/LSSI). Son obligatorios si hay formulario
@@ -84,7 +87,8 @@ El SEO (Google) y el GEO (aparecer en respuestas de IA como ChatGPT, Gemini o lo
 | Dirección | Pol. Ind. Camí dels Frares, Carrer d'Alcarràs, 78 · 25191 Lleida ✅ |
 | Teléfono | 973 20 80 64 ✅ |
 | Email de contacto (donde llegan los presupuestos) | rodsegria@rodsegria.es ✅ (confirmar que los presupuestos van aquí) |
-| Horario | Lunes a viernes, 8:30–13:30 y 15:00–18:30 ✅ |
+| Horario | Lunes a viernes, 8:00–13:30 y 15:00–18:00 ✅ |
+| WhatsApp | 🔲 número pendiente |
 | Dominio | `rodsegria.es` ✅ |
 | Carpeta de imágenes | Originales en `~/Desktop/Botiga/Rodaments segria/` (fuera del repo). Confirmar si es la definitiva y si hay más fotos |
 | Logo vectorial | ✅ SVG limpio (calco). Si existe el original del diseñador, mejor |

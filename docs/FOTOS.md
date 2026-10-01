@@ -38,8 +38,8 @@ Es la mejora de más impacto de toda la web, y cuesta solo una mañana.
 **Lista de fotos**
 1. **Fachada** frontal y en 3/4, en un día con algo de nubes, a mediodía, sin coches delante.
 2. **Nave**: vista general limpia y 2-3 pasillos en perspectiva.
-3. **Mostrador** ordenado, con alguien del equipo atendiendo.
-4. **Equipo / familia**: es lo que más confianza genera en una empresa familiar. Una foto de grupo y algún retrato natural trabajando.
+3. **Mostrador** ordenado (sin personas reconocibles, de momento).
+4. ~~Equipo / familia~~: **de momento no**, por decisión del cliente. Se puede retomar más adelante: es lo que más confianza genera en una empresa familiar.
 5. **Serie de producto, una por categoría**: el producto real sobre un **fondo gris claro o blanco** (una cartulina sirve), con la **misma luz y el mismo ángulo en todas**. Así sale una serie uniforme que encaja con la paleta de la web.
    Rodamientos, soportes, rótulas, correas, cadenas, piñones, poleas, tensores, acoplamientos, motor, reductor, engranajes, retenes, mangueras, grasas, herramientas, extractores, cajas/estuches, vestuario, brazo con nudos y botellas de gas.
 6. **Detalles**: manos midiendo un rodamiento con un calibre, una correa enrollada, la textura del metal. Sirven para fondos y transiciones.
