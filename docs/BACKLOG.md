@@ -12,7 +12,8 @@ Estado: ✅ hecho · 🔲 pendiente · ❓ decisión abierta
 ## Fase 1 — Estructura y contenido
 - ✅ Modelo del catálogo: 6 familias, 22 categorías y marcas como datos editables (`src/content/`)
 - ✅ Familias aprobadas: Rodamientos y soportes · Transmisión de potencia · Estanqueidad y fluidos · Taller e industria · Agrícola · Gases industriales (Carburos Metálicos)
-- 🔲 Revisar con el cliente los textos `borrador` de cada familia y categoría (resúmenes y tipos)
+- ✅ Catálogo revisado con el cliente: familias, categorías y tipos cerrados (`docs/REVISION-CATALOGO.md`)
+- 🔲 Logo oficial de Carburos Metálicos y normas de uso (el cliente lo tiene). Ahora se usa un JPG provisional
 - 🔲 SEO/GEO de contenido: elegir para cada página la búsqueda principal a la que responde (ver «SEO y GEO desde el principio»)
 - 🔲 Reservar en el mapa del sitio la sección **"Buscador de referencias"**. Mientras tanto: formulario de "¿Buscas una referencia?" que genera presupuestos (ver `docs/BUSCADOR-REFERENCIAS.md`)
 - 🔲 Definir el mapa del sitio. Propuesta: Inicio · Productos (índice + una página por categoría) · Empresa · Contacto/Presupuesto · Aviso legal · Privacidad · Cookies

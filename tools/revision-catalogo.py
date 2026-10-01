@@ -2,11 +2,7 @@
 import glob
 import re
 
-PREGUNTAS = [
-    "**Artículos de almacenaje:** ¿qué tipos vendéis? (estanterías, cajas, gaveteros, armarios…)",
-    "**Carburos Metálicos:** ¿cuál es vuestra denominación oficial? Carburos llama a su red «agentes». ¿Sois «Agente oficial de Carburos Metálicos»? ¿Tenéis su material de marca (logo y normas de uso)?",
-    "**Gases:** confirmar la lista de gases y si el alquiler incluye recarga y cambio de botellas.",
-]
+PREGUNTAS = []
 
 
 def leer(path):

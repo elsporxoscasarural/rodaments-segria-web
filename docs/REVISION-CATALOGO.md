@@ -53,7 +53,7 @@ URL: `/productos/taller-e-industria`
 |---|---|---|---|---|
 | **Herramientas de taller** | Herramienta convencional de taller y mantenimiento, carros equipados e iluminación de trabajo. | Herramienta manual de taller y mantenimiento · Carros de herramientas equipados · Estuches y maletas de herramientas · Focos de taller a batería · Linternas | Taller |  |
 | **Extractores** | Extractores para el montaje y desmontaje de rodamientos y poleas. | Extractores mecánicos · Extractores hidráulicos | Taller |  |
-| **Artículos de almacenaje** | Soluciones para ordenar el taller y el almacén. | ❓ | Taller |  |
+| **Artículos de almacenaje** | Cajas de herramientas y estuches para tener el material ordenado y a mano. | Cajas de herramientas · Estuches | Taller |  |
 | **Vestuario laboral** | Ropa, calzado y guantes de trabajo. | Calzado de trabajo · Pantalones y ropa de trabajo · Guantes | Taller |  |
 
 ## 5. Agrícola
@@ -65,16 +65,11 @@ URL: `/productos/agricola`
 | **Nudos agrícolas** | Brazos con nudos y nudos para empacadoras. | Brazos con nudos · Nudos | Agrícola |  |
 
 ## 6. Carburos Metálicos
-*Agentes de Carburos Metálicos en Lleida: gases industriales, gases de soldadura y corte y alquiler de botellas.*  
+*Distribuidores oficiales de Carburos Metálicos en Lleida: gases industriales, gases de soldadura y corte y alquiler de botellas.*  
 URL: `/productos/gases-industriales`
 
 | Categoría | Resumen | Tipos | Sectores | También se busca como |
 |---|---|---|---|---|
 | **Gases industriales** | Gases de Carburos Metálicos para la industria, el taller y los procesos productivos. | Oxígeno · Nitrógeno · Argón · Dióxido de carbono (CO₂) · Acetileno · Helio | Industria, Taller |  |
 | **Gases de soldadura y corte** | Gases y mezclas de Carburos Metálicos para soldadura y corte. | Mezclas para soldadura MIG/MAG · Argón para soldadura TIG · Gases para oxicorte | Industria, Taller |  |
-| **Alquiler de botellas** | Alquiler, recarga y cambio de botellas de gas de Carburos Metálicos. | ❓ | Industria, Taller |  |
-
-## Preguntas pendientes
-1. **Artículos de almacenaje:** ¿qué tipos vendéis? (estanterías, cajas, gaveteros, armarios…)
-2. **Carburos Metálicos:** ¿cuál es vuestra denominación oficial? Carburos llama a su red «agentes». ¿Sois «Agente oficial de Carburos Metálicos»? ¿Tenéis su material de marca (logo y normas de uso)?
-3. **Gases:** confirmar la lista de gases y si el alquiler incluye recarga y cambio de botellas.
+| **Alquiler de botellas** | Alquiler de botellas de gas de Carburos Metálicos, con recarga y cambio de botellas. | Alquiler de botellas · Recarga · Cambio de botellas | Industria, Taller |  |

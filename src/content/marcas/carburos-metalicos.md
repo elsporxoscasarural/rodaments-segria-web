@@ -1,7 +1,9 @@
 ---
 nombre: "Carburos Metálicos"
 web: "https://www.carburos.com"
-publicar: false
+logo: "../../assets/marcas/carburos-metalicos.jpg"
+publicar: true
 ---
 
-Marca que aparecía en la web anterior. Pendiente de revisar la relación con la marca y el permiso para usar su logo.
+Rodaments Segrià es **distribuidor oficial de Carburos Metálicos** en Lleida y en el ámbito del gas trabaja bajo su marca.
+Logo provisional (JPG de la web anterior, baja resolución). Antes del lanzamiento: sustituirlo por el logo oficial y revisar sus normas de uso de marca.
