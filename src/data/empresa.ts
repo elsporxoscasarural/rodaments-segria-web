@@ -44,5 +44,5 @@ export const empresa = {
 /** Años de trayectoria, calculados (no caducan). */
 export const anosTrayectoria = () => new Date().getFullYear() - empresa.fundacion;
 
-/** "500.000" con formato español. */
-export const formatoNumero = (n: number) => n.toLocaleString('es-ES');
+/** Números con punto de miles («500.000», «2.000»). Ojo: toLocaleString('es-ES') no agrupa los de 4 cifras. */
+export const formatoNumero = (n: number) => String(n).replace(/\B(?=(\d{3})+(?!\d))/g, '.');

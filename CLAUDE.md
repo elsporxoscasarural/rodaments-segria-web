@@ -56,11 +56,11 @@ npm run revision   # regenera docs/REVISION-CATALOGO.md desde src/content/
 src/
   pages/        rutas (cada archivo es una URL)
   layouts/      plantillas de página (head, SEO, cabecera, pie)
-  components/   componentes .astro reutilizables
+  components/   componentes .astro (Header, Footer, IconoFamilia; inicio/ = secciones de la portada)
   content/      colecciones de contenido (catálogo: un archivo por categoría)
   assets/img/   imágenes que optimiza Astro (<Image />)
   styles/       variables (colores, tipografía, espaciado) y estilos globales
-  scripts/      JS del cliente (animaciones GSAP)
+  scripts/      JS del cliente (movimiento.ts: Lenis + apariciones con la clase .aparece)
 public/         archivos que se copian tal cual (favicons)
 docs/           BACKLOG.md con fases y datos pendientes
 ```

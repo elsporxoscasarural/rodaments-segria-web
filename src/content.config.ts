@@ -15,6 +15,8 @@ const familias = defineCollection({
 			orden: z.number(),
 			resumen: z.string(),
 			imagen: image().optional(),
+			// Icono de línea que identifica la familia en las tarjetas (src/components/IconoFamilia.astro).
+			icono: z.enum(['rodamiento', 'transmision', 'estanqueidad', 'taller', 'agricola', 'gas']).optional(),
 			// Familia con identidad propia (p. ej. Carburos Metálicos): el diseño puede tratarla aparte.
 			destacada: z.boolean().default(false),
 			// Familia que, además de sus categorías, muestra las de otras familias de este sector.
@@ -46,10 +48,14 @@ const marcas = defineCollection({
 	schema: ({ image }) =>
 		z.object({
 			nombre: z.string(),
+			// Orden en que se citan (de más a menos relevante para el negocio).
+			orden: z.number().default(99),
 			web: z.url().optional(),
 			logo: image().optional(),
-			// Solo se muestran en la web las marcas con permiso confirmado para usar su nombre/logo.
+			// publicar: el nombre aparece escrito en la web (marcas que se distribuyen y hay en stock).
 			publicar: z.boolean().default(false),
+			// permisoLogo: el logo solo se muestra con permiso confirmado de la marca.
+			permisoLogo: z.boolean().default(false),
 		}),
 });
 

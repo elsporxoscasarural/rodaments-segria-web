@@ -148,3 +148,23 @@ a {
 		scroll-behavior: auto !important;
 	}
 }
+
+/* Apariciones al hacer scroll (src/scripts/movimiento.ts). Sin JS o con movimiento reducido, todo visible. */
+.con-movimiento .aparece {
+	transform: translateY(28px);
+	opacity: 0.001;
+	transition:
+		transform var(--d-lenta) var(--ease),
+		opacity 800ms var(--ease);
+}
+.con-movimiento .aparece.visible {
+	transform: none;
+	opacity: 1;
+}
+html.lenis,
+html.lenis body {
+	height: auto;
+}
+.lenis.lenis-smooth {
+	scroll-behavior: auto !important;
+}

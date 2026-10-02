@@ -1,6 +1,7 @@
 ---
 nombre: "Challenge"
-publicar: false
+orden: 6
+publicar: true
 ---
 
-Marca que aparecía en la web anterior. Pendiente de revisar la relación con la marca y el permiso para usar su logo.
+Marca en stock (vista en el almacén). Su nombre se puede citar como distribuidor. El logo solo con permiso de la marca (`permisoLogo`).

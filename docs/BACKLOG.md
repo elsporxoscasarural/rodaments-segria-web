@@ -43,11 +43,12 @@ Estado: ✅ hecho · 🔲 pendiente · ❓ decisión abierta
 - ✅ Sistema de diseño: `DESIGN.md` + `src/styles/tokens.css` (OKLCH, contrastes AA comprobados) + `global.css`; fuentes alojadas en la web (Big Shoulders Display + Hanken Grotesk)
 - ✅ Layout base, cabecera (transparente sobre la portada, sólida en el resto), menú móvil accesible a pantalla completa y pie con datos de `empresa.ts`
 - 🔲 Favicons nuevos a partir de `simbolo.svg`
-- 🔲 Diseño de cada página: inicio → productos → categoría → empresa → contacto
+- ✅ **Portada construida** en Astro (`src/components/inicio/`): secuencia fachada → almacén con GSAP, familias desde el catálogo, buscador, Carburos
+- 🔲 Diseño de cada página: productos → familia → empresa → contacto → buscar referencia
 - 🔲 Responsive y accesibilidad (contraste, foco y navegación con teclado)
 
 ## Fase 3 — Animaciones
-- 🔲 Instalar GSAP y ScrollTrigger y añadir la base en `src/scripts/`
+- ✅ GSAP + ScrollTrigger (secuencia de portada) y Lenis (scroll con inercia) + apariciones en `src/scripts/movimiento.ts`
 - 🔲 Animación de entrada del hero, apariciones al hacer scroll y transiciones entre páginas (View Transitions de Astro)
 - 🔲 Comprobar `prefers-reduced-motion` y el rendimiento en móvil
 
