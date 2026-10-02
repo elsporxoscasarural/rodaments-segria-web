@@ -41,7 +41,7 @@ Estado: ✅ hecho · 🔲 pendiente · ❓ decisión abierta
 - ✅ Dirección visual elegida: **B «Señalética de nave»** (propuestas en https://claude.ai/artifact/EuVDs5Uo9A6JgvihpWpUF2)
 - ✅ Prototipo de portada B aprobado (escritorio y móvil): fachada → scroll «entras en la nave» → pasillos → buscador → Carburos → pie. https://claude.ai/artifact/JTNPdKRRDGK3m1dgfiR3yK (copia en `docs/prototipos/portada-b.html`)
 - ✅ Sistema de diseño: `DESIGN.md` + `src/styles/tokens.css` (OKLCH, contrastes AA comprobados) + `global.css`; fuentes alojadas en la web (Big Shoulders Display + Hanken Grotesk)
-- 🔲 Layout base, cabecera con navegación (también en móvil) y pie
+- ✅ Layout base, cabecera (transparente sobre la portada, sólida en el resto), menú móvil accesible a pantalla completa y pie con datos de `empresa.ts`
 - 🔲 Favicons nuevos a partir de `simbolo.svg`
 - 🔲 Diseño de cada página: inicio → productos → categoría → empresa → contacto
 - 🔲 Responsive y accesibilidad (contraste, foco y navegación con teclado)

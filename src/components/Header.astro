@@ -1,0 +1,360 @@
+---
+// Cabecera fija. Sobre la foto de la portada es transparente (logo blanco); en el resto, sólida (logo a color).
+// En móvil, el menú se abre a pantalla completa con el botón «Menú».
+import Logo from '../assets/brand/logo.svg';
+import LogoMono from '../assets/brand/logo-mono.svg';
+import { menuPrincipal, ctaPrincipal } from '../data/navegacion';
+import { empresa } from '../data/empresa';
+
+interface Props {
+	/** true en páginas que empiezan con una foto a pantalla completa (portada). */
+	sobreFoto?: boolean;
+}
+const { sobreFoto = false } = Astro.props;
+const ruta = Astro.url.pathname.replace(/\/$/, '') || '/';
+const activo = (href: string) => ruta === href || ruta.startsWith(href + '/');
+---
+
+<header class:list={['cabecera', { 'cabecera--sobre-foto': sobreFoto }]} data-cabecera>
+	<a class="marca" href="/" aria-label={`${empresa.nombre}, inicio`}>
+		<LogoMono class="marca__mono" aria-hidden="true" />
+		<Logo class="marca__color" aria-hidden="true" />
+	</a>
+
+	<nav class="menu" aria-label="Principal">
+		<ul>
+			{
+				menuPrincipal.map((item) => (
+					<li>
+						<a href={item.href} aria-current={activo(item.href) ? 'page' : undefined}>
+							{item.texto}
+						</a>
+					</li>
+				))
+			}
+		</ul>
+	</nav>
+
+	<a class="tel" href={`tel:${empresa.telefono.enlace}`}>{empresa.telefono.visible}</a>
+	<a class="btn cta" href={ctaPrincipal.href}>{ctaPrincipal.texto}</a>
+
+	<button class="boton-menu" type="button" aria-expanded="false" aria-controls="menu-movil" data-boton-menu>
+		<span class="boton-menu__texto">Menú</span>
+		<span class="boton-menu__icono" aria-hidden="true"><i></i><i></i></span>
+	</button>
+</header>
+
+<div class="menu-movil" id="menu-movil" data-menu-movil hidden>
+	<nav aria-label="Principal (móvil)">
+		<ul>
+			{
+				menuPrincipal.map((item) => (
+					<li>
+						<a href={item.href} aria-current={activo(item.href) ? 'page' : undefined}>
+							{item.texto}
+						</a>
+					</li>
+				))
+			}
+		</ul>
+	</nav>
+	<div class="menu-movil__contacto">
+		<a class="menu-movil__tel" href={`tel:${empresa.telefono.enlace}`}>{empresa.telefono.visible}</a>
+		<a href={`mailto:${empresa.email}`}>{empresa.email}</a>
+		<a class="btn btn--claro" href={ctaPrincipal.href}>{ctaPrincipal.texto} <span class="flecha" aria-hidden="true">→</span></a>
+	</div>
+</div>
+
+<style>
+	.cabecera {
+		position: fixed;
+		inset: 0 0 auto 0;
+		z-index: var(--z-nav);
+		display: flex;
+		align-items: center;
+		gap: var(--s-6);
+		padding: calc(env(safe-area-inset-top, 0px) + var(--s-4)) var(--g) var(--s-4);
+		color: var(--tinta);
+		background: oklch(98.9% 0.003 286.4 / 0.96);
+		box-shadow: 0 1px 0 var(--n2);
+		transition:
+			background-color var(--d-media) var(--ease),
+			color var(--d-media) var(--ease),
+			box-shadow var(--d-media) var(--ease),
+			padding var(--d-media) var(--ease);
+	}
+	/* Transparente sobre la foto de la portada, hasta que se hace scroll más allá de ella */
+	.cabecera--sobre-foto:not(.es-solida) {
+		background: transparent;
+		box-shadow: none;
+		color: var(--n0);
+		padding-block-start: calc(env(safe-area-inset-top, 0px) + var(--s-5));
+	}
+
+	.marca {
+		position: relative;
+		display: block;
+		flex: none;
+		height: 34px;
+		aspect-ratio: 1656 / 484;
+	}
+	.marca :global(svg) {
+		position: absolute;
+		inset: 0;
+		width: 100%;
+		height: 100%;
+		transition: opacity var(--d-media) var(--ease);
+	}
+	.marca__mono {
+		color: var(--n0);
+		opacity: 0;
+	}
+	.cabecera--sobre-foto:not(.es-solida) .marca__mono {
+		opacity: 1;
+	}
+	.cabecera--sobre-foto:not(.es-solida) .marca__color {
+		opacity: 0;
+	}
+
+	.menu {
+		margin-inline-start: auto;
+	}
+	.menu ul {
+		display: flex;
+		gap: var(--s-6);
+		margin: 0;
+		padding: 0;
+		list-style: none;
+	}
+	.menu a,
+	.tel {
+		font-weight: 600;
+		font-size: var(--t-sm);
+		text-decoration: none;
+		white-space: nowrap;
+	}
+	.menu a {
+		padding-block: var(--s-2);
+		background: linear-gradient(currentColor, currentColor) 0 100% / 0 2px no-repeat;
+		transition: background-size var(--d-media) var(--ease);
+	}
+	.menu a:hover,
+	.menu a[aria-current='page'] {
+		background-size: 100% 2px;
+	}
+
+	.cta {
+		flex: none;
+	}
+	.cabecera--sobre-foto:not(.es-solida) .cta {
+		background: var(--noche);
+	}
+	.cabecera--sobre-foto:not(.es-solida) .cta:hover {
+		background: var(--indigo);
+	}
+
+	/* Botón de menú (solo móvil y tableta) */
+	.boton-menu {
+		display: none;
+		align-items: center;
+		gap: var(--s-3);
+		min-height: 44px;
+		padding: 0 var(--s-2);
+		border: 0;
+		background: none;
+		color: inherit;
+		font: 700 var(--t-sm) / 1 var(--f-texto);
+		cursor: pointer;
+	}
+	.boton-menu__icono {
+		position: relative;
+		width: 22px;
+		height: 12px;
+	}
+	.boton-menu__icono i {
+		position: absolute;
+		left: 0;
+		width: 100%;
+		height: 2px;
+		background: currentColor;
+		transition: transform var(--d-media) var(--ease);
+	}
+	.boton-menu__icono i:first-child {
+		top: 0;
+	}
+	.boton-menu__icono i:last-child {
+		bottom: 0;
+	}
+	.boton-menu[aria-expanded='true'] .boton-menu__icono i:first-child {
+		transform: translateY(5px) rotate(45deg);
+	}
+	.boton-menu[aria-expanded='true'] .boton-menu__icono i:last-child {
+		transform: translateY(-5px) rotate(-45deg);
+	}
+
+	/* Menú móvil a pantalla completa */
+	.menu-movil {
+		position: fixed;
+		inset: 0;
+		z-index: calc(var(--z-nav) - 1);
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+		gap: var(--s-7);
+		padding: calc(env(safe-area-inset-top, 0px) + 96px) var(--g) calc(env(safe-area-inset-bottom, 0px) + var(--s-7));
+		background: var(--noche);
+		color: var(--n0);
+		overflow-y: auto;
+	}
+	.menu-movil[hidden] {
+		display: none;
+	}
+	.menu-movil ul {
+		margin: 0;
+		padding: 0;
+		list-style: none;
+		display: grid;
+		gap: var(--s-2);
+	}
+	.menu-movil li {
+		opacity: 0;
+		transform: translateY(16px);
+		animation: entra var(--d-lenta) var(--ease) forwards;
+	}
+	.menu-movil li:nth-child(2) {
+		animation-delay: 50ms;
+	}
+	.menu-movil li:nth-child(3) {
+		animation-delay: 100ms;
+	}
+	.menu-movil li:nth-child(4) {
+		animation-delay: 150ms;
+	}
+	.menu-movil nav a {
+		display: block;
+		font-family: var(--f-display);
+		font-weight: 900;
+		text-transform: uppercase;
+		font-size: clamp(2.6rem, 11vw, 4rem);
+		line-height: var(--lh-display-tildes);
+		text-decoration: none;
+	}
+	.menu-movil nav a[aria-current='page'] {
+		color: var(--azul-claro);
+	}
+	.menu-movil__contacto {
+		display: grid;
+		gap: var(--s-4);
+		justify-items: start;
+	}
+	.menu-movil__contacto a:not(.btn) {
+		text-decoration: none;
+		color: oklch(98.9% 0.003 286.4 / 0.85);
+	}
+	.menu-movil__tel {
+		font-family: var(--f-display);
+		font-weight: 800;
+		font-size: 2.4rem;
+		line-height: 1;
+		color: var(--n0) !important;
+	}
+	@keyframes entra {
+		to {
+			opacity: 1;
+			transform: none;
+		}
+	}
+
+	/* Con el menú abierto, la cabecera queda sobre el fondo noche */
+	:global(html.menu-abierto) .cabecera {
+		background: transparent;
+		box-shadow: none;
+		color: var(--n0);
+	}
+	:global(html.menu-abierto) .marca__mono {
+		opacity: 1;
+	}
+	:global(html.menu-abierto) .marca__color {
+		opacity: 0;
+	}
+	:global(html.menu-abierto) .cta {
+		visibility: hidden;
+	}
+	:global(html.menu-abierto) {
+		overflow: hidden;
+	}
+
+	@media (max-width: 1080px) {
+		.menu,
+		.tel {
+			display: none;
+		}
+		.cta {
+			margin-inline-start: auto;
+		}
+		.boton-menu {
+			display: inline-flex;
+		}
+	}
+	@media (max-width: 560px) {
+		.cabecera {
+			gap: var(--s-3);
+		}
+		.marca {
+			height: 30px;
+		}
+		.cta {
+			padding: 0.75rem 1rem;
+			font-size: var(--t-xs);
+		}
+		.boton-menu__texto {
+			position: absolute;
+			width: 1px;
+			height: 1px;
+			overflow: hidden;
+			clip-path: inset(50%);
+		}
+	}
+	@media (max-width: 380px) {
+		.cta {
+			display: none;
+		}
+	}
+</style>
+
+<script>
+	const cabecera = document.querySelector<HTMLElement>('[data-cabecera]');
+	const boton = document.querySelector<HTMLButtonElement>('[data-boton-menu]');
+	const menu = document.querySelector<HTMLElement>('[data-menu-movil]');
+
+	// Sólida en cuanto se deja atrás la portada (o enseguida si la página no tiene portada a pantalla completa).
+	function actualizarCabecera() {
+		if (!cabecera) return;
+		const fin = document.querySelector('[data-fin-portada]');
+		const alto = cabecera.offsetHeight;
+		const solida = fin ? fin.getBoundingClientRect().top <= alto : window.scrollY > 8;
+		cabecera.classList.toggle('es-solida', solida);
+	}
+	window.addEventListener('scroll', actualizarCabecera, { passive: true });
+	window.addEventListener('resize', actualizarCabecera);
+	actualizarCabecera();
+
+	function abrirMenu(abrir: boolean) {
+		if (!boton || !menu) return;
+		boton.setAttribute('aria-expanded', String(abrir));
+		menu.hidden = !abrir;
+		document.documentElement.classList.toggle('menu-abierto', abrir);
+		if (abrir) menu.querySelector<HTMLAnchorElement>('a')?.focus();
+	}
+	boton?.addEventListener('click', () => abrirMenu(boton.getAttribute('aria-expanded') !== 'true'));
+	menu?.addEventListener('click', (e) => {
+		if ((e.target as HTMLElement).closest('a')) abrirMenu(false);
+	});
+	document.addEventListener('keydown', (e) => {
+		if (e.key === 'Escape' && boton?.getAttribute('aria-expanded') === 'true') {
+			abrirMenu(false);
+			boton.focus();
+		}
+	});
+	window.matchMedia('(min-width: 1081px)').addEventListener('change', (e) => e.matches && abrirMenu(false));
+</script>

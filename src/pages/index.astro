@@ -1,17 +1,24 @@
 ---
-// Página provisional: la portada real se diseña en la fase 2 (ver docs/BACKLOG.md).
+// Portada: provisional mientras se construye por partes (ver docs/prototipos/portada-b.html).
+import BaseLayout from '../layouts/BaseLayout.astro';
 ---
 
-<html lang="es">
-	<head>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="robots" content="noindex" />
-		<title>Rodaments Segrià — en construcción</title>
-	</head>
-	<body>
-		<h1>Rodaments Segrià</h1>
-		<p>Web en construcción.</p>
-	</body>
-</html>
+<BaseLayout
+	title="Rodamientos y suministro industrial en Lleida | Rodaments Segrià"
+	description="Empresa familiar de Lleida desde 1988. Más de 500.000 referencias en stock: rodamientos, soportes, correas, transmisión, retenes y material de taller para industria y agricultura."
+>
+	<section class="provisional">
+		<h1>Rodamientos y suministro industrial en Lleida</h1>
+		<p>La portada se monta en el siguiente paso. Ahora mismo puedes revisar la cabecera, el menú móvil y el pie.</p>
+	</section>
+</BaseLayout>
+
+<style>
+	.provisional {
+		display: grid;
+		gap: var(--s-5);
+		padding: var(--seccion) var(--g);
+		min-height: 70vh;
+		align-content: center;
+	}
+</style>

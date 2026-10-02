@@ -6,7 +6,7 @@ const familias = (await getCollection('familias')).sort((a, b) => a.data.orden -
 const categorias = await getCollection('categorias');
 ---
 
-<BaseLayout title="Productos" description="Catálogo de suministro industrial de Rodaments Segrià.">
+<BaseLayout title="Productos | Rodaments Segrià" description="Catálogo de suministro industrial de Rodaments Segrià.">
 	<h1>Productos</h1>
 	{
 		familias.map((familia) => {

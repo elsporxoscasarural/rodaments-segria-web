@@ -1,0 +1,189 @@
+---
+// Pie común a todas las páginas. Todos los datos salen de src/data/empresa.ts.
+import LogoMono from '../assets/brand/logo-mono.svg';
+import { empresa } from '../data/empresa';
+import { menuPrincipal, enlacesLegales } from '../data/navegacion';
+
+const { direccion, horario } = empresa;
+const tramos = horario.tramos.map((t) => `${t.abre.replace(/^0/, '')} a ${t.cierra}`).join(' y ');
+const anio = new Date().getFullYear();
+---
+
+<footer class="pie sobre-oscuro">
+	<div class="pie__arriba">
+		<p class="pie__frase">¿Buscas una pieza? <em>Pregúntanos.</em></p>
+		<div class="pie__directo">
+			<div>
+				<span class="pie__etiqueta">Llámanos</span>
+				<a class="pie__tel" href={`tel:${empresa.telefono.enlace}`}>{empresa.telefono.visible}</a>
+			</div>
+			{
+				empresa.whatsapp && (
+					<div>
+						<span class="pie__etiqueta">WhatsApp</span>
+						<a class="pie__mail" href={`https://wa.me/${empresa.whatsapp.enlace.replace('+', '')}`}>
+							{empresa.whatsapp.visible}
+						</a>
+					</div>
+				)
+			}
+			<div>
+				<span class="pie__etiqueta">Escríbenos</span>
+				<a class="pie__mail" href={`mailto:${empresa.email}`}>{empresa.email}</a>
+			</div>
+		</div>
+	</div>
+
+	<div class="pie__datos">
+		<div>
+			<h2 class="pie__etiqueta">Ven a vernos</h2>
+			<p>
+				{direccion.poligono}<br />{direccion.calle}<br />{`${direccion.codigoPostal} ${direccion.localidad}`}
+			</p>
+		</div>
+		<div>
+			<h2 class="pie__etiqueta">Horario</h2>
+			<p>{horario.dias}<br />{tramos}</p>
+		</div>
+		<div>
+			<h2 class="pie__etiqueta">Aparcamiento</h2>
+			<p>{empresa.aparcamiento}.</p>
+		</div>
+		<nav aria-label="Pie de página">
+			<h2 class="pie__etiqueta">Secciones</h2>
+			<ul>{menuPrincipal.map((item) => <li><a href={item.href}>{item.texto}</a></li>)}</ul>
+		</nav>
+	</div>
+
+	<div class="pie__legal">
+		<a class="pie__logo" href="/" aria-label={`${empresa.nombre}, inicio`}><LogoMono aria-hidden="true" /></a>
+		<ul>{enlacesLegales.map((item) => <li><a href={item.href}>{item.texto}</a></li>)}</ul>
+		<p>© {anio} {empresa.razonSocial}</p>
+	</div>
+</footer>
+
+<style>
+	.pie {
+		background: var(--noche);
+		color: oklch(98.9% 0.003 286.4 / 0.92);
+		padding: var(--seccion) var(--g) calc(env(safe-area-inset-bottom, 0px) + var(--s-6));
+	}
+	.pie a {
+		text-decoration: none;
+	}
+	.pie a:hover {
+		color: var(--azul-claro);
+	}
+
+	.pie__arriba {
+		display: grid;
+		grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
+		gap: var(--s-6) clamp(2rem, 5vw, 5rem);
+		align-items: end;
+		margin-bottom: clamp(2.5rem, 6vw, 4.5rem);
+	}
+	.pie__frase {
+		max-width: 12ch;
+		font-family: var(--f-display);
+		font-weight: 900;
+		text-transform: uppercase;
+		font-size: clamp(2.75rem, 6.2vw, 6.5rem);
+		line-height: 1.06; /* lleva «¿» y «Ú» */
+		color: var(--n0);
+	}
+	.pie__frase em {
+		font-style: normal;
+		color: var(--azul-claro);
+	}
+	.pie__directo {
+		display: grid;
+		gap: var(--s-5);
+	}
+	.pie__etiqueta {
+		display: block;
+		margin: 0 0 var(--s-2);
+		font-family: var(--f-texto);
+		font-size: var(--t-xs);
+		font-weight: 700;
+		letter-spacing: 0.08em;
+		line-height: 1.3;
+		text-transform: uppercase;
+		color: oklch(98.9% 0.003 286.4 / 0.62);
+	}
+	.pie__tel {
+		font-family: var(--f-display);
+		font-weight: 800;
+		font-size: clamp(2.75rem, 5vw, 5rem);
+		line-height: 1;
+		color: var(--n0);
+	}
+	.pie__mail {
+		font-weight: 600;
+		font-size: clamp(1.25rem, 1.9vw, 1.75rem);
+		color: var(--n0);
+		overflow-wrap: anywhere;
+	}
+
+	.pie__datos {
+		display: grid;
+		grid-template-columns: repeat(4, minmax(0, 1fr));
+		gap: var(--s-6);
+		padding-top: var(--s-6);
+		border-top: 1px solid oklch(98.9% 0.003 286.4 / 0.18);
+	}
+	.pie__datos ul,
+	.pie__legal ul {
+		margin: 0;
+		padding: 0;
+		list-style: none;
+	}
+	.pie__datos li + li {
+		margin-top: var(--s-1);
+	}
+
+	.pie__legal {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: center;
+		gap: var(--s-4) var(--s-6);
+		margin-top: var(--s-8);
+		font-size: var(--t-xs);
+		color: oklch(98.9% 0.003 286.4 / 0.62);
+	}
+	.pie__logo {
+		display: block;
+		height: 28px;
+		aspect-ratio: 1656 / 484;
+		color: var(--n0);
+	}
+	.pie__logo :global(svg) {
+		width: 100%;
+		height: 100%;
+	}
+	.pie__legal ul {
+		display: flex;
+		flex-wrap: wrap;
+		gap: var(--s-2) var(--s-5);
+		margin-inline-start: auto;
+	}
+	.pie__legal p {
+		max-width: none;
+	}
+
+	@media (max-width: 900px) {
+		.pie__arriba {
+			grid-template-columns: 1fr;
+		}
+		.pie__datos {
+			grid-template-columns: 1fr 1fr;
+		}
+	}
+	@media (max-width: 480px) {
+		.pie__datos {
+			grid-template-columns: 1fr;
+		}
+		.pie__legal ul {
+			margin-inline-start: 0;
+		}
+	}
+</style>

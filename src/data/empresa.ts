@@ -27,7 +27,7 @@ export const empresa = {
 		pais: 'ES',
 		geo: { lat: 41.5912, lng: 0.5897 },
 	},
-	aparcamiento: 'Aparcamiento para coches, furgonetas y camiones',
+	aparcamiento: 'Para coches, furgonetas y camiones', // se muestra bajo el título «Aparcamiento»
 	horario: {
 		dias: 'De lunes a viernes',
 		tramos: [
