@@ -77,10 +77,14 @@ El catálogo son **datos, no páginas**. El esquema está en `src/content.config
 - **Carburos Metálicos:** en el ámbito del gas la empresa actúa **bajo la marca Carburos Metálicos** (**«distribuidor autorizado»**, término exacto del cartel de Carburos; no usar «oficial»), no como Rodaments Segrià. Esa familia tiene identidad propia y su contenido sigue la oferta de Carburos (gases, soldadura y corte, alquiler de botellas). No se mencionan contratos ni condiciones comerciales con Carburos.
 - **Después del lanzamiento**, cambiar o borrar una URL de familia exige una redirección 301. Antes del lanzamiento se puede cambiar libremente.
 
+## Diseño
+- **Dirección B «Señalética de nave»**. Reglas en `DESIGN.md`, brief en `PRODUCT.md`, valores en `src/styles/tokens.css`. Úsalos siempre y no pongas colores ni tamaños sueltos.
+- Prototipo aprobado de la portada: `docs/prototipos/portada-b.html`.
+
 ## Convenciones
 - **Idioma:** textos, commits y documentación en castellano. **La web trata al cliente de tú.** Los años de trayectoria se calculan (`anosTrayectoria()`), nunca se escriben a mano. Código (variables, componentes, clases) en inglés.
 - **Nombres:** componentes en `PascalCase.astro`; rutas, imágenes y slugs en `kebab-case` sin acentos (`/productos/rodamientos`).
-- **Estilos:** CSS propio con variables en `src/styles/`. Usa los tokens y no pongas colores sueltos en los componentes. Sin frameworks de CSS salvo que se decida lo contrario.
+- **Estilos:** CSS propio con los tokens de `src/styles/tokens.css`. Sin frameworks de CSS. Fuentes alojadas en la web con `@fontsource-variable` (nunca desde Google Fonts, por el RGPD).
 - **Imágenes:** los originales están en `~/Desktop/Botiga/Rodaments segria/`, fuera del repo. Al repo solo entran versiones optimizadas en `src/assets/img/`, y se usan con `<Image />` de `astro:assets`. Nunca subas vídeos ni originales pesados.
 - **Animaciones:** GSAP y ScrollTrigger en `src/scripts/`. Respeta siempre `prefers-reduced-motion`. Anima solo `transform` y `opacity`.
 - **JS:** el mínimo posible. Astro no envía JS al navegador por defecto, así que mantenlo así salvo para las animaciones y el formulario.

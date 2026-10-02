@@ -1,0 +1,147 @@
+/* Estilos base. Se importan una sola vez desde el layout. */
+@import '@fontsource-variable/big-shoulders-display';
+@import '@fontsource-variable/hanken-grotesk';
+@import './tokens.css';
+
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+}
+
+html {
+	-webkit-text-size-adjust: 100%;
+	text-size-adjust: 100%;
+}
+
+body {
+	margin: 0;
+	background: var(--n0);
+	color: var(--n7);
+	font-family: var(--f-texto);
+	font-size: var(--t-base);
+	line-height: var(--lh-texto);
+	-webkit-font-smoothing: antialiased;
+	text-rendering: optimizeLegibility;
+}
+
+img,
+svg,
+video {
+	display: block;
+	max-width: 100%;
+	height: auto;
+}
+
+/* Titulares: rotulación industrial en mayúsculas */
+h1,
+h2,
+h3,
+.display {
+	margin: 0;
+	font-family: var(--f-display);
+	font-weight: 900;
+	text-transform: uppercase;
+	line-height: var(--lh-display);
+	letter-spacing: 0.005em;
+	color: var(--tinta);
+	text-wrap: balance;
+}
+h1 {
+	font-size: var(--t-mega);
+}
+h2 {
+	font-size: var(--t-1);
+}
+h3 {
+	font-size: var(--t-3);
+	font-weight: 800;
+}
+
+p {
+	margin: 0;
+	max-width: var(--medida);
+	text-wrap: pretty;
+}
+
+a {
+	color: inherit;
+}
+
+:focus-visible {
+	outline: 2px solid var(--azul);
+	outline-offset: 3px;
+}
+.sobre-oscuro :focus-visible {
+	outline-color: var(--azul-claro);
+}
+
+::selection {
+	background: var(--azul);
+	color: var(--n0);
+}
+
+/* Botones: rectos, firmes, con respuesta al pulsar */
+.btn {
+	display: inline-flex;
+	align-items: center;
+	gap: var(--s-3);
+	padding: 0.95rem 1.4rem;
+	border: 0;
+	border-radius: var(--radio);
+	background: var(--azul);
+	color: var(--n0);
+	font: 700 var(--t-sm) / 1 var(--f-texto);
+	text-decoration: none;
+	cursor: pointer;
+	transition:
+		background-color var(--d-media) var(--ease),
+		transform var(--d-rapida) var(--ease);
+}
+.btn:hover {
+	background: var(--azul-hover);
+}
+.btn:active {
+	transform: scale(0.97);
+}
+.btn--claro {
+	background: var(--n0);
+	color: var(--noche);
+}
+.btn--claro:hover {
+	background: var(--n2);
+}
+.btn--noche {
+	background: var(--noche);
+}
+.btn--noche:hover {
+	background: var(--indigo);
+}
+.btn .flecha {
+	transition: transform var(--d-media) var(--ease);
+}
+.btn:hover .flecha {
+	transform: translateX(3px);
+}
+
+/* Utilidades */
+.visualmente-oculto {
+	position: absolute !important;
+	width: 1px;
+	height: 1px;
+	overflow: hidden;
+	clip: rect(0 0 0 0);
+	clip-path: inset(50%);
+	white-space: nowrap;
+}
+
+@media (prefers-reduced-motion: reduce) {
+	*,
+	*::before,
+	*::after {
+		animation-duration: 0.01ms !important;
+		animation-iteration-count: 1 !important;
+		transition-duration: 0.01ms !important;
+		scroll-behavior: auto !important;
+	}
+}

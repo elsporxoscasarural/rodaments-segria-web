@@ -1,0 +1,78 @@
+/* Sistema de diseño Rodaments Segrià: tokens.
+   Dirección B «Señalética de nave». Documentado en DESIGN.md: si cambias algo aquí, actualízalo allí.
+   Colores en OKLCH (hex de referencia en el comentario). Neutros fríos teñidos hacia el índigo del logo. */
+
+:root {
+	color-scheme: light;
+
+	/* --- Marca --- */
+	--azul: oklch(54.3% 0.252 262.1); /* #015BFE · «RODAMENTS» · acción principal */
+	--azul-hover: oklch(46.4% 0.22 262.3); /* #0047D1 */
+	--azul-claro: oklch(70.3% 0.155 264.8); /* #6F9BFF · acento sobre fondos oscuros */
+	--indigo: oklch(36.9% 0.172 272.9); /* #282B98 · «SEGRIÀ» y símbolo RS */
+	--noche: oklch(22.7% 0.077 276.3); /* #14163F · secciones oscuras, velos de foto, pie */
+
+	/* --- Neutros --- */
+	--n0: oklch(98.9% 0.003 286.4); /* #FBFBFD · fondo principal (nunca #fff puro) */
+	--n1: oklch(96.2% 0.005 275); /* #F1F2F6 · fondo alterno */
+	--n2: oklch(92.6% 0.011 274.9); /* #E4E6EE · líneas y separadores */
+	--n3: oklch(84.3% 0.019 272.3); /* #C7CBD8 · bordes y deshabilitado */
+	--n5: oklch(58.9% 0.034 273.3); /* #767C92 · solo decoración (no texto: contraste < 4,5) */
+	--n6: oklch(51.5% 0.034 273.5); /* #5C6277 · texto secundario (AA sobre n0 y n1) */
+	--n7: oklch(37.7% 0.04 274.8); /* #3B4057 · texto de párrafo */
+	--tinta: oklch(21.9% 0.043 278.3); /* #16182E · titulares y texto fuerte */
+
+	/* --- Carburos Metálicos (solo en su familia y su bloque) --- */
+	--cm-verde: oklch(50.8% 0.132 152.6); /* #007A3E · fondo (AA con texto claro) */
+	--cm-verde-suave: oklch(94% 0.03 152); /* hover de botón claro */
+	--cm-cian: oklch(68.6% 0.139 231.3); /* #00A8E0 · símbolo de su logo */
+
+	/* --- Velos para texto sobre foto --- */
+	--velo-noche: oklch(22.7% 0.077 276.3 / 0.82);
+
+	/* --- Tipografía --- */
+	--f-display: 'Big Shoulders Display Variable', 'Arial Narrow', Impact, sans-serif;
+	--f-texto: 'Hanken Grotesk Variable', 'Helvetica Neue', Arial, sans-serif;
+
+	/* Escala fluida (≥1,25 entre pasos). Display siempre en mayúsculas. */
+	--t-mega: clamp(3.4rem, 9vw, 9.25rem); /* titular de portada */
+	--t-1: clamp(2.6rem, 5.6vw, 5.5rem); /* titular de sección */
+	--t-2: clamp(1.9rem, 3.4vw, 3.25rem);
+	--t-3: clamp(1.5rem, 2.2vw, 2.1rem); /* titular de tarjeta o pasillo */
+	--t-lead: clamp(1.1rem, 1.3vw, 1.25rem); /* entradilla */
+	--t-base: 1.0625rem; /* 17 px: público amplio, lectura cómoda */
+	--t-sm: 0.9375rem; /* 15 px */
+	--t-xs: 0.8125rem; /* 13 px: etiquetas y placas */
+
+	--lh-display: 0.88;
+	--lh-texto: 1.55;
+	--medida: 62ch; /* ancho máximo de párrafo */
+
+	/* --- Espaciado --- */
+	--g: clamp(1rem, 3.2vw, 3rem); /* margen lateral de página */
+	--s-1: 0.25rem;
+	--s-2: 0.5rem;
+	--s-3: 0.75rem;
+	--s-4: 1rem;
+	--s-5: 1.5rem;
+	--s-6: 2rem;
+	--s-7: 3rem;
+	--s-8: 4.5rem;
+	--seccion: clamp(3.5rem, 8vw, 7.5rem); /* separación entre secciones */
+	--ancho-max: 1440px;
+
+	/* --- Forma --- */
+	--radio: 0; /* esquinas rectas: solidez */
+	--borde: 1px solid var(--n2);
+
+	/* --- Movimiento --- */
+	--ease: cubic-bezier(0.22, 1, 0.36, 1); /* ease-out-quint: frena suave, sin rebote */
+	--ease-io: cubic-bezier(0.65, 0, 0.35, 1);
+	--d-rapida: 160ms; /* pulsar un botón */
+	--d-media: 300ms; /* hover, cambios de estado */
+	--d-lenta: 900ms; /* apariciones y fotos */
+
+	/* --- Capas --- */
+	--z-nav: 20;
+	--z-modal: 50;
+}
