@@ -1,0 +1,125 @@
+---
+// Buscar referencia: de momento, formulario de consulta. El buscador automático (docs/BUSCADOR-REFERENCIAS.md)
+// se añadirá encima de este formulario, en esta misma página.
+import { Image } from 'astro:assets';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Migas from '../components/Migas.astro';
+import FormularioConsulta from '../components/formularios/FormularioConsulta.astro';
+import { empresa, formatoNumero } from '../data/empresa';
+import pasillo from '../assets/img/fotos/pasillo-almacen-rodamientos.jpg';
+
+const referencias = formatoNumero(empresa.referenciasEnStock);
+---
+
+<BaseLayout
+	title="¿Buscas una referencia? Rodamientos, correas y más | Rodaments Segrià"
+	description={`Escríbenos la referencia que buscas y te diremos si la tenemos o podemos conseguirla. Más de ${referencias} referencias y miles de equivalencias entre marcas.`}
+>
+	<section class="buscar" aria-labelledby="t-buscar">
+		<div class="buscar__intro">
+			<Migas ruta={[{ texto: 'Buscar referencia' }]} />
+			<h1 id="t-buscar">¿Buscas una referencia concreta?</h1>
+			<p>
+				{`Escríbenos la referencia y te decimos si la tenemos, si podemos conseguirla o qué equivalente te sirve. Trabajamos con más de ${referencias} referencias.`}
+			</p>
+		</div>
+		<div class="buscar__rejilla">
+			<div class="buscar__formulario">
+				<FormularioConsulta tipo="referencia" />
+			</div>
+			<aside class="buscar__lado" aria-label="Por qué preguntarnos">
+				<Image src={pasillo} alt="Pasillo del almacén con cajas de rodamientos" widths={[500, 900]} sizes="(max-width: 900px) 100vw, 33vw" class="buscar__foto" />
+				<ul>
+					<li><strong>{`+${referencias}`}</strong><span>referencias en stock y en catálogo</span></li>
+					<li><strong>Equivalencias</strong><span>Si tu marca no la tenemos, te proponemos una equivalente.</span></li>
+					<li><strong>Al momento</strong><span>Muchas piezas, en stock y listas para llevar.</span></li>
+				</ul>
+				<p class="buscar__tel">
+					¿Prefieres hablar?
+					<a href={`tel:${empresa.telefono.enlace}`}>{empresa.telefono.visible}</a>
+				</p>
+			</aside>
+		</div>
+	</section>
+</BaseLayout>
+
+<style>
+	.buscar {
+		padding: var(--s-8) var(--g) var(--seccion);
+		background: var(--n1);
+	}
+	.buscar__intro {
+		margin-bottom: var(--s-7);
+	}
+	.buscar__intro h1 {
+		max-width: 13ch;
+		margin-block: var(--s-4) var(--s-5);
+		color: var(--noche);
+		font-size: clamp(3rem, 7vw, 6.5rem);
+		line-height: 1.02;
+	}
+	.buscar__intro p {
+		font-size: var(--t-lead);
+	}
+	.buscar__rejilla {
+		display: grid;
+		grid-template-columns: minmax(0, 1.6fr) minmax(280px, 1fr);
+		gap: 4px;
+		align-items: start;
+	}
+	.buscar__formulario {
+		padding: clamp(1.75rem, 3vw, 2.75rem);
+		background: var(--n0);
+	}
+	.buscar__lado {
+		background: var(--noche);
+		color: oklch(98.9% 0.003 286.4 / 0.88);
+	}
+	.buscar__foto {
+		width: 100%;
+		aspect-ratio: 4 / 3;
+		object-fit: cover;
+		opacity: 0.9;
+	}
+	.buscar__lado ul {
+		display: grid;
+		gap: var(--s-5);
+		margin: 0;
+		padding: clamp(1.5rem, 3vw, 2.5rem);
+		list-style: none;
+	}
+	.buscar__lado li {
+		display: grid;
+		gap: var(--s-1);
+	}
+	.buscar__lado strong {
+		font-family: var(--f-display);
+		font-weight: 800;
+		font-size: 2rem;
+		line-height: 1;
+		text-transform: uppercase;
+		color: var(--n0);
+	}
+	.buscar__tel {
+		padding: 0 clamp(1.5rem, 3vw, 2.5rem) clamp(1.5rem, 3vw, 2.5rem);
+		font-weight: 600;
+	}
+	.buscar__tel a {
+		display: block;
+		margin-top: var(--s-1);
+		font-family: var(--f-display);
+		font-weight: 800;
+		font-size: 2.4rem;
+		line-height: 1;
+		color: var(--n0);
+		text-decoration: none;
+	}
+	.buscar__tel a:hover {
+		color: var(--azul-claro);
+	}
+	@media (max-width: 900px) {
+		.buscar__rejilla {
+			grid-template-columns: 1fr;
+		}
+	}
+</style>

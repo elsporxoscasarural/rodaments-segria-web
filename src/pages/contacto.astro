@@ -1,0 +1,140 @@
+---
+// Contacto y presupuestos. El mapa de Google solo se carga si el usuario lo pide (sin cookies de Google hasta entonces).
+import { Image } from 'astro:assets';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Migas from '../components/Migas.astro';
+import FormularioConsulta from '../components/formularios/FormularioConsulta.astro';
+import DatosContacto from '../components/DatosContacto.astro';
+import { empresa } from '../data/empresa';
+import fachada from '../assets/img/fotos/fachada-rodaments-segria-lleida.jpg';
+
+const { direccion } = empresa;
+const consultaMapa = encodeURIComponent(`${empresa.nombre}, ${direccion.calle}, ${direccion.codigoPostal} ${direccion.localidad}`);
+const tramos = empresa.horario.tramos.map((t) => `${t.abre.replace(/^0/, '')} a ${t.cierra}`).join(' y ');
+---
+
+<BaseLayout
+	title="Contacto y presupuestos en Lleida | Rodaments Segrià"
+	description={`Pide presupuesto sin compromiso o ven a vernos al ${direccion.poligono} de Lleida. Teléfono ${empresa.telefono.visible}. ${empresa.horario.dias}, de ${tramos}.`}
+>
+	<section class="contacto" aria-labelledby="t-contacto">
+		<div class="contacto__intro">
+			<Migas ruta={[{ texto: 'Contacto' }]} />
+			<h1 id="t-contacto">Hablemos de lo que necesitas</h1>
+			<p>Pídenos presupuesto sin compromiso, llámanos o ven a la tienda. Te respondemos lo antes posible.</p>
+		</div>
+		<div class="contacto__rejilla">
+			<div class="contacto__formulario">
+				<h2>Pedir presupuesto</h2>
+				<FormularioConsulta tipo="presupuesto" />
+			</div>
+			<DatosContacto />
+		</div>
+	</section>
+
+	<section class="mapa" aria-labelledby="t-mapa">
+		<h2 id="t-mapa" class="visualmente-oculto">Ubicación en el mapa</h2>
+		<div class="mapa__marco" data-mapa data-src={`https://maps.google.com/maps?q=${consultaMapa}&z=16&hl=es&output=embed`}>
+			<Image src={fachada} alt="Fachada de Rodaments Segrià" widths={[800, 1400, 2000]} sizes="100vw" class="mapa__poster" />
+			<div class="mapa__aviso">
+				<p>
+					<strong>{direccion.poligono}, {direccion.calle}, {`${direccion.codigoPostal} ${direccion.localidad}`}</strong>
+				</p>
+				<button class="btn" type="button" data-cargar-mapa>Ver mapa</button>
+				<small>Al cargar el mapa, Google puede usar cookies.</small>
+			</div>
+		</div>
+	</section>
+</BaseLayout>
+
+<style>
+	.contacto {
+		padding: var(--s-8) var(--g) var(--seccion);
+		background: var(--n1);
+	}
+	.contacto__intro {
+		margin-bottom: var(--s-7);
+	}
+	.contacto__intro h1 {
+		max-width: 14ch;
+		margin-block: var(--s-4) var(--s-5);
+		color: var(--noche);
+		font-size: clamp(3rem, 7vw, 6.5rem);
+		line-height: 0.95;
+	}
+	.contacto__intro p {
+		font-size: var(--t-lead);
+	}
+	.contacto__rejilla {
+		display: grid;
+		grid-template-columns: minmax(0, 1.6fr) minmax(280px, 1fr);
+		gap: 4px;
+		align-items: start;
+	}
+	.contacto__formulario {
+		padding: clamp(1.75rem, 3vw, 2.75rem);
+		background: var(--n0);
+	}
+	.contacto__formulario h2 {
+		margin-bottom: var(--s-6);
+		font-size: var(--t-2);
+		color: var(--noche);
+	}
+
+	.mapa__marco {
+		position: relative;
+		height: clamp(360px, 55vh, 560px);
+		background: var(--noche);
+		overflow: hidden;
+	}
+	.mapa__poster {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		opacity: 0.45;
+	}
+	.mapa__aviso {
+		position: absolute;
+		inset: 0;
+		display: grid;
+		place-content: center;
+		justify-items: center;
+		gap: var(--s-4);
+		padding: var(--g);
+		text-align: center;
+		color: var(--n0);
+	}
+	.mapa__aviso p {
+		max-width: 40ch;
+		font-size: var(--t-lead);
+	}
+	.mapa__aviso small {
+		color: oklch(98.9% 0.003 286.4 / 0.75);
+	}
+	.mapa__marco :global(iframe) {
+		position: absolute;
+		inset: 0;
+		width: 100%;
+		height: 100%;
+		border: 0;
+	}
+
+	@media (max-width: 900px) {
+		.contacto__rejilla {
+			grid-template-columns: 1fr;
+		}
+	}
+</style>
+
+<script>
+	document.querySelectorAll<HTMLElement>('[data-mapa]').forEach((marco) => {
+		marco.querySelector('[data-cargar-mapa]')?.addEventListener('click', () => {
+			const iframe = document.createElement('iframe');
+			iframe.src = marco.dataset.src!;
+			iframe.title = 'Ubicación de Rodaments Segrià en Google Maps';
+			iframe.loading = 'lazy';
+			iframe.referrerPolicy = 'no-referrer-when-downgrade';
+			marco.replaceChildren(iframe);
+		});
+	});
+</script>

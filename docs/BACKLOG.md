@@ -31,7 +31,7 @@ Estado: ✅ hecho · 🔲 pendiente · ❓ decisión abierta
 - ✅ Mapa del sitio: Inicio · Productos · Productos/[familia] · Buscar referencia · Empresa · Contacto · Aviso legal · Privacidad · Cookies
 - ✅ Textos de Contacto y Buscar referencia (formularios, mensajes y texto RGPD)
 - 🔲 Textos legales (aviso legal, privacidad, cookies): se redactan en cuanto llegue la hoja del Registro Mercantil
-- 🔲 Mapa de Google cargado solo bajo demanda (evita el banner de cookies)
+- ✅ Mapa de Google cargado solo bajo demanda (evita el banner de cookies)
 - ✅ Selección provisional de fotos reales en `src/assets/img/fotos/` (ver `docs/FOTOS.md`)
 - ✅ Fachada con el letrero corregido, en portada
 
@@ -46,7 +46,9 @@ Estado: ✅ hecho · 🔲 pendiente · ❓ decisión abierta
 - ✅ **Portada construida** en Astro (`src/components/inicio/`): secuencia fachada → almacén con GSAP, familias desde el catálogo, buscador, Carburos
 - ✅ Páginas de familia (`/productos/[familia]`): cabecera con foto, categorías con tipos y sinónimos, bloque agrícola, franja «¿No ves lo que buscas?», otras familias. Carburos con su verde
 - ✅ Índice `/productos`: familias (Carburos incluido) y listado completo de categorías
-- 🔲 Diseño de cada página: empresa → contacto → buscar referencia → legales
+- ✅ Contacto (`/contacto`): formulario de presupuesto, datos de contacto, «Cómo llegar» y mapa bajo demanda
+- ✅ Buscar referencia (`/buscar-referencia`): formulario con referencias, marca y uso; recibe `?ref=` desde la portada
+- 🔲 Diseño de cada página: empresa → legales → 404
 - 🔲 Responsive y accesibilidad (contraste, foco y navegación con teclado)
 
 ## Fase 3 — Animaciones
@@ -73,7 +75,7 @@ El SEO (Google) y el GEO (aparecer en respuestas de IA como ChatGPT, Gemini o lo
 - 🔲 Comprar `rodamentssegria.es` (y `.com`) y redirigirlos con 301 a `www.rodsegria.es`
 - ⚠️ **No romper el email** `rodsegria@rodsegria.es`: al cambiar los DNS hay que conservar los registros MX del correo. Revisarlo antes de tocar nada
 - 🔲 Recomendado: publicar una versión de pruebas (sin indexar) al terminar la fase 2 para revisarla en móviles reales y probar el formulario. El dominio se conecta en el lanzamiento
-- ❓ **Envío del formulario de presupuesto.** Una web estática no puede enviar emails. Opciones: un servicio externo (Formspree, Web3Forms…), funciones del hosting o un `mailto:` provisional. Se decide junto al hosting
+- ❓ **Envío de los formularios** (ahora provisional: abre el correo del cliente con la consulta redactada). Para activarlo: poner el `endpoint` en `src/data/formularios.ts` y, si acepta archivos, `adjuntos: true` (foto de la pieza). Una web estática no puede enviar emails. Opciones: un servicio externo (Formspree, Web3Forms…), funciones del hosting o un `mailto:` provisional. Se decide junto al hosting
 - 🔲 Quitar el `noindex` provisional
 - 🔲 HTTPS, redirecciones desde la web antigua y analítica respetuosa con la privacidad (si se quiere)
 

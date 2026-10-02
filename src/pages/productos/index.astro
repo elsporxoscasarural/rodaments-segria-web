@@ -4,6 +4,7 @@ import { getCollection } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Familias from '../../components/Familias.astro';
 import BandaReferencia from '../../components/BandaReferencia.astro';
+import Migas from '../../components/Migas.astro';
 import { empresa, formatoNumero } from '../../data/empresa';
 
 const familias = (await getCollection('familias')).sort((a, b) => a.data.orden - b.data.orden);
@@ -15,12 +16,7 @@ const categorias = (await getCollection('categorias')).sort((a, b) => a.data.ord
 	description={`Rodamientos, soportes, correas, cadenas, retenes, herramientas y gases industriales. Más de ${formatoNumero(empresa.referenciasEnStock)} referencias en stock en Lleida.`}
 >
 	<section class="intro" aria-labelledby="t-catalogo">
-		<nav class="migas" aria-label="Estás en">
-			<ol>
-				<li><a href="/">Inicio</a></li>
-				<li aria-current="page">Productos</li>
-			</ol>
-		</nav>
+		<Migas ruta={[{ texto: 'Productos' }]} />
 		<h1 id="t-catalogo">Catálogo</h1>
 		<p>
 			Más de {formatoNumero(empresa.referenciasEnStock)} referencias en stock para la industria, el campo y el taller,
@@ -69,27 +65,6 @@ const categorias = (await getCollection('categorias')).sort((a, b) => a.data.ord
 	}
 	.intro p {
 		font-size: var(--t-lead);
-	}
-	.migas ol {
-		display: flex;
-		gap: var(--s-2);
-		margin: 0;
-		padding: 0;
-		list-style: none;
-		font-size: var(--t-sm);
-		font-weight: 600;
-		color: var(--n6);
-	}
-	.migas li + li::before {
-		content: '/';
-		margin-right: var(--s-2);
-	}
-	.migas a {
-		text-decoration: none;
-	}
-	.migas a:hover {
-		text-decoration: underline;
-		text-underline-offset: 4px;
 	}
 
 	.indice {

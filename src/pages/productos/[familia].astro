@@ -6,6 +6,7 @@ import { getCollection, getEntry, type CollectionEntry } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import IconoFamilia from '../../components/IconoFamilia.astro';
 import BandaReferencia from '../../components/BandaReferencia.astro';
+import Migas from '../../components/Migas.astro';
 import { ctaPrincipal } from '../../data/navegacion';
 
 export async function getStaticPaths() {
@@ -55,13 +56,7 @@ const titulo = destacada ? `${nombre}: gases industriales en Lleida | Rodaments 
 			)
 		}
 		<div class="cabecera-familia__contenido">
-			<nav class="migas" aria-label="Estás en">
-				<ol>
-					<li><a href="/">Inicio</a></li>
-					<li><a href="/productos">Productos</a></li>
-					<li aria-current="page">{nombre}</li>
-				</ol>
-			</nav>
+			<Migas ruta={[{ texto: 'Productos', href: '/productos' }, { texto: nombre }]} claro />
 			{
 				marcaCm?.data.logo && marcaCm.data.permisoLogo ? (
 					<div class="placa-cm">
@@ -228,30 +223,6 @@ const titulo = destacada ? `${nombre}: gases industriales en Lleida | Rodaments 
 		background: var(--noche);
 	}
 
-	.migas ol {
-		display: flex;
-		flex-wrap: wrap;
-		gap: var(--s-2);
-		margin: 0;
-		padding: 0;
-		list-style: none;
-		font-size: var(--t-sm);
-		font-weight: 600;
-	}
-	.migas li + li::before {
-		content: '/';
-		margin-right: var(--s-2);
-		opacity: 0.5;
-	}
-	.migas a {
-		text-decoration: none;
-		opacity: 0.8;
-	}
-	.migas a:hover {
-		opacity: 1;
-		text-decoration: underline;
-		text-underline-offset: 4px;
-	}
 
 	.placa-cm {
 		display: inline-block;

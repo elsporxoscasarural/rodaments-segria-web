@@ -1,0 +1,61 @@
+---
+// Ruta de navegación («Inicio / Productos / …»). El último elemento es la página actual.
+interface Props {
+	ruta: { texto: string; href?: string }[];
+	/** Sobre foto u oscuro: texto claro. */
+	claro?: boolean;
+}
+const { ruta, claro = false } = Astro.props;
+---
+
+<nav class:list={['migas', { 'migas--claro': claro }]} aria-label="Estás en">
+	<ol>
+		<li><a href="/">Inicio</a></li>
+		{
+			ruta.map((paso) =>
+				paso.href ? (
+					<li>
+						<a href={paso.href}>{paso.texto}</a>
+					</li>
+				) : (
+					<li aria-current="page">{paso.texto}</li>
+				),
+			)
+		}
+	</ol>
+</nav>
+
+<style>
+	ol {
+		display: flex;
+		flex-wrap: wrap;
+		gap: var(--s-2);
+		margin: 0;
+		padding: 0;
+		list-style: none;
+		font-size: var(--t-sm);
+		font-weight: 600;
+		color: var(--n6);
+	}
+	.migas--claro ol {
+		color: oklch(98.9% 0.003 286.4 / 0.92);
+	}
+	li + li::before {
+		content: '/';
+		margin-right: var(--s-2);
+		opacity: 0.55;
+	}
+	a {
+		text-decoration: none;
+	}
+	a:hover {
+		text-decoration: underline;
+		text-underline-offset: 4px;
+	}
+	[aria-current] {
+		color: var(--tinta);
+	}
+	.migas--claro [aria-current] {
+		color: var(--n0);
+	}
+</style>

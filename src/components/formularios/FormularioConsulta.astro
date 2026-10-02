@@ -1,0 +1,405 @@
+---
+// Formulario de consulta para dos usos: «presupuesto» (Contacto) y «referencia» (Buscar referencia).
+// El envío se configura en src/data/formularios.ts. Sin servicio de envío, abre el correo del cliente con la consulta.
+import { empresa } from '../../data/empresa';
+import { formularios } from '../../data/formularios';
+
+interface Props {
+	tipo: 'presupuesto' | 'referencia';
+}
+const { tipo } = Astro.props;
+const id = (campo: string) => `${tipo}-${campo}`;
+const asunto = tipo === 'presupuesto' ? 'Solicitud de presupuesto' : 'Consulta de referencia';
+---
+
+<form
+	class="formulario"
+	novalidate
+	data-formulario
+	data-endpoint={formularios.endpoint ?? ''}
+	data-destino={formularios.destino}
+	data-asunto={asunto}
+	enctype={formularios.adjuntos ? 'multipart/form-data' : undefined}
+>
+	{
+		tipo === 'referencia' && (
+			<>
+				<div class="campo campo--ancho">
+					<label for={id('referencias')}>
+						Referencia o referencias <span class="obligatorio">obligatorio</span>
+					</label>
+					<textarea
+						id={id('referencias')}
+						name="referencias"
+						rows="4"
+						required
+						data-desde-url="ref"
+						aria-describedby={`${id('referencias')}-ayuda`}
+						placeholder="6205-2RS x 10"
+					/>
+					<p class="ayuda" id={`${id('referencias')}-ayuda`}>
+						Una por línea y, si la sabes, con la cantidad.
+					</p>
+				</div>
+				<div class="campo">
+					<label for={id('marca')}>Marca</label>
+					<input id={id('marca')} name="marca" autocomplete="off" placeholder="SKF, FAG, NTN…" />
+				</div>
+				<div class="campo">
+					<label for={id('uso')}>¿Para qué es?</label>
+					<input id={id('uso')} name="uso" autocomplete="off" placeholder="Máquina o aplicación" />
+				</div>
+				{formularios.adjuntos && (
+					<div class="campo campo--ancho">
+						<label for={id('foto')}>Foto de la pieza</label>
+						<input id={id('foto')} name="foto" type="file" accept="image/*" />
+						<p class="ayuda">Si no lees bien la referencia, una foto nos basta.</p>
+					</div>
+				)}
+			</>
+		)
+	}
+
+	<div class="campo">
+		<label for={id('nombre')}>Nombre <span class="obligatorio">obligatorio</span></label>
+		<input id={id('nombre')} name="nombre" autocomplete="name" required />
+	</div>
+	{
+		tipo === 'presupuesto' && (
+			<div class="campo">
+				<label for={id('empresa')}>Empresa</label>
+				<input id={id('empresa')} name="empresa" autocomplete="organization" aria-describedby={`${id('empresa')}-ayuda`} />
+				<p class="ayuda" id={`${id('empresa')}-ayuda`}>
+					Si nos escribes como particular, déjalo en blanco.
+				</p>
+			</div>
+		)
+	}
+	<div class="campo">
+		<label for={id('email')}>Email <span class="obligatorio">obligatorio</span></label>
+		<input id={id('email')} name="email" type="email" autocomplete="email" required />
+	</div>
+	<div class="campo">
+		<label for={id('telefono')}>Teléfono</label>
+		<input id={id('telefono')} name="telefono" type="tel" autocomplete="tel" aria-describedby={`${id('telefono')}-ayuda`} />
+		<p class="ayuda" id={`${id('telefono')}-ayuda`}>Para llamarte si es más rápido.</p>
+	</div>
+
+	{
+		tipo === 'presupuesto' && (
+			<>
+				<div class="campo campo--ancho">
+					<label for={id('mensaje')}>
+						¿Qué necesitas? <span class="obligatorio">obligatorio</span>
+					</label>
+					<textarea
+						id={id('mensaje')}
+						name="mensaje"
+						rows="6"
+						required
+						data-desde-url="asunto"
+						aria-describedby={`${id('mensaje')}-ayuda`}
+					/>
+					<p class="ayuda" id={`${id('mensaje')}-ayuda`}>
+						Referencias, cantidades, para qué máquina es… Cuanto más detalle, antes te respondemos.
+					</p>
+				</div>
+				<fieldset class="campo campo--ancho opciones">
+					<legend>¿Cómo prefieres que te contactemos?</legend>
+					<label><input type="radio" name="contacto_preferido" value="Email" checked /> Email</label>
+					<label><input type="radio" name="contacto_preferido" value="Teléfono" /> Teléfono</label>
+					{empresa.whatsapp && (
+						<label>
+							<input type="radio" name="contacto_preferido" value="WhatsApp" /> WhatsApp
+						</label>
+					)}
+				</fieldset>
+			</>
+		)
+	}
+
+	<!-- Antispam: los humanos no ven este campo; si llega relleno, es un robot. -->
+	<div class="trampa" aria-hidden="true">
+		<label for={id('web')}>No rellenes este campo</label>
+		<input id={id('web')} name="web" tabindex="-1" autocomplete="off" />
+	</div>
+
+	<div class="campo campo--ancho privacidad">
+		<label class="casilla">
+			<input type="checkbox" name="privacidad" required />
+			<span>He leído y acepto la <a href="/privacidad">política de privacidad</a>.</span>
+		</label>
+	</div>
+
+	<div class="campo--ancho envio">
+		<button class="btn" type="submit">
+			{tipo === 'presupuesto' ? 'Enviar consulta' : 'Consultar disponibilidad'}
+			<span class="flecha" aria-hidden="true">→</span>
+		</button>
+		<p class="estado" role="status" aria-live="polite" data-estado></p>
+	</div>
+
+	<p class="rgpd campo--ancho">
+		<strong>Información básica sobre protección de datos.</strong> Responsable: {empresa.razonSocial}. Finalidad: responder a
+		tu consulta y, si lo pides, enviarte un presupuesto. Legitimación: tu consentimiento. Destinatarios: no cedemos tus
+		datos a terceros, salvo obligación legal. Derechos: puedes acceder, rectificar y suprimir tus datos escribiendo a {
+			empresa.email
+		}. Más información en la <a href="/privacidad">política de privacidad</a>.
+	</p>
+</form>
+
+<style>
+	.formulario {
+		display: grid;
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+		gap: var(--s-5) var(--s-5);
+	}
+	.campo {
+		display: grid;
+		gap: var(--s-2);
+		align-content: start;
+		min-width: 0;
+	}
+	.campo--ancho {
+		grid-column: 1 / -1;
+	}
+	label,
+	legend {
+		font-weight: 700;
+		font-size: var(--t-sm);
+		color: var(--tinta);
+	}
+	.obligatorio {
+		margin-left: var(--s-1);
+		font-weight: 500;
+		font-size: var(--t-xs);
+		color: var(--n6);
+	}
+	input:not([type='radio'], [type='checkbox']),
+	textarea {
+		width: 100%;
+		padding: 0.9rem 1rem;
+		border: 1.5px solid var(--n3);
+		border-radius: var(--radio);
+		background: var(--n0);
+		color: var(--tinta);
+		font: 500 1rem / 1.4 var(--f-texto);
+		transition: border-color var(--d-media) var(--ease);
+	}
+	textarea {
+		resize: vertical;
+		min-height: 7rem;
+	}
+	input::placeholder,
+	textarea::placeholder {
+		color: var(--n5);
+	}
+	input:hover,
+	textarea:hover {
+		border-color: var(--n5);
+	}
+	input:focus-visible,
+	textarea:focus-visible {
+		outline: 2px solid var(--azul);
+		outline-offset: 0;
+		border-color: var(--azul);
+	}
+	[aria-invalid='true'] {
+		border-color: oklch(52% 0.19 27) !important;
+	}
+	.ayuda {
+		margin: 0;
+		font-size: var(--t-xs);
+		color: var(--n6);
+	}
+	.error {
+		margin: 0;
+		font-size: var(--t-xs);
+		font-weight: 600;
+		color: oklch(48% 0.18 27);
+	}
+
+	.opciones {
+		display: flex;
+		flex-wrap: wrap;
+		gap: var(--s-3) var(--s-6);
+		margin: 0;
+		padding: 0;
+		border: 0;
+	}
+	.opciones legend {
+		width: 100%;
+		margin-bottom: var(--s-2);
+	}
+	.opciones label,
+	.casilla {
+		display: inline-flex;
+		align-items: center;
+		gap: var(--s-2);
+		font-weight: 500;
+		font-size: 1rem;
+		cursor: pointer;
+	}
+	.casilla {
+		align-items: flex-start;
+	}
+	input[type='radio'],
+	input[type='checkbox'] {
+		width: 20px;
+		height: 20px;
+		margin: 2px 0 0;
+		accent-color: var(--azul);
+		flex: none;
+	}
+
+	.trampa {
+		position: absolute;
+		left: -9999px;
+		width: 1px;
+		height: 1px;
+		overflow: hidden;
+	}
+
+	.envio {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: center;
+		gap: var(--s-4);
+	}
+	.envio .btn {
+		padding: 1.1rem 1.6rem;
+		font-size: 1rem;
+	}
+	.envio .btn[disabled] {
+		opacity: 0.6;
+		cursor: progress;
+	}
+	.estado {
+		max-width: 46ch;
+		font-weight: 600;
+		color: var(--tinta);
+	}
+	.estado[data-tipo='ok'] {
+		color: oklch(45% 0.12 152);
+	}
+	.estado[data-tipo='error'] {
+		color: oklch(48% 0.18 27);
+	}
+
+	.rgpd {
+		max-width: none;
+		margin: 0;
+		padding-top: var(--s-4);
+		border-top: 1px solid var(--n2);
+		font-size: var(--t-xs);
+		line-height: 1.5;
+		color: var(--n6);
+	}
+	.rgpd a,
+	.casilla a {
+		color: var(--azul);
+	}
+
+	@media (max-width: 640px) {
+		.formulario {
+			grid-template-columns: 1fr;
+		}
+	}
+</style>
+
+<script>
+	// Validación en español, relleno desde la URL (?ref= / ?asunto=) y envío.
+	const mensajes: Record<string, string> = {
+		valueMissing: 'Este campo es obligatorio.',
+		typeMismatch: 'Revisa el formato (por ejemplo, nombre@empresa.es).',
+	};
+
+	document.querySelectorAll<HTMLFormElement>('[data-formulario]').forEach((form) => {
+		const estado = form.querySelector<HTMLElement>('[data-estado]')!;
+		const boton = form.querySelector<HTMLButtonElement>('button[type="submit"]')!;
+		const textoBoton = boton.innerHTML;
+
+		// Rellenar desde la URL: /buscar-referencia?ref=6205 o /contacto?asunto=Correas
+		const params = new URLSearchParams(location.search);
+		form.querySelectorAll<HTMLTextAreaElement>('[data-desde-url]').forEach((campo) => {
+			const valor = params.get(campo.dataset.desdeUrl!);
+			if (!valor || campo.value) return;
+			campo.value = campo.dataset.desdeUrl === 'asunto' ? `Consulta sobre ${valor.toLowerCase()}:\n` : valor;
+		});
+
+		function marcarError(campo: HTMLInputElement | HTMLTextAreaElement) {
+			const contenedor = campo.closest('.campo');
+			contenedor?.querySelector('.error')?.remove();
+			if (campo.validity.valid) {
+				campo.removeAttribute('aria-invalid');
+				return true;
+			}
+			const clave = (Object.keys(mensajes) as (keyof ValidityState)[]).find((k) => campo.validity[k]);
+			const error = document.createElement('p');
+			error.className = 'error';
+			error.id = `${campo.id || campo.name}-error`;
+			error.textContent =
+				campo.type === 'checkbox' ? 'Necesitamos que aceptes la política de privacidad.' : mensajes[clave ?? 'valueMissing'];
+			contenedor?.append(error);
+			campo.setAttribute('aria-invalid', 'true');
+			campo.setAttribute('aria-errormessage', error.id);
+			return false;
+		}
+
+		const campos = form.querySelectorAll<HTMLInputElement | HTMLTextAreaElement>('input[required], textarea[required]');
+		campos.forEach((campo) => campo.addEventListener('blur', () => campo.value && marcarError(campo)));
+
+		form.addEventListener('submit', async (e) => {
+			e.preventDefault();
+			estado.textContent = '';
+			estado.removeAttribute('data-tipo');
+
+			const invalidos = [...campos].filter((campo) => !marcarError(campo));
+			if (invalidos.length) {
+				invalidos[0].focus();
+				return;
+			}
+
+			const datos = new FormData(form);
+			// Antispam: si el campo trampa viene relleno, fingimos que todo ha ido bien.
+			if (datos.get('web')) {
+				estado.dataset.tipo = 'ok';
+				estado.textContent = '¡Recibido! Te responderemos lo antes posible.';
+				form.reset();
+				return;
+			}
+			datos.delete('web');
+			datos.delete('privacidad');
+
+			const endpoint = form.dataset.endpoint;
+			if (!endpoint) {
+				// Provisional, sin servicio de envío: abrir el correo del cliente con la consulta redactada.
+				const nombre = String(datos.get('nombre') ?? '');
+				const cuerpo = [...datos.entries()]
+					.filter(([, v]) => typeof v === 'string' && v.trim())
+					.map(([k, v]) => `${k.replace('_', ' ')}: ${v}`)
+					.join('\n');
+				const asunto = `${form.dataset.asunto} - ${nombre}`;
+				location.href = `mailto:${form.dataset.destino}?subject=${encodeURIComponent(asunto)}&body=${encodeURIComponent(cuerpo)}`;
+				estado.textContent = `Se ha abierto tu programa de correo con la consulta preparada: solo tienes que enviarla. Si no se abre, escríbenos a ${form.dataset.destino}.`;
+				return;
+			}
+
+			boton.disabled = true;
+			boton.textContent = 'Enviando…';
+			try {
+				const respuesta = await fetch(endpoint, { method: 'POST', body: datos, headers: { Accept: 'application/json' } });
+				if (!respuesta.ok) throw new Error(String(respuesta.status));
+				estado.dataset.tipo = 'ok';
+				estado.textContent = '¡Recibido! Te responderemos lo antes posible, de lunes a viernes en horario de tienda.';
+				form.reset();
+			} catch {
+				estado.dataset.tipo = 'error';
+				estado.textContent = `No hemos podido enviar tu consulta. Vuelve a intentarlo o escríbenos a ${form.dataset.destino}.`;
+			} finally {
+				boton.disabled = false;
+				boton.innerHTML = textoBoton;
+			}
+		});
+	});
+</script>

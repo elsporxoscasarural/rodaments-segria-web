@@ -1,0 +1,88 @@
+---
+// Bloque con los datos de contacto (teléfono, email, WhatsApp, dirección, horario). Todo desde empresa.ts.
+import { empresa } from '../data/empresa';
+
+const { direccion, horario } = empresa;
+const tramos = horario.tramos.map((t) => `${t.abre.replace(/^0/, '')} a ${t.cierra}`).join(' y ');
+const destinoMapa = encodeURIComponent(`${empresa.nombre}, ${direccion.calle}, ${direccion.codigoPostal} ${direccion.localidad}`);
+---
+
+<aside class="datos sobre-oscuro" aria-label="Datos de contacto">
+	<div>
+		<span class="etiqueta">Llámanos</span>
+		<a class="tel" href={`tel:${empresa.telefono.enlace}`}>{empresa.telefono.visible}</a>
+	</div>
+	{
+		empresa.whatsapp && (
+			<div>
+				<span class="etiqueta">WhatsApp</span>
+				<a class="dato" href={`https://wa.me/${empresa.whatsapp.enlace.replace('+', '')}`}>
+					{empresa.whatsapp.visible}
+				</a>
+			</div>
+		)
+	}
+	<div>
+		<span class="etiqueta">Escríbenos</span>
+		<a class="dato" href={`mailto:${empresa.email}`}>{empresa.email}</a>
+	</div>
+	<div>
+		<span class="etiqueta">Ven a vernos</span>
+		<p>{direccion.poligono}<br />{direccion.calle}<br />{`${direccion.codigoPostal} ${direccion.localidad}`}</p>
+	</div>
+	<div>
+		<span class="etiqueta">Horario</span>
+		<p>{horario.dias}<br />{tramos}</p>
+	</div>
+	<div>
+		<span class="etiqueta">Aparcamiento</span>
+		<p>{empresa.aparcamiento}.</p>
+	</div>
+	<a class="btn btn--claro" href={`https://www.google.com/maps/dir/?api=1&destination=${destinoMapa}`} rel="noopener" target="_blank">
+		Cómo llegar <span class="flecha" aria-hidden="true">→</span>
+	</a>
+</aside>
+
+<style>
+	.datos {
+		display: grid;
+		gap: var(--s-5);
+		align-content: start;
+		padding: clamp(1.75rem, 3vw, 2.75rem);
+		background: var(--noche);
+		color: oklch(98.9% 0.003 286.4 / 0.92);
+	}
+	.etiqueta {
+		display: block;
+		margin-bottom: var(--s-1);
+		font-size: var(--t-xs);
+		font-weight: 700;
+		letter-spacing: 0.08em;
+		text-transform: uppercase;
+		color: oklch(98.9% 0.003 286.4 / 0.62);
+	}
+	a {
+		text-decoration: none;
+	}
+	.tel {
+		font-family: var(--f-display);
+		font-weight: 800;
+		font-size: clamp(2.5rem, 4vw, 3.5rem);
+		line-height: 1;
+		color: var(--n0);
+	}
+	.dato {
+		font-weight: 600;
+		font-size: 1.15rem;
+		color: var(--n0);
+		overflow-wrap: anywhere;
+	}
+	.tel:hover,
+	.dato:hover {
+		color: var(--azul-claro);
+	}
+	.btn {
+		justify-self: start;
+		margin-top: var(--s-2);
+	}
+</style>
