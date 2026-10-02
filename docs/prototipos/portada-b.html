@@ -74,18 +74,26 @@ h1{font-family:var(--fd);font-weight:900;text-transform:uppercase;font-size:clam
 .dentro .linea em{font-style:normal;color:var(--azul-claro)}
 .dentro .marcas{margin-top:clamp(24px,4vh,44px);display:flex;flex-wrap:wrap;gap:6px 28px;align-items:baseline;font-family:var(--fd);font-weight:800;font-size:clamp(20px,2.2vw,28px);text-transform:uppercase;color:rgba(255,255,255,.62);opacity:0}
 .dentro .marcas span{font-family:var(--ft);font-weight:600;font-size:14px;text-transform:none;color:rgba(255,255,255,.92);flex-basis:100%}
-/* Móvil: el texto va arriba sobre azul índigo, que se funde con el cielo de la foto; la fachada queda abajo, despejada. */
+/* Móvil: el texto va arriba sobre el azul del logo, que tapa el borde de la foto y se funde poco a poco
+   con el cielo; la fachada ocupa la mitad inferior, despejada. */
 @media (max-width:820px){
-  .fachada{background-color:var(--noche);background-size:auto 60%;background-repeat:no-repeat;background-position:60% 100%;transform-origin:77% 73%}
-  .fachada::after{background:linear-gradient(180deg,var(--noche) 0%,var(--noche) 34%,rgba(20,22,63,.55) 44%,rgba(20,22,63,0) 56%,rgba(20,22,63,0) 100%)}
-  .nave{clip-path:inset(73% 23% 27% 77%)}
-  .portada{inset:0 0 auto 0;padding-top:calc(env(safe-area-inset-top,0px) + 88px);grid-template-columns:1fr;gap:18px}
-  h1{font-size:clamp(46px,13vw,64px)}
-  .placa{margin-bottom:14px}
-  .portada .lado p{font-size:17px;margin-bottom:14px}
+  .fachada{background-color:var(--azul);background-size:auto 54%;background-repeat:no-repeat;background-position:60% 100%;transform-origin:72% 76%}
+  .fachada::after{background:linear-gradient(180deg,
+    var(--azul) 0%, var(--azul) 47%,
+    rgba(1,91,254,.82) 51%, rgba(1,91,254,.55) 55%, rgba(1,91,254,.28) 59%, rgba(1,91,254,.1) 63%, rgba(1,91,254,0) 67%)}
+  .nave{clip-path:inset(76% 28% 24% 72%)}
+  .portada{inset:0 0 auto 0;padding-top:calc(env(safe-area-inset-top,0px) + 76px);grid-template-columns:1fr;gap:14px}
+  .placa{margin-bottom:10px;font-size:12px}
+  .placa b{font-size:20px;padding:3px 11px}
+  .placa span{padding:7px 11px}
+  .placa b{background:var(--noche)}
+  h1{font-size:clamp(34px,9.6vw,46px);line-height:.88;max-width:none}
+  .portada .lado p{font-size:16px;margin-bottom:12px}
+  .portada .btn{padding:12px 16px;font-size:14px}
+  .portada .btn:not(.claro),.nav:not(.solida) .btn{background:var(--noche)}
   .pista{display:none}
 }
-@media (max-width:820px) and (max-height:700px){.portada .lado p{display:none}}
+@media (max-width:820px) and (max-height:760px){.portada .lado p{display:none}}
 
 /* ---------- 2. Pasillos (familias) ---------- */
 .pasillos{background:var(--n1);padding:clamp(56px,8vw,120px) var(--g)}
@@ -307,7 +315,7 @@ h2{font-family:var(--fd);font-weight:900;text-transform:uppercase;font-size:clam
   // Secuencia: de la calle a dentro de la nave.
   // La nave se abre desde la puerta de la fachada, que en móvil está en otro sitio de la pantalla.
   var movil = window.matchMedia('(max-width: 820px)').matches;
-  var puerta = movil ? 'inset(73% 23% 27% 77%)' : 'inset(58% 34% 42% 66%)';
+  var puerta = movil ? 'inset(76% 28% 24% 72%)' : 'inset(58% 34% 42% 66%)';
   var tl = gsap.timeline({
     defaults: { ease: 'none' },
     scrollTrigger: { trigger: '.secuencia', start: 'top top', end: 'bottom bottom', scrub: 0.6 }
