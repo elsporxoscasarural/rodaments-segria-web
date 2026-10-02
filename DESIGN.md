@@ -60,6 +60,7 @@ Estrategia: **Comprometida en momentos concretos y contenida en el resto.** El 8
 - **Fotos a sangre** (de borde a borde) para la portada, la nave, los pasillos y Carburos. El texto, alineado a la izquierda.
 - Ritmo alterno: oscuro (portada y nave) → claro (pasillos) → blanco (buscador) → verde (Carburos) → noche (pie).
 - Las cifras van **dentro de frases**, nunca como fila de «número grande + etiqueta + icono».
+- **Portada en escritorio:** panel a la izquierda (40 % del ancho) con el **azul del logo**, que se funde horizontalmente con el cielo de la foto. La **fachada, entera y con el letrero limpio, a la derecha**. Nunca texto encima del edificio.
 - **Móvil:** en la portada, el texto va arriba sobre el azul del logo, fundido con el cielo, y la fachada abajo despejada. Botones de al menos 44 px de alto.
 
 ## Motion
