@@ -55,7 +55,8 @@ html.lenis,html.lenis body{height:auto}
 .capa{position:absolute;inset:0;background-size:cover;will-change:transform,clip-path}
 .fachada{background-image:url(img/fachada.jpg);background-position:56% 34%;transform-origin:66% 58%}
 .fachada::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(20,22,63,.35) 0%,rgba(20,22,63,0) 22%,rgba(20,22,63,0) 46%,rgba(20,22,63,.78) 82%,rgba(20,22,63,.92) 100%)}
-.nave{background-image:url(img/nave.jpg);background-position:50% 45%;clip-path:inset(46% 30% 36% 62%)}
+/* En reposo la nave está totalmente oculta: recorte de tamaño cero en el punto de la entrada. */
+.nave{background-image:url(img/nave.jpg);background-position:50% 45%;clip-path:inset(58% 34% 42% 66%);visibility:hidden}
 .nave::after{content:"";position:absolute;inset:0;background:rgba(20,22,63,.55)}
 .portada{position:absolute;inset:auto 0 0 0;padding:0 var(--g) clamp(28px,5vh,56px);display:grid;grid-template-columns:minmax(0,1fr) minmax(240px,320px);gap:28px;align-items:end;color:#fff;z-index:2}
 .placa{display:inline-flex;align-items:stretch;background:#fff;color:var(--noche);margin-bottom:20px;font-weight:700;font-size:13px;letter-spacing:.06em;text-transform:uppercase}
@@ -154,7 +155,7 @@ h2{font-family:var(--fd);font-weight:900;text-transform:uppercase;font-size:clam
   .escena{position:relative;height:auto;min-height:0;overflow:visible}
   .capa{position:relative;transform:none!important}
   .fachada{height:100svh;min-height:560px}
-  .nave{height:100svh;min-height:520px;clip-path:none!important}
+  .nave{height:100svh;min-height:520px;clip-path:none!important;visibility:visible}
   .dentro{top:auto;bottom:0;height:100svh;inset:auto 0 0 0}
   .dentro .linea,.dentro .marcas{opacity:1}
   .rv{transform:none;opacity:1}
@@ -304,7 +305,8 @@ h2{font-family:var(--fd);font-weight:900;text-transform:uppercase;font-size:clam
   tl.to('.portada', { yPercent: -18, opacity: 0, duration: 0.18 }, 0)
     .to('.pista', { opacity: 0, duration: 0.06 }, 0)
     .to('.fachada', { scale: 1.45, duration: 0.42, ease: 'power1.in' }, 0)
-    .to('.nave', { clipPath: 'inset(0% 0% 0% 0%)', duration: 0.34, ease: 'power2.inOut' }, 0.12)
+    .set('.nave', { visibility: 'visible' }, 0.12)
+    .fromTo('.nave', { clipPath: 'inset(58% 34% 42% 66%)' }, { clipPath: 'inset(0% 0% 0% 0%)', duration: 0.34, ease: 'power2.inOut' }, 0.12)
     .fromTo('.nave', { scale: 1.12 }, { scale: 1, duration: 0.5, ease: 'power2.out' }, 0.12)
     .to('.dentro .linea', { opacity: 1, y: 0, stagger: 0.07, duration: 0.12, ease: 'power2.out' }, 0.44)
     .fromTo('.dentro .linea', { y: 40 }, { y: 0, stagger: 0.07, duration: 0.12, ease: 'power2.out' }, 0.44)
