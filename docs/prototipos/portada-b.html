@@ -1,0 +1,314 @@
+<title>Portada Rodaments Segrià</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;800;900&family=Hanken+Grotesk:wght@400;500;600;700&display=swap">
+<style>
+/* Dirección B «Señalética de nave», v2.
+   Recorrido: la fachada desde la calle → al hacer scroll «entras» en la nave → los pasillos (familias) → Carburos → contacto.
+   Web clara por decisión del cliente; las zonas oscuras son fotos con velo índigo y el pie. Colores fijos, sin modo oscuro. */
+:root{
+  color-scheme: light;
+  --azul:#015BFE; --azul-hover:#0047D1; --azul-claro:#6F9BFF;
+  --indigo:#282B98; --noche:#14163F;
+  --n0:#FBFBFD; --n1:#F1F2F6; --n2:#E4E6EE; --n3:#C7CBD8; --n5:#767C92; --n7:#3B4057; --tinta:#16182E;
+  --cm-verde:#007A3E; --cm-cian:#00A8E0;
+  --fd:"Big Shoulders Display", Impact, "Arial Narrow", sans-serif;
+  --ft:"Hanken Grotesk", "Helvetica Neue", Arial, sans-serif;
+  --ease:cubic-bezier(.22,1,.36,1);
+  --g:clamp(16px,3.2vw,48px); /* margen lateral */
+}
+*{box-sizing:border-box}
+html,body{background:var(--n1)}
+body{margin:0;color:var(--tinta);font-family:var(--ft);font-size:17px;line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{max-width:100%;display:block}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--azul-claro);outline-offset:3px}
+html.lenis,html.lenis body{height:auto}
+.lenis.lenis-smooth{scroll-behavior:auto!important}
+
+/* ---------- Botones ---------- */
+.btn{display:inline-flex;align-items:center;gap:10px;background:var(--azul);color:#fff;text-decoration:none;font-weight:700;font-size:15px;padding:15px 22px;transition:background .2s,transform .16s var(--ease)}
+.btn:hover{background:var(--azul-hover)}
+.btn:active{transform:scale(.97)}
+.btn.claro{background:#fff;color:var(--noche)}
+.btn.claro:hover{background:var(--n2)}
+.btn .fl{transition:transform .3s var(--ease)}
+.btn:hover .fl{transform:translateX(3px)}
+
+/* ---------- Navegación ---------- */
+.nav{position:fixed;inset:0 0 auto 0;z-index:20;display:flex;align-items:center;gap:28px;padding:calc(env(safe-area-inset-top,0px) + 18px) var(--g) 18px;color:#fff;transition:background .35s,color .35s,padding .35s,box-shadow .35s}
+.nav .logo{height:32px;width:auto;position:relative}
+.nav .logo img{height:32px;width:auto;transition:opacity .35s}
+.nav .logo .col{position:absolute;inset:0;opacity:0}
+.nav ul{display:flex;gap:26px;list-style:none;margin:0 0 0 auto;padding:0;font-weight:600;font-size:15px}
+.nav ul a{text-decoration:none;opacity:.92}
+.nav ul a:hover{opacity:1;text-decoration:underline;text-underline-offset:5px}
+.nav .tel{font-weight:600;font-size:15px;white-space:nowrap}
+.nav.solida{background:rgba(251,251,253,.96);color:var(--tinta);box-shadow:0 1px 0 var(--n2);padding-block:12px;backdrop-filter:saturate(1.2)}
+.nav.solida .logo .bl{opacity:0}.nav.solida .logo .col{opacity:1}
+@media (max-width:960px){.nav ul{display:none}.nav .tel{margin-left:auto}}
+@media (max-width:520px){.nav .tel{display:none}.nav .btn{margin-left:auto;padding:12px 16px}}
+
+/* ---------- 1. Secuencia: fachada → nave ---------- */
+.secuencia{position:relative;height:340vh;background:var(--noche)}
+.escena{position:sticky;top:0;height:100vh;height:100svh;min-height:560px;overflow:hidden}
+.capa{position:absolute;inset:0;background-size:cover;will-change:transform,clip-path}
+.fachada{background-image:url(img/fachada.jpg);background-position:56% 34%;transform-origin:66% 58%}
+.fachada::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(20,22,63,.35) 0%,rgba(20,22,63,0) 22%,rgba(20,22,63,0) 46%,rgba(20,22,63,.78) 82%,rgba(20,22,63,.92) 100%)}
+.nave{background-image:url(img/nave.jpg);background-position:50% 45%;clip-path:inset(46% 30% 36% 62%)}
+.nave::after{content:"";position:absolute;inset:0;background:rgba(20,22,63,.55)}
+.portada{position:absolute;inset:auto 0 0 0;padding:0 var(--g) clamp(28px,5vh,56px);display:grid;grid-template-columns:minmax(0,1fr) minmax(240px,320px);gap:28px;align-items:end;color:#fff;z-index:2}
+.placa{display:inline-flex;align-items:stretch;background:#fff;color:var(--noche);margin-bottom:20px;font-weight:700;font-size:13px;letter-spacing:.06em;text-transform:uppercase}
+.placa b{background:var(--azul);color:#fff;font-family:var(--fd);font-weight:900;font-size:24px;letter-spacing:0;padding:4px 13px;display:flex;align-items:center}
+.placa span{padding:8px 13px;display:flex;align-items:center}
+h1{font-family:var(--fd);font-weight:900;text-transform:uppercase;font-size:clamp(54px,9vw,148px);line-height:.85;letter-spacing:.005em;margin:0;max-width:11ch;text-wrap:balance}
+.portada .lado p{margin:0 0 18px;font-size:18px;color:rgba(255,255,255,.92)}
+.portada .acciones{display:flex;flex-wrap:wrap;gap:10px}
+.pista{position:absolute;left:50%;bottom:16px;transform:translateX(-50%);z-index:2;color:rgba(255,255,255,.8);font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;display:flex;flex-direction:column;align-items:center;gap:8px}
+.pista i{width:1px;height:34px;background:rgba(255,255,255,.35);position:relative;overflow:hidden}
+.pista i::after{content:"";position:absolute;left:0;top:-40%;width:1px;height:40%;background:#fff;animation:baja 1.8s var(--ease) infinite}
+@keyframes baja{to{top:100%}}
+.dentro{position:absolute;inset:0;z-index:3;display:flex;flex-direction:column;justify-content:center;padding:0 var(--g);color:#fff;pointer-events:none}
+.dentro .linea{display:block;font-family:var(--fd);font-weight:800;text-transform:uppercase;font-size:clamp(40px,7vw,112px);line-height:.92;opacity:0}
+.dentro .linea em{font-style:normal;color:var(--azul-claro)}
+.dentro .marcas{margin-top:clamp(24px,4vh,44px);display:flex;flex-wrap:wrap;gap:6px 28px;align-items:baseline;font-family:var(--fd);font-weight:800;font-size:clamp(20px,2.2vw,28px);text-transform:uppercase;color:rgba(255,255,255,.62);opacity:0}
+.dentro .marcas span{font-family:var(--ft);font-weight:600;font-size:14px;text-transform:none;color:rgba(255,255,255,.92);flex-basis:100%}
+@media (max-width:820px){
+  .portada{grid-template-columns:1fr}
+  .fachada{background-position:60% 30%}
+  .pista{display:none}
+}
+
+/* ---------- 2. Pasillos (familias) ---------- */
+.pasillos{background:var(--n1);padding:clamp(56px,8vw,120px) var(--g)}
+.pasillos header{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:end;gap:20px 40px;margin-bottom:clamp(24px,3vw,40px)}
+h2{font-family:var(--fd);font-weight:900;text-transform:uppercase;font-size:clamp(42px,5.6vw,88px);line-height:.88;margin:0;color:var(--noche);max-width:12ch}
+.pasillos header p{margin:0;max-width:40ch;color:var(--n7)}
+.rejilla{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));grid-auto-rows:minmax(260px,30vw);gap:4px}
+.pasillo{position:relative;color:#fff;text-decoration:none;display:flex;flex-direction:column;justify-content:flex-end;padding:22px;overflow:hidden;background:var(--noche);max-height:420px}
+.pasillo .fondo{position:absolute;inset:0;background-size:cover;background-position:center;opacity:.6;transition:transform .9s var(--ease),opacity .45s}
+.pasillo::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(20,22,63,0) 35%,rgba(20,22,63,.85) 100%)}
+.pasillo:hover .fondo{transform:scale(1.06);opacity:.78}
+.pasillo>*:not(.fondo){position:relative;z-index:1}
+.pasillo .letra{position:absolute;top:18px;left:22px;font-family:var(--fd);font-weight:900;font-size:clamp(56px,6vw,88px);line-height:.8;z-index:1}
+.pasillo .cuantas{position:absolute;top:22px;right:22px;font-size:13px;font-weight:600;background:rgba(255,255,255,.14);padding:4px 10px;z-index:1}
+.pasillo strong{font-family:var(--fd);font-weight:800;text-transform:uppercase;font-size:clamp(26px,2.4vw,34px);line-height:.95}
+.pasillo em{font-style:normal;font-size:15px;color:rgba(255,255,255,.88);margin-top:8px;max-width:36ch}
+.pasillo .ir{display:inline-flex;margin-top:14px;font-weight:700;font-size:14px;gap:8px;transform:translateY(6px);opacity:0;transition:transform .4s var(--ease),opacity .3s}
+.pasillo:hover .ir,.pasillo:focus-visible .ir{transform:none;opacity:1}
+.pasillo.ancho{grid-column:span 2}
+@media (max-width:900px){.rejilla{grid-template-columns:1fr 1fr;grid-auto-rows:minmax(240px,44vw)}}
+@media (max-width:560px){.rejilla{grid-template-columns:1fr;grid-auto-rows:260px}.pasillo.ancho{grid-column:auto}.pasillo .ir{opacity:1;transform:none}}
+
+/* ---------- 3. Buscar referencia ---------- */
+.busca{background:#fff;padding:clamp(48px,7vw,104px) var(--g);display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:28px 64px;align-items:center}
+.busca h2{max-width:13ch}
+.busca p{margin:16px 0 0;color:var(--n7);max-width:44ch}
+.campo{display:flex;border:2px solid var(--noche);background:#fff}
+.campo input{flex:1;min-width:0;border:0;padding:20px;font:500 20px var(--ft);color:var(--tinta);background:transparent}
+.campo input::placeholder{color:var(--n5)}
+.campo button{border:0;background:var(--noche);color:#fff;font:700 16px var(--ft);padding:0 26px;cursor:pointer;transition:background .2s}
+.campo button:hover{background:var(--azul)}
+.busca small{display:block;margin-top:12px;color:var(--n5);font-size:14px}
+.busca label{display:block;font-weight:700;margin-bottom:10px}
+@media (max-width:820px){.busca{grid-template-columns:1fr}.campo{flex-direction:column}.campo button{padding:16px}}
+
+/* ---------- 4. Carburos Metálicos (su identidad) ---------- */
+.cm{background:var(--cm-verde);color:#fff;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr)}
+.cm-txt{padding:clamp(48px,7vw,104px) var(--g)}
+.cm-placa{display:inline-block;background:#fff;padding:12px 16px;margin-bottom:30px}
+.cm-placa img{height:40px;width:auto}
+.cm-placa small{display:block;margin-top:6px;font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--cm-verde)}
+.cm h2{color:#fff}
+.cm p{margin:18px 0 24px;max-width:44ch;color:rgba(255,255,255,.9)}
+.cm ul{list-style:none;margin:0 0 30px;padding:0;display:flex;flex-wrap:wrap;gap:8px}
+.cm li{border:1px solid rgba(255,255,255,.5);padding:7px 13px;font-size:15px}
+.cm .btn{background:#fff;color:var(--cm-verde)}
+.cm .btn:hover{background:#E6F4EC}
+.cm-foto{min-height:360px;background:url(img/mostrador.jpg) 72% 30%/cover;position:relative}
+.cm-foto::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,var(--cm-verde) 0,rgba(0,122,62,0) 35%)}
+@media (max-width:820px){.cm{grid-template-columns:1fr}.cm-foto{min-height:240px}.cm-foto::after{background:linear-gradient(180deg,var(--cm-verde) 0,rgba(0,122,62,0) 40%)}}
+
+/* ---------- 5. Pie ---------- */
+.pie{background:var(--noche);color:#fff;padding:clamp(56px,8vw,112px) var(--g) calc(32px + env(safe-area-inset-bottom,0px))}
+.pie .grande{font-family:var(--fd);font-weight:900;text-transform:uppercase;font-size:clamp(44px,7vw,112px);line-height:.86;margin:0 0 clamp(32px,5vw,64px);max-width:13ch}
+.pie .grande em{font-style:normal;color:var(--azul-claro)}
+.cols{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:28px;border-top:1px solid rgba(255,255,255,.18);padding-top:28px}
+.cols h3{margin:0 0 10px;font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.6)}
+.cols p{margin:0;color:rgba(255,255,255,.92)}
+.cols .tel{font-family:var(--fd);font-weight:800;font-size:34px;line-height:1;display:block;margin-bottom:6px;text-decoration:none}
+.legal{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;margin-top:48px;font-size:13px;color:rgba(255,255,255,.55)}
+.legal img{height:26px;width:auto;opacity:.9}
+@media (max-width:820px){.cols{grid-template-columns:1fr 1fr}}
+@media (max-width:480px){.cols{grid-template-columns:1fr}}
+
+/* ---------- Apariciones al hacer scroll ---------- */
+.rv{transform:translateY(28px);opacity:.001;transition:transform 1s var(--ease),opacity .8s var(--ease)}
+.rv.si{transform:none;opacity:1}
+.sin-js .rv{transform:none;opacity:1}
+
+/* ---------- Movimiento reducido: sin secuencia fijada ---------- */
+@media (prefers-reduced-motion:reduce){
+  *{animation:none!important;transition:none!important}
+  .secuencia{height:auto}
+  .escena{position:relative;height:auto;min-height:0;overflow:visible}
+  .capa{position:relative;transform:none!important}
+  .fachada{height:100svh;min-height:560px}
+  .nave{height:100svh;min-height:520px;clip-path:none!important}
+  .dentro{top:auto;bottom:0;height:100svh;inset:auto 0 0 0}
+  .dentro .linea,.dentro .marcas{opacity:1}
+  .rv{transform:none;opacity:1}
+}
+</style>
+
+<header class="nav" id="nav">
+  <a class="logo" href="#inicio" aria-label="Rodaments Segrià, inicio">
+    <img class="bl" src="img/logo-blanco.svg" alt="">
+    <img class="col" src="img/logo.svg" alt="">
+  </a>
+  <ul>
+    <li><a href="#productos">Productos</a></li>
+    <li><a href="#inicio">Empresa</a></li>
+    <li><a href="#referencia">Buscar referencia</a></li>
+    <li><a href="#contacto">Contacto</a></li>
+  </ul>
+  <span class="tel">973 20 80 64</span>
+  <a class="btn" href="#contacto">Pedir presupuesto</a>
+</header>
+
+<main id="inicio">
+  <section class="secuencia" aria-label="Portada">
+    <div class="escena">
+      <div class="capa fachada" role="img" aria-label="Fachada de la nave de Rodaments Segrià en el Polígono Camí dels Frares de Lleida"></div>
+      <div class="capa nave" role="img" aria-label="Interior del almacén: estanterías llenas de rodamientos, correas y recambios"></div>
+
+      <div class="portada">
+        <div>
+          <div class="placa"><b>A</b><span>Lleida, desde 1988</span></div>
+          <h1>Rodamientos y suministro industrial en Lleida</h1>
+        </div>
+        <div class="lado">
+          <p>Más de 500.000 referencias en stock para la industria, el campo y el taller.</p>
+          <div class="acciones">
+            <a class="btn" href="#productos">Ver catálogo</a>
+            <a class="btn claro" href="#referencia">Buscar referencia</a>
+          </div>
+        </div>
+      </div>
+      <div class="pista" aria-hidden="true">Entra en la nave<i></i></div>
+
+      <div class="dentro" aria-label="Rodaments Segrià en cifras">
+        <span class="linea">Desde 1988.</span>
+        <span class="linea"><em>500.000 referencias</em></span>
+        <span class="linea">en 2.000 m² de almacén.</span>
+        <span class="linea">Tercera generación.</span>
+        <div class="marcas"><span>Marcas en stock</span>SKF FAG INA NTN-SNR Timken Challenge</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="pasillos" id="productos" aria-labelledby="t-cat">
+    <header class="rv">
+      <h2 id="t-cat">Todo lo que mueve la maquinaria</h2>
+      <p>Cada familia, un pasillo del almacén. Y si no ves lo que buscas, pregúntanos por la referencia: trabajamos con más de 500.000.</p>
+    </header>
+    <div class="rejilla">
+      <a class="pasillo ancho rv" href="#productos"><span class="fondo" style="background-image:url(img/rodamientos.jpg)"></span><span class="letra">A</span><span class="cuantas">3 categorías</span><strong>Rodamientos y soportes</strong><em>Rodamientos, soportes y rótulas para cualquier aplicación industrial o agrícola.</em><span class="ir">Ver familia <span class="fl">→</span></span></a>
+      <a class="pasillo rv" href="#productos"><span class="fondo" style="background-image:url(img/correas.jpg)"></span><span class="letra">B</span><span class="cuantas">9 categorías</span><strong>Transmisión de potencia</strong><em>Correas, cadenas, piñones, poleas, motores y reductores.</em><span class="ir">Ver familia <span class="fl">→</span></span></a>
+      <a class="pasillo rv" href="#productos"><span class="fondo" style="background-image:url(img/estanterias.jpg)"></span><span class="letra">C</span><span class="cuantas">3 categorías</span><strong>Estanqueidad y fluidos</strong><em>Retenes, mangueras, grasas y lubricantes.</em><span class="ir">Ver familia <span class="fl">→</span></span></a>
+      <a class="pasillo rv" href="#productos"><span class="fondo" style="background-image:url(img/soportes.jpg)"></span><span class="letra">D</span><span class="cuantas">4 categorías</span><strong>Taller e industria</strong><em>Herramientas, extractores, almacenaje y vestuario laboral.</em><span class="ir">Ver familia <span class="fl">→</span></span></a>
+      <a class="pasillo rv" href="#productos"><span class="fondo" style="background-image:url(img/pinones.jpg)"></span><span class="letra">E</span><span class="cuantas">1 categoría</span><strong>Agrícola</strong><em>Brazos con nudos y los componentes que mueven la maquinaria del campo.</em><span class="ir">Ver familia <span class="fl">→</span></span></a>
+    </div>
+  </section>
+
+  <section class="busca" id="referencia" aria-labelledby="t-ref">
+    <div class="rv">
+      <h2 id="t-ref">¿Buscas una referencia concreta?</h2>
+      <p>Escríbela y te decimos si la tenemos, si podemos conseguirla o qué equivalente te sirve. Miles de equivalencias entre marcas.</p>
+    </div>
+    <form class="rv" onsubmit="event.preventDefault();this.querySelector('small').textContent='Prototipo: en la web real esto abrirá el formulario con la referencia ya escrita.'">
+      <label for="ref">Referencia</label>
+      <div class="campo"><input id="ref" placeholder="Ej.: 6205-2RS x 10" autocomplete="off"><button type="submit">Consultar disponibilidad</button></div>
+      <small>Una por línea, con la cantidad si la sabes. Te respondemos lo antes posible.</small>
+    </form>
+  </section>
+
+  <section class="cm" aria-labelledby="t-cm">
+    <div class="cm-txt rv">
+      <div class="cm-placa"><img src="img/carburos.jpg" alt="Carburos Metálicos"><small>Distribuidor autorizado</small></div>
+      <h2 id="t-cm">Carburos Metálicos en Lleida</h2>
+      <p>Somos distribuidores autorizados de Carburos Metálicos. Suministramos gases industriales y de soldadura y corte, y gestionamos el alquiler, la recarga y el cambio de botellas.</p>
+      <ul><li>Gases industriales</li><li>Gases de soldadura y corte</li><li>Alquiler de botellas</li></ul>
+      <a class="btn" href="#contacto">Ver gases industriales <span class="fl">→</span></a>
+    </div>
+    <div class="cm-foto" role="img" aria-label="Mostrador de la tienda con el cartel de distribuidor autorizado de Carburos Metálicos"></div>
+  </section>
+</main>
+
+<footer class="pie" id="contacto">
+  <p class="grande rv">¿Buscas una pieza? <em>Pregúntanos.</em></p>
+  <div class="cols">
+    <div><h3>Llámanos</h3><a class="tel" href="tel:+34973208064">973 20 80 64</a><p>rodsegria@rodsegria.es</p></div>
+    <div><h3>Ven a vernos</h3><p>Pol. Ind. Camí dels Frares<br>Carrer d'Alcarràs, 78<br>25191 Lleida</p></div>
+    <div><h3>Horario</h3><p>De lunes a viernes<br>8:00 a 13:30 y 15:00 a 18:00</p></div>
+    <div><h3>Aparcamiento</h3><p>Para coches, furgonetas y camiones.</p></div>
+  </div>
+  <div class="legal"><img src="img/logo-blanco.svg" alt="Rodaments Segrià"><span>Prototipo de la dirección B. Fotos, textos y datos reales; marcas escritas hasta confirmar permisos.</span></div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
+<script>
+(function(){
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var nav = document.getElementById('nav');
+
+  // Apariciones suaves (todo es visible si algo falla)
+  var rvs = [].slice.call(document.querySelectorAll('.rv'));
+  if (!('IntersectionObserver' in window) || reduce) { document.documentElement.classList.add('sin-js'); }
+  else {
+    var io = new IntersectionObserver(function(es){ es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('si'); io.unobserve(e.target);} }); }, {rootMargin:'0px 0px -8% 0px'});
+    rvs.forEach(function(el,i){ el.style.transitionDelay = (el.classList.contains('pasillo') ? (i%3)*70 : 0) + 'ms'; io.observe(el); });
+  }
+
+  // Navegación: transparente sobre las fotos, sólida sobre el contenido claro
+  function navEstado(){
+    var claro = document.getElementById('productos').getBoundingClientRect().top <= 70;
+    nav.classList.toggle('solida', claro);
+  }
+
+  if (reduce || !window.gsap || !window.ScrollTrigger) {
+    window.addEventListener('scroll', navEstado, {passive:true}); navEstado(); return;
+  }
+  gsap.registerPlugin(ScrollTrigger);
+
+  // Scroll con inercia (como Cominvi)
+  if (window.Lenis) {
+    var lenis = new Lenis({ lerp: 0.1, wheelMultiplier: 0.9 });
+    lenis.on('scroll', ScrollTrigger.update);
+    gsap.ticker.add(function(t){ lenis.raf(t * 1000); });
+    gsap.ticker.lagSmoothing(0);
+    document.querySelectorAll('a[href^="#"]').forEach(function(a){
+      a.addEventListener('click', function(ev){ var id=a.getAttribute('href'); var t=document.querySelector(id); if(t){ ev.preventDefault(); lenis.scrollTo(t, {offset: id==='#inicio'?0:-60, duration: 1.4}); } });
+    });
+  }
+  ScrollTrigger.create({ start: 0, end: 'max', onUpdate: navEstado });
+  navEstado();
+
+  // Secuencia: de la calle a dentro de la nave
+  var tl = gsap.timeline({
+    defaults: { ease: 'none' },
+    scrollTrigger: { trigger: '.secuencia', start: 'top top', end: 'bottom bottom', scrub: 0.6 }
+  });
+  tl.to('.portada', { yPercent: -18, opacity: 0, duration: 0.18 }, 0)
+    .to('.pista', { opacity: 0, duration: 0.06 }, 0)
+    .to('.fachada', { scale: 1.45, duration: 0.42, ease: 'power1.in' }, 0)
+    .to('.nave', { clipPath: 'inset(0% 0% 0% 0%)', duration: 0.34, ease: 'power2.inOut' }, 0.12)
+    .fromTo('.nave', { scale: 1.12 }, { scale: 1, duration: 0.5, ease: 'power2.out' }, 0.12)
+    .to('.dentro .linea', { opacity: 1, y: 0, stagger: 0.07, duration: 0.12, ease: 'power2.out' }, 0.44)
+    .fromTo('.dentro .linea', { y: 40 }, { y: 0, stagger: 0.07, duration: 0.12, ease: 'power2.out' }, 0.44)
+    .to('.dentro .marcas', { opacity: 1, duration: 0.1 }, 0.74)
+    .to({}, { duration: 0.16 });
+})();
+</script>

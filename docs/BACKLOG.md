@@ -38,7 +38,8 @@ Estado: ✅ hecho · 🔲 pendiente · ❓ decisión abierta
 ## Fase 2 — Diseño
 - ✅ Paleta decidida: azules del logo (`#015BFE`, `#282B98`) sobre grises claros y blancos. Web clara
 - ✅ PRODUCT.md (brief de marca para impeccable): sólida, comprador habitual, «aquí lo tienen» + «me van a ayudar»
-- 🔄 Dirección visual: 3 propuestas (A Ficha técnica · B Señalética de nave · C Mostrador) en https://claude.ai/artifact/EuVDs5Uo9A6JgvihpWpUF2. Pendiente de elección
+- ✅ Dirección visual elegida: **B «Señalética de nave»** (propuestas en https://claude.ai/artifact/EuVDs5Uo9A6JgvihpWpUF2)
+- 🔄 Prototipo de portada B v1: fachada → scroll «entras en la nave» → pasillos → buscador → Carburos → pie. https://claude.ai/artifact/JTNPdKRRDGK3m1dgfiR3yK (copia en `docs/prototipos/portada-b.html`)
 - 🔲 Sistema de diseño (escala de neutros, contraste AA de los azules sobre fondos claros): tokens de color, tipografía y espaciado en `src/styles/`
 - 🔲 Layout base, cabecera con navegación (también en móvil) y pie
 - 🔲 Favicons nuevos a partir de `simbolo.svg`
