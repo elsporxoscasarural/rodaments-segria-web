@@ -289,7 +289,7 @@ const activo = (href: string) => ruta === href || ruta.startsWith(href + '/');
 		overflow: hidden;
 	}
 
-	@container cabecera (max-width: 67.5em) {
+	@container cabecera (max-width: 61.5em) {
 		.menu,
 		.tel {
 			display: none;
@@ -323,9 +323,13 @@ const activo = (href: string) => ruta === href || ruta.startsWith(href + '/');
 			clip-path: inset(50%);
 		}
 	}
-	@container cabecera (max-width: 23.75em) {
+	@container cabecera (max-width: 19em) {
 		.cta {
 			display: none;
+		}
+		/* Sin el botón de presupuesto, el botón de menú se queda a la derecha */
+		.boton-menu {
+			margin-inline-start: auto;
 		}
 	}
 </style>
@@ -364,5 +368,5 @@ const activo = (href: string) => ruta === href || ruta.startsWith(href + '/');
 			boton.focus();
 		}
 	});
-	window.matchMedia('(min-width: 67.5625em)').addEventListener('change', (e) => e.matches && abrirMenu(false));
+	window.matchMedia('(min-width: 67.5em)').addEventListener('change', (e) => e.matches && abrirMenu(false));
 </script>

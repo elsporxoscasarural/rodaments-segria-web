@@ -19,7 +19,7 @@ Todas las fotos tienen un **nombre descriptivo** de lo que se ve (ayuda al SEO y
 | `mostrador-tienda-suministro-industrial.jpg` | Mostrador más cerca | Contacto | ✅ Buena |
 | `mostrador-atencion-cliente-vertical.jpg` | Mostrador, vertical | Móvil · Contacto | ✅ Buena |
 | `nave-almacen-pasillo-central.jpg` | Nave, pasillo central (foto anterior) | Alternativa | 🟡 |
-| `nave-almacen-vista-elevada.jpg` | Nave desde arriba (foto anterior) | Empresa · instalaciones | 🟡 |
+| `nave-almacen-vista-elevada.jpg` | Nave desde arriba (foto nueva, 1448 px) | **Cabecera de Empresa** | ✅ |
 | `pasillo-almacen-estanterias.jpg` | Pasillo en perspectiva (foto anterior) | Alternativa | 🟡 |
 | `pasillo-almacen-recambios-industriales.jpg` | Pasillo D (foto anterior) | Alternativa | 🟡 |
 | `estanterias-poleas-y-recambios.jpg` | Estanterías con poleas (foto anterior) | Alternativa | 🟡 |
