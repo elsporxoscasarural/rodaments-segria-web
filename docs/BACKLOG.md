@@ -43,7 +43,7 @@ Estado: ✅ hecho · 🔲 pendiente · ❓ decisión abierta
 - ✅ Prototipo de portada B aprobado (escritorio y móvil): fachada → scroll «entras en la nave» → pasillos → buscador → Carburos → pie. https://claude.ai/artifact/JTNPdKRRDGK3m1dgfiR3yK (copia en `docs/prototipos/portada-b.html`)
 - ✅ Sistema de diseño: `DESIGN.md` + `src/styles/tokens.css` (OKLCH, contrastes AA comprobados) + `global.css`; fuentes alojadas en la web (Big Shoulders Display + Hanken Grotesk)
 - ✅ Layout base, cabecera (transparente sobre la portada, sólida en el resto), menú móvil accesible a pantalla completa y pie con datos de `empresa.ts`
-- 🔲 Favicons nuevos a partir de `simbolo.svg`
+- ✅ Favicons nuevos con el símbolo RS: SVG (blanco en modo oscuro), .ico, iPhone, Android y manifest
 - ✅ **Portada construida** en Astro (`src/components/inicio/`): secuencia fachada → almacén con GSAP, familias desde el catálogo, buscador, Carburos
 - ✅ Páginas de familia (`/productos/[familia]`): cabecera con foto, categorías con tipos y sinónimos, bloque agrícola, franja «¿No ves lo que buscas?», otras familias. Carburos con su verde
 - ✅ Índice `/productos`: familias (Carburos incluido) y listado completo de categorías
