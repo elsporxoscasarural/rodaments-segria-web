@@ -76,6 +76,15 @@ Estrategia: **Comprometida en momentos concretos y contenida en el resto.** El 8
 - Sin rebotes ni curvas elásticas. Solo se animan `transform`, `opacity` y `clip-path`.
 - `prefers-reduced-motion`: sin inercia ni secuencia fijada. Todo se muestra estático y completo.
 
+## Reglas técnicas de calidad (de la auditoría, docs/AUDITORIA.md)
+- **Fotos:** siempre con `<Picture formats={['avif', 'webp']}>` y `sizes` ajustado al ancho real. Si la foto es una celda de rejilla, la colocación va en `pictureAttributes`.
+- **Colores:** solo tokens. Para transparencias, `color-mix(in oklch, var(--token) N%, transparent)`.
+- **Rejillas:** columnas con `minmax(0, 1fr)` y mínimos con `min(100%, Xrem)`, para que nada desborde con la letra ampliada.
+- **Titulares:** `overflow-wrap: anywhere` (parten una palabra solo si no cabe). Sin guionado automático.
+- **Cabecera:** se adapta con *container queries*, no con media queries.
+- **Animaciones:** ninguna se repite indefinidamente (máximo 5 s). Todas respetan `prefers-reduced-motion`.
+- **Nombres propios** (empresa, marcas): `translate="no"`.
+
 ## Do's and Don'ts
 **Sí**
 - Fotos reales de la empresa, cuanto más grandes mejor.

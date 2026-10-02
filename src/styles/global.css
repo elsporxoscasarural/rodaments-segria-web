@@ -12,6 +12,17 @@
 html {
 	-webkit-text-size-adjust: 100%;
 	text-size-adjust: 100%;
+	/* Al navegar con teclado o por anclas, lo enfocado no queda tapado por la cabecera fija */
+	scroll-padding-top: 96px;
+}
+
+a,
+button,
+input,
+textarea,
+label {
+	touch-action: manipulation;
+	-webkit-tap-highlight-color: transparent;
 }
 
 body {
@@ -46,6 +57,8 @@ h3,
 	letter-spacing: 0.005em;
 	color: var(--tinta);
 	text-wrap: balance;
+	/* Con la letra muy ampliada, una palabra que no cabe («REFERENCIA», «PREGÚNTANOS») se parte en vez de desbordar */
+	overflow-wrap: anywhere;
 }
 h1 {
 	font-size: var(--t-mega);
@@ -94,7 +107,8 @@ a {
 	border-radius: var(--radio);
 	background: var(--azul);
 	color: var(--n0);
-	font: 700 var(--t-sm) / 1 var(--f-texto);
+	max-width: 100%;
+	font: 700 var(--t-sm) / 1.15 var(--f-texto);
 	text-decoration: none;
 	cursor: pointer;
 	transition:

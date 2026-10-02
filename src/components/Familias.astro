@@ -1,7 +1,7 @@
 ---
 // Rejilla de familias, generada desde src/content/familias. Se usa en la portada y en /productos.
 // En la portada, Carburos va aparte (BloqueCarburos); en /productos se incluye con su verde.
-import { Image } from 'astro:assets';
+import { Picture } from 'astro:assets';
 import { getCollection } from 'astro:content';
 import IconoFamilia from './IconoFamilia.astro';
 
@@ -41,13 +41,13 @@ const cuantas = (id: string) => categorias.filter((c) => c.data.familia.id === i
 					<li class:list={['aparece', { ancha: i === 0, completa: familia.data.destacada }]}>
 						<a class:list={['familia', { 'familia--cm': familia.data.destacada }]} href={`/productos/${familia.id}`}>
 							{familia.data.imagen && (
-								<Image
+								<Picture formats={['avif', 'webp']}
 									class="familia__foto"
 									style={`view-transition-name: foto-${familia.id}`}
 									src={familia.data.imagen}
 									alt=""
-									widths={[600, 900, 1300]}
-									sizes={i === 0 ? '(max-width: 560px) 100vw, 66vw' : '(max-width: 560px) 100vw, 33vw'}
+									widths={[400, 600, 900, 1300]}
+									sizes={i === 0 ? '(max-width: 560px) calc(100vw - 32px), (max-width: 900px) 100vw, 66vw' : '(max-width: 560px) calc(100vw - 32px), (max-width: 900px) 50vw, 33vw'}
 								/>
 							)}
 							{familia.data.icono && <IconoFamilia class="familia__icono" icono={familia.data.icono} />}
@@ -136,13 +136,13 @@ const cuantas = (id: string) => categorias.filter((c) => c.data.familia.id === i
 		position: absolute;
 		inset: 0;
 		z-index: -1;
-		background: linear-gradient(180deg, transparent 35%, oklch(22.7% 0.077 276.3 / 0.88) 100%);
+		background: linear-gradient(180deg, transparent 35%, color-mix(in oklch, var(--noche) 88%, transparent) 100%);
 	}
 	.familia--cm {
 		background: var(--cm-verde);
 	}
 	.familia--cm::after {
-		background: linear-gradient(180deg, transparent 30%, oklch(50.8% 0.132 152.6 / 0.92) 100%);
+		background: linear-gradient(180deg, transparent 30%, color-mix(in oklch, var(--cm-verde) 92%, transparent) 100%);
 	}
 	.familia:hover .familia__foto,
 	.familia:focus-visible .familia__foto {
@@ -162,7 +162,7 @@ const cuantas = (id: string) => categorias.filter((c) => c.data.familia.id === i
 		top: var(--s-5);
 		right: var(--s-5);
 		padding: var(--s-1) var(--s-3);
-		background: oklch(98.9% 0.003 286.4 / 0.14);
+		background: color-mix(in oklch, var(--n0) 14%, transparent);
 		font-size: var(--t-xs);
 		font-weight: 600;
 	}
@@ -180,7 +180,7 @@ const cuantas = (id: string) => categorias.filter((c) => c.data.familia.id === i
 	}
 	.familia__texto > span {
 		font-size: var(--t-sm);
-		color: oklch(98.9% 0.003 286.4 / 0.88);
+		color: color-mix(in oklch, var(--n0) 88%, transparent);
 	}
 	.familia__ir {
 		margin-top: var(--s-2);
@@ -200,13 +200,13 @@ const cuantas = (id: string) => categorias.filter((c) => c.data.familia.id === i
 
 	@media (max-width: 900px) {
 		.rejilla {
-			grid-template-columns: 1fr 1fr;
+			grid-template-columns: repeat(2, minmax(0, 1fr));
 			grid-auto-rows: minmax(240px, 44vw);
 		}
 	}
 	@media (max-width: 560px) {
 		.rejilla {
-			grid-template-columns: 1fr;
+			grid-template-columns: minmax(0, 1fr);
 			grid-auto-rows: 260px;
 		}
 		.rejilla .ancha {

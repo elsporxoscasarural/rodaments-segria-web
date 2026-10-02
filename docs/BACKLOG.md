@@ -54,13 +54,13 @@ Estado: ✅ hecho · 🔲 pendiente · ❓ decisión abierta
 - ✅ Aviso legal, privacidad y cookies redactados con los datos reales (`src/data/legal.ts`). **Pendiente:** hoja del Registro Mercantil y **revisión por la gestoría** antes del lanzamiento
 - 🔲 Al elegir hosting y servicio de formularios: añadirlos como encargados del tratamiento en `/privacidad`
 - 🔲 Si algún día se añade analítica: actualizar `/cookies` y poner banner de consentimiento
-- 🔲 Responsive y accesibilidad (contraste, foco y navegación con teclado)
+- ✅ Responsive y accesibilidad (WCAG 2.2 AA: contraste, foco, teclado, letra ampliada, 320 px)
 
 ## Fase 3 — Animaciones
 - ✅ GSAP + ScrollTrigger (secuencia de portada) y Lenis (scroll con inercia) + apariciones en `src/scripts/movimiento.ts`
 - ✅ Animación de entrada del hero y apariciones al hacer scroll
 - ✅ Transiciones entre páginas (View Transitions nativas) con la foto de familia compartida + precarga al pasar el ratón (Speculation Rules)
-- 🔲 Comprobar `prefers-reduced-motion` y el rendimiento en móvil
+- ✅ `prefers-reduced-motion` y rendimiento en móvil comprobados
 
 ## SEO y GEO desde el principio
 El SEO (Google) y el GEO (aparecer en respuestas de IA como ChatGPT, Gemini o los resúmenes de Google) **se trabajan desde la fase 1**. La fase 4 es solo la parte técnica y la revisión final.
@@ -73,7 +73,8 @@ El SEO (Google) y el GEO (aparecer en respuestas de IA como ChatGPT, Gemini o lo
 - ✅ Datos estructurados `LocalBusiness` en todas las páginas y `BreadcrumbList` en las que tienen migas
 - ✅ `sitemap-index.xml` automático y `robots.txt` generado según el interruptor `indexable` de `src/data/sitio.ts`
 - 🔲 Ficha de Google Business coherente con la web
-- 🔲 Revisión con Lighthouse: rendimiento, accesibilidad y SEO
+- ✅ Auditoría completa (`docs/AUDITORIA.md`): impeccable 20/20, axe 0 errores, Lighthouse móvil 97–100 y escritorio 100
+- 🔲 Repetir la auditoría con la web publicada en el hosting real
 
 ## Fase 5 — Hosting y dominio
 - ❓ Elegir hosting estático. Cualquiera sirve porque la salida es HTML estático

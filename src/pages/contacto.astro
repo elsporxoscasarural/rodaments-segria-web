@@ -1,6 +1,6 @@
 ---
 // Contacto y presupuestos. El mapa de Google solo se carga si el usuario lo pide (sin cookies de Google hasta entonces).
-import { Image } from 'astro:assets';
+import { Picture } from 'astro:assets';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Migas from '../components/Migas.astro';
 import FormularioConsulta from '../components/formularios/FormularioConsulta.astro';
@@ -35,7 +35,7 @@ const tramos = empresa.horario.tramos.map((t) => `${t.abre.replace(/^0/, '')} a 
 	<section class="mapa" aria-labelledby="t-mapa">
 		<h2 id="t-mapa" class="visualmente-oculto">Ubicación en el mapa</h2>
 		<div class="mapa__marco" data-mapa data-src={`https://maps.google.com/maps?q=${consultaMapa}&z=16&hl=es&output=embed`}>
-			<Image src={fachada} alt="Fachada de Rodaments Segrià" widths={[800, 1400, 2000]} sizes="100vw" class="mapa__poster" />
+			<Picture formats={['avif', 'webp']} src={fachada} alt="Fachada de Rodaments Segrià" widths={[800, 1400, 2000]} sizes="100vw" class="mapa__poster" />
 			<div class="mapa__aviso">
 				<p>
 					<strong>{direccion.poligono}, {direccion.calle}, {`${direccion.codigoPostal} ${direccion.localidad}`}</strong>
@@ -109,7 +109,7 @@ const tramos = empresa.horario.tramos.map((t) => `${t.abre.replace(/^0/, '')} a 
 		font-size: var(--t-lead);
 	}
 	.mapa__aviso small {
-		color: oklch(98.9% 0.003 286.4 / 0.75);
+		color: color-mix(in oklch, var(--n0) 75%, transparent);
 	}
 	.mapa__marco :global(iframe) {
 		position: absolute;
@@ -121,7 +121,7 @@ const tramos = empresa.horario.tramos.map((t) => `${t.abre.replace(/^0/, '')} a 
 
 	@media (max-width: 900px) {
 		.contacto__rejilla {
-			grid-template-columns: 1fr;
+			grid-template-columns: minmax(0, 1fr);
 		}
 	}
 </style>

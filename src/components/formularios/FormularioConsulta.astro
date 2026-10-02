@@ -35,7 +35,9 @@ const asunto = tipo === 'presupuesto' ? 'Solicitud de presupuesto' : 'Consulta d
 						required
 						data-desde-url="ref"
 						aria-describedby={`${id('referencias')}-ayuda`}
-						placeholder="6205-2RS x 10"
+						placeholder="6205-2RS x 10…"
+						spellcheck="false"
+						autocomplete="off"
 					/>
 					<p class="ayuda" id={`${id('referencias')}-ayuda`}>
 						Una por línea y, si la sabes, con la cantidad.
@@ -43,11 +45,11 @@ const asunto = tipo === 'presupuesto' ? 'Solicitud de presupuesto' : 'Consulta d
 				</div>
 				<div class="campo">
 					<label for={id('marca')}>Marca</label>
-					<input id={id('marca')} name="marca" autocomplete="off" placeholder="SKF, FAG, NTN…" />
+					<input id={id('marca')} name="marca" autocomplete="off" spellcheck="false" placeholder="SKF, FAG, NTN…" />
 				</div>
 				<div class="campo">
 					<label for={id('uso')}>¿Para qué es?</label>
-					<input id={id('uso')} name="uso" autocomplete="off" placeholder="Máquina o aplicación" />
+					<input id={id('uso')} name="uso" autocomplete="off" placeholder="Empacadora, cinta transportadora…" />
 				</div>
 				{formularios.adjuntos && (
 					<div class="campo campo--ancho">
@@ -77,7 +79,7 @@ const asunto = tipo === 'presupuesto' ? 'Solicitud de presupuesto' : 'Consulta d
 	}
 	<div class="campo">
 		<label for={id('email')}>Email <span class="obligatorio">obligatorio</span></label>
-		<input id={id('email')} name="email" type="email" autocomplete="email" required />
+		<input id={id('email')} name="email" type="email" autocomplete="email" spellcheck="false" required />
 	</div>
 	<div class="campo">
 		<label for={id('telefono')}>Teléfono</label>
@@ -205,7 +207,7 @@ const asunto = tipo === 'presupuesto' ? 'Solicitud de presupuesto' : 'Consulta d
 		border-color: var(--azul);
 	}
 	[aria-invalid='true'] {
-		border-color: oklch(52% 0.19 27) !important;
+		border-color: var(--error-borde) !important;
 	}
 	.ayuda {
 		margin: 0;
@@ -216,7 +218,7 @@ const asunto = tipo === 'presupuesto' ? 'Solicitud de presupuesto' : 'Consulta d
 		margin: 0;
 		font-size: var(--t-xs);
 		font-weight: 600;
-		color: oklch(48% 0.18 27);
+		color: var(--error);
 	}
 
 	.opciones {
@@ -280,10 +282,10 @@ const asunto = tipo === 'presupuesto' ? 'Solicitud de presupuesto' : 'Consulta d
 		color: var(--tinta);
 	}
 	.estado[data-tipo='ok'] {
-		color: oklch(45% 0.12 152);
+		color: var(--correcto);
 	}
 	.estado[data-tipo='error'] {
-		color: oklch(48% 0.18 27);
+		color: var(--error);
 	}
 
 	.rgpd {
@@ -302,7 +304,7 @@ const asunto = tipo === 'presupuesto' ? 'Solicitud de presupuesto' : 'Consulta d
 
 	@media (max-width: 640px) {
 		.formulario {
-			grid-template-columns: 1fr;
+			grid-template-columns: minmax(0, 1fr);
 		}
 	}
 </style>
@@ -347,6 +349,13 @@ const asunto = tipo === 'presupuesto' ? 'Solicitud de presupuesto' : 'Consulta d
 		}
 
 		const campos = form.querySelectorAll<HTMLInputElement | HTMLTextAreaElement>('input[required], textarea[required]');
+
+		// Aviso si se intenta salir con la consulta a medio escribir (y aún no se ha enviado)
+		let pendiente = false;
+		form.addEventListener('input', () => (pendiente = true));
+		window.addEventListener('beforeunload', (ev) => {
+			if (pendiente) ev.preventDefault();
+		});
 		campos.forEach((campo) => campo.addEventListener('blur', () => campo.value && marcarError(campo)));
 
 		form.addEventListener('submit', async (e) => {
@@ -370,6 +379,7 @@ const asunto = tipo === 'presupuesto' ? 'Solicitud de presupuesto' : 'Consulta d
 			}
 			datos.delete('web');
 			datos.delete('privacidad');
+			pendiente = false; // ya se envía: no avisar al salir
 
 			const endpoint = form.dataset.endpoint;
 			if (!endpoint) {

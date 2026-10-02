@@ -7,7 +7,7 @@ const tramos = horario.tramos.map((t) => `${t.abre.replace(/^0/, '')} a ${t.cier
 const destinoMapa = encodeURIComponent(`${empresa.nombre}, ${direccion.calle}, ${direccion.codigoPostal} ${direccion.localidad}`);
 ---
 
-<aside class="datos sobre-oscuro" aria-label="Datos de contacto">
+<div class="datos sobre-oscuro">
 	<div>
 		<span class="etiqueta">Llámanos</span>
 		<a class="tel" href={`tel:${empresa.telefono.enlace}`}>{empresa.telefono.visible}</a>
@@ -41,7 +41,7 @@ const destinoMapa = encodeURIComponent(`${empresa.nombre}, ${direccion.calle}, $
 	<a class="btn btn--claro" href={`https://www.google.com/maps/dir/?api=1&destination=${destinoMapa}`} rel="noopener" target="_blank">
 		Cómo llegar <span class="flecha" aria-hidden="true">→</span>
 	</a>
-</aside>
+</div>
 
 <style>
 	.datos {
@@ -50,7 +50,7 @@ const destinoMapa = encodeURIComponent(`${empresa.nombre}, ${direccion.calle}, $
 		align-content: start;
 		padding: clamp(1.75rem, 3vw, 2.75rem);
 		background: var(--noche);
-		color: oklch(98.9% 0.003 286.4 / 0.92);
+		color: color-mix(in oklch, var(--n0) 92%, transparent);
 	}
 	.etiqueta {
 		display: block;
@@ -59,7 +59,7 @@ const destinoMapa = encodeURIComponent(`${empresa.nombre}, ${direccion.calle}, $
 		font-weight: 700;
 		letter-spacing: 0.08em;
 		text-transform: uppercase;
-		color: oklch(98.9% 0.003 286.4 / 0.62);
+		color: color-mix(in oklch, var(--n0) 62%, transparent);
 	}
 	a {
 		text-decoration: none;

@@ -27,7 +27,13 @@
 	--cm-verde-suave: oklch(94% 0.03 152); /* hover de botón claro */
 	--cm-cian: oklch(68.6% 0.139 231.3); /* #00A8E0 · símbolo de su logo */
 
+	/* --- Estados --- */
+	--error: oklch(48% 0.18 27); /* texto de error (AA sobre claro) */
+	--error-borde: oklch(52% 0.19 27);
+	--correcto: oklch(45% 0.12 152);
+
 	/* --- Velos para texto sobre foto --- */
+	/* Transparencias: usar color-mix(in oklch, var(--token) N%, transparent) en lugar de escribir el color a mano. */
 	--velo-noche: oklch(22.7% 0.077 276.3 / 0.82);
 
 	/* --- Tipografía --- */

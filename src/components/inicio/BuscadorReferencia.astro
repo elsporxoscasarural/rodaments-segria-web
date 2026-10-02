@@ -13,7 +13,7 @@
 	<form class="aparece" action="/buscar-referencia" method="get">
 		<label for="ref-inicio">Referencia</label>
 		<div class="campo">
-			<input id="ref-inicio" name="ref" placeholder="Ej.: 6205-2RS x 10" autocomplete="off" required />
+			<input id="ref-inicio" name="ref" placeholder="Ej.: 6205-2RS x 10…" autocomplete="off" spellcheck="false" required />
 			<button type="submit">Consultar disponibilidad</button>
 		</div>
 		<small>Si la sabes, añade la cantidad. Te respondemos lo antes posible.</small>
@@ -87,7 +87,7 @@
 	}
 	@media (max-width: 820px) {
 		.busca {
-			grid-template-columns: 1fr;
+			grid-template-columns: minmax(0, 1fr);
 		}
 		.campo {
 			flex-direction: column;

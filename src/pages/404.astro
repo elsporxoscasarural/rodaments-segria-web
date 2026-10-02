@@ -10,7 +10,6 @@ const familias = (await getCollection('familias')).sort((a, b) => a.data.orden -
 
 <BaseLayout title="Página no encontrada | Rodaments Segrià" description="Esta página no existe. Visita nuestro catálogo o pregúntanos por la referencia que buscas.">
 	<section class="error" aria-labelledby="t-error">
-		<p class="error__codigo" aria-hidden="true">404</p>
 		<h1 id="t-error">Esta página no existe</h1>
 		<p class="error__texto">
 			Puede que el enlace sea antiguo o esté mal escrito. Pero la pieza que buscas, seguramente sí la tenemos.
@@ -45,18 +44,18 @@ const familias = (await getCollection('familias')).sort((a, b) => a.data.orden -
 		overflow: hidden;
 		background: var(--n1);
 	}
-	.error__codigo {
+	/* «404» gigante decorativo: pseudoelemento, no texto */
+	.error::before {
+		content: '404';
 		position: absolute;
 		right: var(--g);
 		bottom: -0.18em;
-		max-width: none;
 		font-family: var(--f-display);
 		font-weight: 900;
 		font-size: clamp(10rem, 32vw, 26rem);
 		line-height: 1;
 		color: var(--n2);
 		pointer-events: none;
-		user-select: none;
 	}
 	h1 {
 		position: relative;
@@ -99,7 +98,7 @@ const familias = (await getCollection('familias')).sort((a, b) => a.data.orden -
 		list-style: none;
 	}
 	.atajos li {
-		flex: 1 1 13rem;
+		flex: 1 1 min(100%, 13rem);
 	}
 	.atajos a {
 		display: flex;
@@ -119,6 +118,10 @@ const familias = (await getCollection('familias')).sort((a, b) => a.data.orden -
 	}
 	.atajos a:hover {
 		background: var(--indigo);
+	}
+	.atajos a span {
+		min-width: 0;
+		overflow-wrap: anywhere;
 	}
 	.atajos a.atajos--cm {
 		background: var(--cm-verde);

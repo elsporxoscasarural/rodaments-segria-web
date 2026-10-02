@@ -11,6 +11,8 @@ export default defineConfig({
 		locales: ['es'],
 		routing: { prefixDefaultLocale: false },
 	},
+	// CSS dentro del HTML: sin peticiones que bloqueen el primer pintado (la web es pequeña, compensa)
+	build: { inlineStylesheets: 'always' },
 	// Sitemap automático en /sitemap-index.xml (sin la página 404)
 	integrations: [sitemap({ filter: (pagina) => !pagina.includes('/404') })],
 });

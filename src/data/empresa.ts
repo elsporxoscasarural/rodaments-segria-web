@@ -44,5 +44,6 @@ export const empresa = {
 /** Años de trayectoria, calculados (no caducan). */
 export const anosTrayectoria = () => new Date().getFullYear() - empresa.fundacion;
 
-/** Números con punto de miles («500.000», «2.000»). Ojo: toLocaleString('es-ES') no agrupa los de 4 cifras. */
-export const formatoNumero = (n: number) => String(n).replace(/\B(?=(\d{3})+(?!\d))/g, '.');
+/** Números con punto de miles («500.000», «2.000»). useGrouping 'always': en español Intl no agrupa los de 4 cifras por defecto. */
+const numeros = new Intl.NumberFormat('es-ES', { useGrouping: 'always' });
+export const formatoNumero = (n: number) => numeros.format(n);

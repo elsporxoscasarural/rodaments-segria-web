@@ -1,6 +1,6 @@
 ---
 // Empresa: historia (texto del cliente), forma de trabajar, instalaciones, equipo y marcas. Textos en docs/TEXTOS.md.
-import { Image } from 'astro:assets';
+import { Picture } from 'astro:assets';
 import { getCollection } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Migas from '../components/Migas.astro';
@@ -28,7 +28,7 @@ const { direccion } = empresa;
 	portada
 >
 	<section class="cabecera" aria-labelledby="t-empresa">
-		<Image class="cabecera__foto" src={cabecera} alt="" widths={[800, 1400, 2000, 2560]} sizes="100vw" loading="eager" fetchpriority="high" />
+		<Picture formats={['avif', 'webp']} class="cabecera__foto" src={cabecera} alt="" widths={[800, 1400, 2000, 2560]} sizes="100vw" loading="eager" fetchpriority="high" />
 		<div class="cabecera__contenido">
 			<Migas ruta={[{ texto: 'Empresa' }]} claro />
 			<h1 id="t-empresa">Una empresa familiar al servicio de la industria desde {empresa.fundacion}</h1>
@@ -37,16 +37,16 @@ const { direccion } = empresa;
 	</section>
 
 	<section class="historia" aria-labelledby="t-historia" data-fin-portada>
-		<aside class="historia__datos aparece" aria-label="Rodaments Segrià en datos">
+		<div class="historia__datos aparece">
 			<p><strong>{empresa.fundacion}</strong><span>Fundada en {direccion.localidad}</span></p>
 			<p><strong>{generacion}</strong><span>generación al frente</span></p>
 			<p><strong>+{referencias}</strong><span>referencias en stock</span></p>
 			<p><strong>+{formatoNumero(empresa.metrosAlmacen)} <span class="unidad">m²</span></strong><span>de almacén</span></p>
-		</aside>
+		</div>
 		<div class="historia__texto">
 			<h2 id="t-historia">Nuestra historia</h2>
 			<p class="historia__entrada aparece">
-				Rodaments Segrià nació en {empresa.fundacion} con un propósito claro: ser un apoyo de confianza para la
+				<span translate="no">Rodaments Segrià</span> nació en {empresa.fundacion} con un propósito claro: ser un apoyo de confianza para la
 				industria, la producción, la agricultura y los talleres de nuestro entorno.
 			</p>
 			<p class="aparece">
@@ -109,10 +109,10 @@ const { direccion } = empresa;
 			</p>
 		</div>
 		<div class="galeria">
-			<Image class="galeria__a aparece" src={nave} alt="Nave del almacén con estanterías de stock y un camión al fondo" widths={[700, 1100, 1600]} sizes="(max-width: 820px) 100vw, 60vw" />
-			<Image class="galeria__b aparece" src={pasillo} alt="Pasillo del almacén con cajas de rodamientos de varias marcas" widths={[500, 800]} sizes="(max-width: 820px) 50vw, 25vw" />
-			<Image class="galeria__c aparece" src={mostrador} alt="Mostrador de atención al cliente en la tienda" widths={[600, 1000]} sizes="(max-width: 820px) 50vw, 35vw" />
-			<Image class="galeria__d aparece" src={fachada} alt="Fachada de Rodaments Segrià en el Polígono Camí dels Frares" widths={[600, 1000]} sizes="(max-width: 820px) 100vw, 35vw" />
+			<Picture formats={['avif', 'webp']} pictureAttributes={{ class: 'galeria__a aparece' }} src={nave} alt="Nave del almacén con estanterías de stock y un camión al fondo" widths={[700, 1100, 1600]} sizes="(max-width: 820px) 100vw, 60vw" />
+			<Picture formats={['avif', 'webp']} pictureAttributes={{ class: 'galeria__b aparece' }} src={pasillo} alt="Pasillo del almacén con cajas de rodamientos de varias marcas" widths={[500, 800]} sizes="(max-width: 820px) 50vw, 25vw" />
+			<Picture formats={['avif', 'webp']} pictureAttributes={{ class: 'galeria__c aparece' }} src={mostrador} alt="Mostrador de atención al cliente en la tienda" widths={[600, 1000]} sizes="(max-width: 820px) 50vw, 35vw" />
+			<Picture formats={['avif', 'webp']} pictureAttributes={{ class: 'galeria__d aparece' }} src={fachada} alt="Fachada de Rodaments Segrià en el Polígono Camí dels Frares" widths={[600, 1000]} sizes="(max-width: 820px) 100vw, 35vw" />
 		</div>
 	</section>
 
@@ -120,7 +120,7 @@ const { direccion } = empresa;
 		marcas.length > 0 && (
 			<section class="marcas" aria-labelledby="t-marcas">
 				<h2 id="t-marcas">Trabajamos con las mejores marcas</h2>
-				<ul>
+				<ul translate="no">
 					{marcas.map((m) => (
 						<li>{m}</li>
 					))}
@@ -152,7 +152,7 @@ const { direccion } = empresa;
 		padding: 120px var(--g) clamp(2.5rem, 7vh, 5rem);
 		overflow: hidden;
 		background: var(--noche);
-		color: oklch(98.9% 0.003 286.4 / 0.92);
+		color: color-mix(in oklch, var(--n0) 92%, transparent);
 		isolation: isolate;
 	}
 	.cabecera__foto {
@@ -169,7 +169,7 @@ const { direccion } = empresa;
 		inset: 0;
 		z-index: -1;
 		background:
-			linear-gradient(0deg, oklch(22.7% 0.077 276.3 / 0.92) 0%, oklch(22.7% 0.077 276.3 / 0.35) 55%, oklch(22.7% 0.077 276.3 / 0.5) 100%);
+			linear-gradient(0deg, color-mix(in oklch, var(--noche) 92%, transparent) 0%, color-mix(in oklch, var(--noche) 35%, transparent) 55%, color-mix(in oklch, var(--noche) 50%, transparent) 100%);
 	}
 	.cabecera h1 {
 		max-width: 16ch;
@@ -238,7 +238,7 @@ const { direccion } = empresa;
 	.oficio {
 		padding: var(--seccion) var(--g);
 		background: var(--noche);
-		color: oklch(98.9% 0.003 286.4 / 0.85);
+		color: color-mix(in oklch, var(--n0) 85%, transparent);
 	}
 	.oficio__cabecera {
 		display: flex;
@@ -266,7 +266,7 @@ const { direccion } = empresa;
 	}
 	.valores li {
 		padding-top: var(--s-4);
-		border-top: 1px solid oklch(98.9% 0.003 286.4 / 0.25);
+		border-top: 1px solid color-mix(in oklch, var(--n0) 25%, transparent);
 	}
 	.valores h3 {
 		margin-bottom: var(--s-3);
@@ -290,13 +290,18 @@ const { direccion } = empresa;
 	.instalaciones__texto h2 {
 		grid-row: span 2;
 		color: var(--noche);
-		max-width: 10ch;
+		max-width: 14ch;
 	}
 	.galeria {
 		display: grid;
 		grid-template-columns: 1.7fr 1fr 1.2fr;
 		grid-template-rows: clamp(200px, 22vw, 320px) clamp(200px, 22vw, 320px);
 		gap: 4px;
+	}
+	/* Cada <picture> es una celda de la rejilla; la foto la llena */
+	.galeria :global(picture) {
+		display: block;
+		min-height: 0;
 	}
 	.galeria :global(img) {
 		width: 100%;
@@ -346,7 +351,7 @@ const { direccion } = empresa;
 		gap: var(--s-6);
 		padding: var(--seccion) var(--g);
 		background: var(--indigo);
-		color: oklch(98.9% 0.003 286.4 / 0.88);
+		color: color-mix(in oklch, var(--n0) 88%, transparent);
 	}
 	.visita h2 {
 		max-width: 14ch;
@@ -365,24 +370,24 @@ const { direccion } = empresa;
 	@media (max-width: 900px) {
 		.historia,
 		.instalaciones__texto {
-			grid-template-columns: 1fr;
+			grid-template-columns: minmax(0, 1fr);
 		}
 		.historia__datos {
 			position: static;
-			grid-template-columns: 1fr 1fr;
+			/* Dos columnas; una sola si la letra está muy ampliada */
+			grid-template-columns: repeat(auto-fit, minmax(min(100%, 9.5rem), 1fr));
 		}
 		.historia__datos strong {
 			font-size: clamp(1.9rem, 8.5vw, 2.6rem);
-			white-space: nowrap;
 		}
 		.instalaciones__texto h2 {
 			grid-row: auto;
 		}
 		.valores {
-			grid-template-columns: 1fr;
+			grid-template-columns: minmax(0, 1fr);
 		}
 		.galeria {
-			grid-template-columns: 1fr 1fr;
+			grid-template-columns: repeat(2, minmax(0, 1fr));
 			grid-template-rows: repeat(3, clamp(180px, 40vw, 280px));
 		}
 		.galeria :global(.galeria__a) {

@@ -80,6 +80,7 @@ const { titulo, descripcion, actualizado } = Astro.props;
 		margin: 0;
 	}
 	.texto :global(a) {
+		overflow-wrap: anywhere;
 		color: var(--azul);
 	}
 	.texto :global(table) {
@@ -100,7 +101,7 @@ const { titulo, descripcion, actualizado } = Astro.props;
 	}
 	@media (max-width: 560px) {
 		.texto :global(dl) {
-			grid-template-columns: 1fr;
+			grid-template-columns: minmax(0, 1fr);
 		}
 		.texto :global(dd) {
 			margin-bottom: var(--s-3);

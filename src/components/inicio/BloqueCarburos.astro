@@ -1,6 +1,6 @@
 ---
 // Carburos Metálicos con su propia identidad (su verde y su logo). Datos de la familia «gases-industriales».
-import { Image } from 'astro:assets';
+import { Picture } from 'astro:assets';
 import { getCollection, getEntry } from 'astro:content';
 
 const familia = await getEntry('familias', 'gases-industriales');
@@ -16,7 +16,7 @@ const categorias = (await getCollection('categorias', (c) => c.data.familia.id =
 			<div class="cm__texto aparece">
 				{marca?.data.logo && marca.data.permisoLogo && (
 					<div class="cm__placa">
-						<Image src={marca.data.logo} alt="Carburos Metálicos" height={40} densities={[1, 2]} />
+						<Picture formats={['avif', 'webp']} src={marca.data.logo} alt="Carburos Metálicos" height={40} densities={[1, 2]} />
 						<small>Distribuidor autorizado</small>
 					</div>
 				)}
@@ -34,7 +34,7 @@ const categorias = (await getCollection('categorias', (c) => c.data.familia.id =
 			</div>
 			{familia.data.imagen && (
 				<div class="cm__foto">
-					<Image
+					<Picture formats={['avif', 'webp']}
 						src={familia.data.imagen}
 						alt="Camión de Carburos Metálicos cargado de botellas de gas"
 						widths={[700, 1000, 1400]}
@@ -51,7 +51,7 @@ const categorias = (await getCollection('categorias', (c) => c.data.familia.id =
 		display: grid;
 		grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
 		background: var(--cm-verde);
-		color: oklch(98.9% 0.003 286.4 / 0.92);
+		color: color-mix(in oklch, var(--n0) 92%, transparent);
 	}
 	.cm__texto {
 		padding: var(--seccion) var(--g);
@@ -92,7 +92,7 @@ const categorias = (await getCollection('categorias', (c) => c.data.familia.id =
 	}
 	li {
 		padding: var(--s-2) var(--s-3);
-		border: 1px solid oklch(98.9% 0.003 286.4 / 0.5);
+		border: 1px solid color-mix(in oklch, var(--n0) 50%, transparent);
 		font-size: var(--t-sm);
 	}
 	.cm__boton {
@@ -118,17 +118,17 @@ const categorias = (await getCollection('categorias', (c) => c.data.familia.id =
 		content: '';
 		position: absolute;
 		inset: 0;
-		background: linear-gradient(90deg, var(--cm-verde) 0, oklch(50.8% 0.132 152.6 / 0) 35%);
+		background: linear-gradient(90deg, var(--cm-verde) 0, transparent 35%);
 	}
 	@media (max-width: 820px) {
 		.cm {
-			grid-template-columns: 1fr;
+			grid-template-columns: minmax(0, 1fr);
 		}
 		.cm__foto {
 			min-height: 240px;
 		}
 		.cm__foto::after {
-			background: linear-gradient(180deg, var(--cm-verde) 0, oklch(50.8% 0.132 152.6 / 0) 40%);
+			background: linear-gradient(180deg, var(--cm-verde) 0, transparent 40%);
 		}
 	}
 </style>

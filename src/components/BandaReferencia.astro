@@ -32,7 +32,7 @@ const { titulo = '¿No ves lo que buscas?' } = Astro.props;
 		align-items: end;
 		padding: var(--seccion) var(--g);
 		background: var(--indigo);
-		color: oklch(98.9% 0.003 286.4 / 0.9);
+		color: color-mix(in oklch, var(--n0) 90%, transparent);
 	}
 	h2 {
 		margin-bottom: var(--s-4);
@@ -64,14 +64,14 @@ const { titulo = '¿No ves lo que buscas?' } = Astro.props;
 		font-family: var(--f-texto);
 		font-size: var(--t-sm);
 		font-weight: 600;
-		color: oklch(98.9% 0.003 286.4 / 0.7);
+		color: color-mix(in oklch, var(--n0) 70%, transparent);
 	}
 	.banda__tel:hover {
 		color: var(--azul-claro);
 	}
 	@media (max-width: 820px) {
 		.banda {
-			grid-template-columns: 1fr;
+			grid-template-columns: minmax(0, 1fr);
 		}
 	}
 </style>

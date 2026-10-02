@@ -1,7 +1,7 @@
 ---
 // Página de cada familia del catálogo. Se genera una por archivo de src/content/familias.
 // Carburos Metálicos (familia destacada) usa su verde y su logo.
-import { Image } from 'astro:assets';
+import { Picture } from 'astro:assets';
 import { getCollection, getEntry, type CollectionEntry } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import IconoFamilia from '../../components/IconoFamilia.astro';
@@ -44,7 +44,7 @@ const titulo = destacada ? `${nombre}: gases industriales en Lleida | Rodaments 
 	<section class:list={['cabecera-familia', { 'cabecera-familia--cm': destacada }]} aria-labelledby="t-familia">
 		{
 			imagen && (
-				<Image
+				<Picture formats={['avif', 'webp']}
 					class="cabecera-familia__foto"
 					style={`view-transition-name: foto-${familia.id}`}
 					src={imagen}
@@ -61,7 +61,7 @@ const titulo = destacada ? `${nombre}: gases industriales en Lleida | Rodaments 
 			{
 				marcaCm?.data.logo && marcaCm.data.permisoLogo ? (
 					<div class="placa-cm">
-						<Image src={marcaCm.data.logo} alt="Carburos Metálicos" height={40} densities={[1, 2]} />
+						<Picture formats={['avif', 'webp']} src={marcaCm.data.logo} alt="Carburos Metálicos" height={40} densities={[1, 2]} />
 						<small>Distribuidor autorizado</small>
 					</div>
 				) : (
@@ -166,7 +166,7 @@ const titulo = destacada ? `${nombre}: gases industriales en Lleida | Rodaments 
 		padding: 120px var(--g) clamp(2.5rem, 6vh, 4rem);
 		overflow: hidden;
 		background: var(--noche);
-		color: oklch(98.9% 0.003 286.4 / 0.92);
+		color: color-mix(in oklch, var(--n0) 92%, transparent);
 		isolation: isolate;
 	}
 	.cabecera-familia__foto {
@@ -183,16 +183,16 @@ const titulo = destacada ? `${nombre}: gases industriales en Lleida | Rodaments 
 		inset: 0;
 		z-index: -1;
 		background:
-			linear-gradient(90deg, oklch(22.7% 0.077 276.3 / 0.88) 0%, oklch(22.7% 0.077 276.3 / 0.55) 55%, oklch(22.7% 0.077 276.3 / 0.25) 100%),
-			linear-gradient(180deg, oklch(22.7% 0.077 276.3 / 0.45) 0%, transparent 30%);
+			linear-gradient(90deg, color-mix(in oklch, var(--noche) 88%, transparent) 0%, color-mix(in oklch, var(--noche) 55%, transparent) 55%, color-mix(in oklch, var(--noche) 25%, transparent) 100%),
+			linear-gradient(180deg, color-mix(in oklch, var(--noche) 45%, transparent) 0%, transparent 30%);
 	}
 	.cabecera-familia--cm {
 		background: var(--cm-verde);
 	}
 	.cabecera-familia--cm::after {
 		background:
-			linear-gradient(90deg, oklch(50.8% 0.132 152.6 / 0.95) 0%, oklch(50.8% 0.132 152.6 / 0.7) 50%, oklch(50.8% 0.132 152.6 / 0.15) 100%),
-			linear-gradient(180deg, oklch(22.7% 0.077 276.3 / 0.35) 0%, transparent 30%);
+			linear-gradient(90deg, color-mix(in oklch, var(--cm-verde) 95%, transparent) 0%, color-mix(in oklch, var(--cm-verde) 70%, transparent) 50%, color-mix(in oklch, var(--cm-verde) 15%, transparent) 100%),
+			linear-gradient(180deg, color-mix(in oklch, var(--noche) 35%, transparent) 0%, transparent 30%);
 	}
 	.cabecera-familia__contenido {
 		max-width: 46rem;
@@ -290,7 +290,7 @@ const titulo = destacada ? `${nombre}: gases industriales en Lleida | Rodaments 
 	}
 	.categoria__tipos ul {
 		display: grid;
-		grid-template-columns: repeat(auto-fill, minmax(14rem, 1fr));
+		grid-template-columns: repeat(auto-fill, minmax(min(100%, 14rem), 1fr));
 		gap: var(--s-2) var(--s-6);
 		margin: 0 0 var(--s-5);
 		padding: 0;
@@ -343,7 +343,7 @@ const titulo = destacada ? `${nombre}: gases industriales en Lleida | Rodaments 
 	}
 	.relacionadas__lista {
 		display: grid;
-		grid-template-columns: repeat(auto-fill, minmax(13rem, 1fr));
+		grid-template-columns: repeat(auto-fill, minmax(min(100%, 13rem), 1fr));
 		gap: 4px;
 		margin: 0;
 		padding: 0;
@@ -394,7 +394,7 @@ const titulo = destacada ? `${nombre}: gases industriales en Lleida | Rodaments 
 		list-style: none;
 	}
 	.otras li {
-		flex: 1 1 13rem;
+		flex: 1 1 min(100%, 13rem);
 	}
 	.otras a {
 		display: flex;
@@ -415,6 +415,10 @@ const titulo = destacada ? `${nombre}: gases industriales en Lleida | Rodaments 
 	.otras a:hover {
 		background: var(--indigo);
 	}
+	.otras a span {
+		min-width: 0;
+		overflow-wrap: anywhere;
+	}
 	.otras a.otras--cm {
 		background: var(--cm-verde);
 	}
@@ -427,7 +431,7 @@ const titulo = destacada ? `${nombre}: gases industriales en Lleida | Rodaments 
 	@media (max-width: 900px) {
 		.categoria,
 		.relacionadas {
-			grid-template-columns: 1fr;
+			grid-template-columns: minmax(0, 1fr);
 		}
 	}
 </style>
