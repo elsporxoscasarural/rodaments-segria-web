@@ -74,11 +74,18 @@ h1{font-family:var(--fd);font-weight:900;text-transform:uppercase;font-size:clam
 .dentro .linea em{font-style:normal;color:var(--azul-claro)}
 .dentro .marcas{margin-top:clamp(24px,4vh,44px);display:flex;flex-wrap:wrap;gap:6px 28px;align-items:baseline;font-family:var(--fd);font-weight:800;font-size:clamp(20px,2.2vw,28px);text-transform:uppercase;color:rgba(255,255,255,.62);opacity:0}
 .dentro .marcas span{font-family:var(--ft);font-weight:600;font-size:14px;text-transform:none;color:rgba(255,255,255,.92);flex-basis:100%}
+/* Móvil: el texto va arriba sobre azul índigo, que se funde con el cielo de la foto; la fachada queda abajo, despejada. */
 @media (max-width:820px){
-  .portada{grid-template-columns:1fr}
-  .fachada{background-position:60% 30%}
+  .fachada{background-color:var(--noche);background-size:auto 60%;background-repeat:no-repeat;background-position:60% 100%;transform-origin:77% 73%}
+  .fachada::after{background:linear-gradient(180deg,var(--noche) 0%,var(--noche) 34%,rgba(20,22,63,.55) 44%,rgba(20,22,63,0) 56%,rgba(20,22,63,0) 100%)}
+  .nave{clip-path:inset(73% 23% 27% 77%)}
+  .portada{inset:0 0 auto 0;padding-top:calc(env(safe-area-inset-top,0px) + 88px);grid-template-columns:1fr;gap:18px}
+  h1{font-size:clamp(46px,13vw,64px)}
+  .placa{margin-bottom:14px}
+  .portada .lado p{font-size:17px;margin-bottom:14px}
   .pista{display:none}
 }
+@media (max-width:820px) and (max-height:700px){.portada .lado p{display:none}}
 
 /* ---------- 2. Pasillos (familias) ---------- */
 .pasillos{background:var(--n1);padding:clamp(56px,8vw,120px) var(--g)}
@@ -297,7 +304,10 @@ h2{font-family:var(--fd);font-weight:900;text-transform:uppercase;font-size:clam
   ScrollTrigger.create({ start: 0, end: 'max', onUpdate: navEstado });
   navEstado();
 
-  // Secuencia: de la calle a dentro de la nave
+  // Secuencia: de la calle a dentro de la nave.
+  // La nave se abre desde la puerta de la fachada, que en móvil está en otro sitio de la pantalla.
+  var movil = window.matchMedia('(max-width: 820px)').matches;
+  var puerta = movil ? 'inset(73% 23% 27% 77%)' : 'inset(58% 34% 42% 66%)';
   var tl = gsap.timeline({
     defaults: { ease: 'none' },
     scrollTrigger: { trigger: '.secuencia', start: 'top top', end: 'bottom bottom', scrub: 0.6 }
@@ -306,7 +316,7 @@ h2{font-family:var(--fd);font-weight:900;text-transform:uppercase;font-size:clam
     .to('.pista', { opacity: 0, duration: 0.06 }, 0)
     .to('.fachada', { scale: 1.45, duration: 0.42, ease: 'power1.in' }, 0)
     .set('.nave', { visibility: 'visible' }, 0.12)
-    .fromTo('.nave', { clipPath: 'inset(58% 34% 42% 66%)' }, { clipPath: 'inset(0% 0% 0% 0%)', duration: 0.34, ease: 'power2.inOut' }, 0.12)
+    .fromTo('.nave', { clipPath: puerta }, { clipPath: 'inset(0% 0% 0% 0%)', duration: 0.34, ease: 'power2.inOut' }, 0.12)
     .fromTo('.nave', { scale: 1.12 }, { scale: 1, duration: 0.5, ease: 'power2.out' }, 0.12)
     .to('.dentro .linea', { opacity: 1, y: 0, stagger: 0.07, duration: 0.12, ease: 'power2.out' }, 0.44)
     .fromTo('.dentro .linea', { y: 40 }, { y: 0, stagger: 0.07, duration: 0.12, ease: 'power2.out' }, 0.44)
