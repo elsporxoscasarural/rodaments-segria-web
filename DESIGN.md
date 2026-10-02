@@ -7,9 +7,13 @@ Una nave industrial vista con orgullo: **rotunda, sólida y luminosa**. La web e
 
 **Escena:** el responsable de compras de una empresa de Lleida, en su oficina por la mañana, con luz natural y pantalla de escritorio, evaluando con calma si este proveedor es fiable para años. Lo que necesita es una web clara, legible y seria.
 
-**Elemento propio:** la **señalética del almacén**. Cada familia de producto es un **pasillo con su letra** (A, B, C…) y aparecen **placas** (letra en un cuadrado azul + texto sobre blanco) como los carteles de las estanterías. Es la columna vertebral de la navegación del catálogo.
+**Elementos propios:**
+- **El rodamiento animado** junto a «Lleida, desde 1988» en la portada: un rodamiento de bolas dibujado en línea, con las bolas girando despacio. Es el único icono que se mueve.
+- **Iconos de familia** dibujados a medida en línea fina blanca (rodamiento, poleas con correa, retén con gota, caja de herramientas, tractor), sobre las fotos de cada familia. Informan, no decoran: nunca dentro de cajas ni círculos de color.
 
-**Recorrido de la portada:** la fachada desde la calle → al hacer scroll «entras» en la nave → datos sobre el almacén → pasillos.
+**Recorrido de la portada:** la fachada desde la calle → al hacer scroll se abre la nave («Nuestro almacén por dentro») → datos sobre el almacén → familias.
+
+**Ojo con el mensaje:** el almacén solo lo pisan los trabajadores. El cliente pide en el mostrador, por teléfono o por email. Nunca escribas textos que inviten a «recorrer pasillos» o «buscar en el almacén». El argumento es la **amplitud de stock** y la **entrega inmediata**.
 
 ## Color Palette & Roles
 Estrategia: **Comprometida en momentos concretos y contenida en el resto.** El 80 % de la superficie es neutra y clara. El índigo noche cubre la portada (como velo de foto), la frase de cifras y el pie. El azul solo marca la acción y los acentos.
@@ -38,7 +42,7 @@ Estrategia: **Comprometida en momentos concretos y contenida en el resto.** El 8
 ## Typography
 | Rol | Familia | Uso |
 |---|---|---|
-| Display | **Big Shoulders Display** (variable, 700–900) | Titulares, letras de pasillo, placas grandes, teléfono del pie. **Siempre en MAYÚSCULAS**, interlineado 0,85–0,9. |
+| Display | **Big Shoulders Display** (variable, 700–900) | Titulares, «Lleida, desde 1988», teléfono del pie. **Siempre en MAYÚSCULAS**. Interlineado de **0,92 en titulares de una o dos líneas sin tildes, y de 1,04–1,06 si hay tildes (Á, Ú) o «¿»**, porque en mayúsculas chocan con la línea de arriba. |
 | Texto | **Hanken Grotesk** (variable, 400–700) | Párrafos, botones, menú, formularios, etiquetas. |
 
 - Las dos están alojadas en la propia web (paquetes `@fontsource-variable`), sin peticiones a Google: más privacidad y más velocidad.
@@ -48,10 +52,11 @@ Estrategia: **Comprometida en momentos concretos y contenida en el resto.** El 8
 
 ## Component Stylings
 - **Botón:** rectángulo sin radio, texto en negrita de 15 px y padding generoso. Variantes: azul (principal), claro (sobre foto u oscuro) y noche (sobre fondo azul). Al pulsar, `scale(.97)`. Flecha `→` que se desplaza 3 px en hover.
-- **Placa:** cuadrado de color con letra en Big Shoulders + texto en mayúsculas sobre blanco. Es el «cartel de pasillo». Se usa en la portada («A · Lleida, desde 1988») y para identificar familias.
-- **Pasillo (tarjeta de familia):** foto real a sangre con velo noche desde abajo. Letra gigante arriba a la izquierda, nº de categorías arriba a la derecha, nombre y categorías abajo. En hover, la foto se acerca (`scale 1.06`) y aparece «Ver familia →». La primera es doble de ancha: **nunca una cuadrícula de tarjetas idénticas**.
+- **Origen (portada):** rodamiento animado + «LLEIDA, DESDE 1988» en Big Shoulders 800 con espaciado, sin recuadro. El texto aparece en barrido y después se dibuja una línea fina.
+- **Tarjeta de familia:** foto real a sangre con velo noche desde abajo. **Icono de la familia** arriba a la izquierda, nº de categorías arriba a la derecha, nombre y categorías abajo. En hover, la foto se acerca (`scale 1.06`) y aparece «Ver familia →». La primera es doble de ancha: **nunca una cuadrícula de tarjetas idénticas**.
 - **Campo de búsqueda de referencia:** borde de 2 px en noche, texto grande, botón noche que pasa a azul. Siempre con ejemplo real (`6205-2RS x 10`).
-- **Bloque Carburos:** fondo `--cm-verde`, logo sobre **placa blanca** con «Distribuidor autorizado», etiquetas con borde blanco y foto del mostrador fundida con el verde.
+- **Bloque Carburos:** fondo `--cm-verde`, logo sobre **placa blanca** con «Distribuidor autorizado», etiquetas con borde blanco y foto del **camión de Carburos** (matrícula difuminada) fundida con el verde.
+- **Pie:** a la izquierda «¿Buscas una pieza? Pregúntanos.»; a la derecha, teléfono (Big Shoulders, enorme) y email grandes. Debajo, dirección, horario y aparcamiento.
 - **Navegación:** fija. Transparente con logo blanco sobre fotos; sólida (n0 al 96 %) con logo a color sobre contenido claro. Teléfono siempre visible en escritorio.
 - **Iconos:** ninguno decorativo. Nunca emojis.
 
@@ -75,7 +80,7 @@ Estrategia: **Comprometida en momentos concretos y contenida en el resto.** El 8
 **Sí**
 - Fotos reales de la empresa, cuanto más grandes mejor.
 - Datos concretos y comprobables (1988, 500.000, 2.000 m², tercera generación).
-- Placas y letras de pasillo como sistema.
+- Iconos de familia en línea fina blanca y el rodamiento animado de la portada.
 - «Buscar referencia» y «Pedir presupuesto» siempre a mano.
 
 **No**

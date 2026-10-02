@@ -44,7 +44,8 @@
 	--t-sm: 0.9375rem; /* 15 px */
 	--t-xs: 0.8125rem; /* 13 px: etiquetas y placas */
 
-	--lh-display: 0.88;
+	--lh-display: 0.92; /* sin tildes ni «¿» */
+	--lh-display-tildes: 1.04; /* titulares con Á, É, Ú… o «¿»: si no, chocan con la línea de arriba */
 	--lh-texto: 1.55;
 	--medida: 62ch; /* ancho máximo de párrafo */
 
