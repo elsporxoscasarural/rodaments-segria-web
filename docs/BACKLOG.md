@@ -2,6 +2,18 @@
 
 Estado: ✅ hecho · 🔲 pendiente · ❓ decisión abierta
 
+## 📋 Pendiente del cliente (no bloquea el diseño)
+| Tarea | Para qué | Dónde / cómo |
+|---|---|---|
+| **Hoja del Registro Mercantil** (L-…) | Aviso legal (obligatorio) | Últimas páginas de la escritura de 2009/10 o de constitución (sello de *inscripción*), gestoría o nota simple en sede.registradores.org (CIF B25337767) |
+| **Número de WhatsApp** (móvil) | Botones y contacto | Cuando esté dado de alta → `src/data/empresa.ts` |
+| **Logo de Carburos Metálicos** en buena calidad y sus normas de uso | Familia Carburos | El cliente lo tiene. Mejor SVG o PNG grande |
+| **Marcas que se pueden mostrar** (y sus logos) | Sección de marcas | Confirmar permiso con cada marca. Hasta entonces, ocultas |
+| **Confirmar el email** donde llegan los presupuestos | Formularios | ¿rodsegria@rodsegria.es u otro? |
+| **Sesión de fotos** (serie de producto sobre fondo claro, correas, detalles) | Catálogo y diseño | Lista y consejos en `docs/FOTOS.md` |
+| **Revisar la foto de piñones y poleas** (retocada con IA) | Evitar textos alterados | Si las etiquetas dicen cosas raras, repetirla |
+
+
 ## Fase 0 — Espacio de trabajo ✅
 - ✅ Web anterior guardada en la etiqueta `v1-legacy`
 - ✅ Proyecto Astro, estructura de carpetas, `.gitignore`, `CLAUDE.md`
@@ -13,22 +25,15 @@ Estado: ✅ hecho · 🔲 pendiente · ❓ decisión abierta
 - ✅ Modelo del catálogo: 6 familias, 23 categorías y marcas como datos editables (`src/content/`)
 - ✅ Familias aprobadas: Rodamientos y soportes · Transmisión de potencia · Estanqueidad y fluidos · Taller e industria · Agrícola · Gases industriales (Carburos Metálicos)
 - ✅ Catálogo revisado con el cliente: familias, categorías y tipos cerrados (`docs/REVISION-CATALOGO.md`)
-- 🔲 Logo oficial de Carburos Metálicos y normas de uso (el cliente lo tiene). Ahora se usa un JPG provisional
 - 🔲 SEO/GEO de contenido: elegir para cada página la búsqueda principal a la que responde (ver «SEO y GEO desde el principio»)
-- 🔲 Reservar en el mapa del sitio la sección **"Buscador de referencias"**. Mientras tanto: formulario de "¿Buscas una referencia?" que genera presupuestos (ver `docs/BUSCADOR-REFERENCIAS.md`)
-- 🔲 Definir el mapa del sitio. Propuesta: Inicio · Productos (índice + una página por categoría) · Empresa · Contacto/Presupuesto · Aviso legal · Privacidad · Cookies
-- 🔲 Montar la colección `productos` en `src/content/`: nombre, descripción, marcas, imagen y aplicaciones de cada categoría
 - ✅ Datos de empresa centralizados en `src/data/empresa.ts`
 - ✅ Textos de Inicio y Empresa, con la historia escrita por el cliente (`docs/TEXTOS.md`)
+- ✅ Mapa del sitio: Inicio · Productos · Productos/[familia] · Buscar referencia · Empresa · Contacto · Aviso legal · Privacidad · Cookies
 - ✅ Textos de Contacto y Buscar referencia (formularios, mensajes y texto RGPD)
+- 🔲 Textos legales (aviso legal, privacidad, cookies): se redactan en cuanto llegue la hoja del Registro Mercantil
 - 🔲 Mapa de Google cargado solo bajo demanda (evita el banner de cookies)
-- 🔲 Textos legales: razón social y CIF ✅ · Registro Mercantil de Lleida, tomo 337, folio 205 ✅ · falta el número de hoja (L-…)
-- 🔲 Número de WhatsApp
 - ✅ Selección provisional de fotos reales en `src/assets/img/fotos/` (ver `docs/FOTOS.md`)
 - ✅ Fachada con el letrero corregido, en portada
-- 🔲 Sesión de fotos: fachada, mostrador, equipo y serie de producto sobre fondo claro (lista en `docs/FOTOS.md`)
-- 🔲 Textos legales (RGPD/LSSI). Son obligatorios si hay formulario
-- ❓ Lista de marcas que se pueden mostrar (¿logos con permiso?)
 
 ## Fase 2 — Diseño
 - ✅ Paleta decidida: azules del logo (`#015BFE`, `#282B98`) sobre grises claros y blancos. Web clara
