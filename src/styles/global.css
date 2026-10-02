@@ -168,3 +168,8 @@ html.lenis body {
 .lenis.lenis-smooth {
 	scroll-behavior: auto !important;
 }
+
+/* Unidades dentro de titulares en mayúsculas: «m²», nunca «M²» */
+.unidad {
+	text-transform: none;
+}

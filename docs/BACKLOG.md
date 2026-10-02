@@ -48,7 +48,8 @@ Estado: ✅ hecho · 🔲 pendiente · ❓ decisión abierta
 - ✅ Índice `/productos`: familias (Carburos incluido) y listado completo de categorías
 - ✅ Contacto (`/contacto`): formulario de presupuesto, datos de contacto, «Cómo llegar» y mapa bajo demanda
 - ✅ Buscar referencia (`/buscar-referencia`): formulario con referencias, marca y uso; recibe `?ref=` desde la portada
-- 🔲 Diseño de cada página: empresa → legales → 404
+- ✅ Empresa (`/empresa`): historia del cliente, datos clave, «Familia, oficio y stock», instalaciones con galería, equipo, marcas
+- 🔲 Legales (aviso legal, privacidad, cookies) y página 404
 - 🔲 Responsive y accesibilidad (contraste, foco y navegación con teclado)
 
 ## Fase 3 — Animaciones
