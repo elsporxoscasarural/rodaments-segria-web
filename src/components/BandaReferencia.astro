@@ -1,0 +1,77 @@
+---
+// Franja de cierre para páginas de catálogo: si no ves la pieza, pregúntanos por la referencia.
+import { empresa, formatoNumero } from '../data/empresa';
+
+interface Props {
+	titulo?: string;
+}
+const { titulo = '¿No ves lo que buscas?' } = Astro.props;
+---
+
+<section class="banda sobre-oscuro" aria-labelledby="t-banda">
+	<div class="aparece">
+		<h2 id="t-banda">{titulo}</h2>
+		<p>
+			{`En la web ves las familias de producto, pero trabajamos con más de ${formatoNumero(empresa.referenciasEnStock)} referencias y miles de equivalencias entre marcas. Dinos la referencia o lo que necesitas.`}
+		</p>
+	</div>
+	<div class="banda__acciones aparece">
+		<a class="btn" href="/buscar-referencia">Buscar una referencia <span class="flecha" aria-hidden="true">→</span></a>
+		<a class="banda__tel" href={`tel:${empresa.telefono.enlace}`}>
+			<span>o llámanos</span>
+			{empresa.telefono.visible}
+		</a>
+	</div>
+</section>
+
+<style>
+	.banda {
+		display: grid;
+		grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
+		gap: var(--s-6) var(--s-8);
+		align-items: end;
+		padding: var(--seccion) var(--g);
+		background: var(--indigo);
+		color: oklch(98.9% 0.003 286.4 / 0.9);
+	}
+	h2 {
+		margin-bottom: var(--s-4);
+		color: var(--n0);
+	}
+	.banda__acciones {
+		display: grid;
+		gap: var(--s-5);
+		justify-items: start;
+	}
+	.banda__acciones .btn {
+		background: var(--n0);
+		color: var(--noche);
+	}
+	.banda__acciones .btn:hover {
+		background: var(--n2);
+	}
+	.banda__tel {
+		font-family: var(--f-display);
+		font-weight: 800;
+		font-size: clamp(2.25rem, 4vw, 3.5rem);
+		line-height: 1;
+		color: var(--n0);
+		text-decoration: none;
+	}
+	.banda__tel span {
+		display: block;
+		margin-bottom: var(--s-2);
+		font-family: var(--f-texto);
+		font-size: var(--t-sm);
+		font-weight: 600;
+		color: oklch(98.9% 0.003 286.4 / 0.7);
+	}
+	.banda__tel:hover {
+		color: var(--azul-claro);
+	}
+	@media (max-width: 820px) {
+		.banda {
+			grid-template-columns: 1fr;
+		}
+	}
+</style>

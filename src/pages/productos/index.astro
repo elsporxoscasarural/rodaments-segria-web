@@ -1,27 +1,139 @@
 ---
+// Índice del catálogo: todas las familias (Carburos incluido) y, debajo, el listado completo de categorías.
 import { getCollection } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import Familias from '../../components/Familias.astro';
+import BandaReferencia from '../../components/BandaReferencia.astro';
+import { empresa, formatoNumero } from '../../data/empresa';
 
 const familias = (await getCollection('familias')).sort((a, b) => a.data.orden - b.data.orden);
-const categorias = await getCollection('categorias');
+const categorias = (await getCollection('categorias')).sort((a, b) => a.data.orden - b.data.orden);
 ---
 
-<BaseLayout title="Productos | Rodaments Segrià" description="Catálogo de suministro industrial de Rodaments Segrià.">
-	<h1>Productos</h1>
-	{
-		familias.map((familia) => {
-			const propias = categorias
-				.filter((c) => c.data.familia.id === familia.id)
-				.sort((a, b) => a.data.orden - b.data.orden);
-			return (
-				<section>
-					<h2>
-						<a href={`/productos/${familia.id}`}>{familia.data.nombre}</a>
-					</h2>
-					<p>{familia.data.resumen}</p>
-					<ul>{propias.map((c) => <li>{c.data.nombre}</li>)}</ul>
-				</section>
-			);
-		})
-	}
+<BaseLayout
+	title="Catálogo de suministro industrial en Lleida | Rodaments Segrià"
+	description={`Rodamientos, soportes, correas, cadenas, retenes, herramientas y gases industriales. Más de ${formatoNumero(empresa.referenciasEnStock)} referencias en stock en Lleida.`}
+>
+	<section class="intro" aria-labelledby="t-catalogo">
+		<nav class="migas" aria-label="Estás en">
+			<ol>
+				<li><a href="/">Inicio</a></li>
+				<li aria-current="page">Productos</li>
+			</ol>
+		</nav>
+		<h1 id="t-catalogo">Catálogo</h1>
+		<p>
+			Más de {formatoNumero(empresa.referenciasEnStock)} referencias en stock para la industria, el campo y el taller,
+			organizadas en {familias.length} familias.
+		</p>
+	</section>
+
+	<Familias titulo="Familias de producto" texto="Elige una familia para ver sus categorías y tipos de producto." conCarburos finPortada={false} />
+
+	<section class="indice" aria-labelledby="t-indice">
+		<h2 id="t-indice">Todas las categorías</h2>
+		<div class="indice__columnas">
+			{
+				familias.map((f) => (
+					<div class="indice__familia">
+						<h3>
+							<a href={`/productos/${f.id}`}>{f.data.nombre}</a>
+						</h3>
+						<ul>
+							{categorias
+								.filter((c) => c.data.familia.id === f.id)
+								.map((c) => (
+									<li>
+										<a href={`/productos/${f.id}#${c.id}`}>{c.data.nombre}</a>
+									</li>
+								))}
+						</ul>
+					</div>
+				))
+			}
+		</div>
+	</section>
+
+	<BandaReferencia />
 </BaseLayout>
+
+<style>
+	.intro {
+		padding: var(--s-8) var(--g) var(--s-7);
+		background: var(--n1);
+	}
+	.intro h1 {
+		margin-block: var(--s-4) var(--s-5);
+		color: var(--noche);
+		font-size: clamp(3.5rem, 9vw, 8rem);
+	}
+	.intro p {
+		font-size: var(--t-lead);
+	}
+	.migas ol {
+		display: flex;
+		gap: var(--s-2);
+		margin: 0;
+		padding: 0;
+		list-style: none;
+		font-size: var(--t-sm);
+		font-weight: 600;
+		color: var(--n6);
+	}
+	.migas li + li::before {
+		content: '/';
+		margin-right: var(--s-2);
+	}
+	.migas a {
+		text-decoration: none;
+	}
+	.migas a:hover {
+		text-decoration: underline;
+		text-underline-offset: 4px;
+	}
+
+	.indice {
+		padding: var(--seccion) var(--g);
+		background: var(--n0);
+	}
+	.indice h2 {
+		margin-bottom: var(--s-7);
+		color: var(--noche);
+	}
+	.indice__columnas {
+		columns: 3 18rem;
+		column-gap: var(--s-8);
+	}
+	.indice__familia {
+		break-inside: avoid;
+		margin-bottom: var(--s-7);
+		padding-top: var(--s-4);
+		border-top: 2px solid var(--noche);
+	}
+	.indice h3 {
+		margin-bottom: var(--s-3);
+		font-size: 1.6rem;
+	}
+	.indice h3 a,
+	.indice li a {
+		text-decoration: none;
+	}
+	.indice h3 a:hover {
+		color: var(--azul);
+	}
+	.indice ul {
+		margin: 0;
+		padding: 0;
+		list-style: none;
+		display: grid;
+		gap: var(--s-1);
+	}
+	.indice li a {
+		color: var(--n7);
+	}
+	.indice li a:hover {
+		color: var(--azul);
+		text-decoration: underline;
+		text-underline-offset: 4px;
+	}
+</style>

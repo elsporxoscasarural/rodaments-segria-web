@@ -1,21 +1,36 @@
 ---
-// Familias del catálogo, generadas desde src/content/familias. Carburos tiene su propio bloque (BloqueCarburos).
+// Rejilla de familias, generada desde src/content/familias. Se usa en la portada y en /productos.
+// En la portada, Carburos va aparte (BloqueCarburos); en /productos se incluye con su verde.
 import { Image } from 'astro:assets';
 import { getCollection } from 'astro:content';
-import IconoFamilia from '../IconoFamilia.astro';
+import IconoFamilia from './IconoFamilia.astro';
 
-const familias = (await getCollection('familias', (f) => !f.data.destacada)).sort((a, b) => a.data.orden - b.data.orden);
+interface Props {
+	titulo?: string;
+	texto?: string;
+	/** Incluir la familia destacada (Carburos Metálicos) como una tarjeta más. */
+	conCarburos?: boolean;
+	/** Marca el final de la portada para que la cabecera pase a sólida (solo en la home). */
+	finPortada?: boolean;
+}
+const {
+	titulo = 'Todo lo que mueve la maquinaria',
+	texto = 'Miles de productos de cada familia, en stock en nuestro almacén de Lleida. Por eso muchas piezas te las podemos entregar al momento.',
+	conCarburos = false,
+	finPortada = true,
+} = Astro.props;
+
+const familias = (await getCollection('familias', (f) => conCarburos || !f.data.destacada)).sort(
+	(a, b) => a.data.orden - b.data.orden,
+);
 const categorias = await getCollection('categorias');
 const cuantas = (id: string) => categorias.filter((c) => c.data.familia.id === id).length;
 ---
 
-<section class="familias" id="productos" aria-labelledby="t-familias" data-fin-portada>
+<section class="familias" id="productos" aria-labelledby="t-familias" data-fin-portada={finPortada ? '' : undefined}>
 	<header class="familias__cabecera aparece">
-		<h2 id="t-familias">Todo lo que mueve la maquinaria</h2>
-		<p>
-			Miles de productos de cada familia, en stock en nuestro almacén de Lleida. Por eso muchas piezas te las podemos
-			entregar al momento.
-		</p>
+		<h2 id="t-familias">{titulo}</h2>
+		<p>{texto}</p>
 	</header>
 
 	<ul class="rejilla">
@@ -23,8 +38,8 @@ const cuantas = (id: string) => categorias.filter((c) => c.data.familia.id === i
 			familias.map((familia, i) => {
 				const n = cuantas(familia.id);
 				return (
-					<li class:list={['aparece', { ancha: i === 0 }]}>
-						<a class="familia" href={`/productos/${familia.id}`}>
+					<li class:list={['aparece', { ancha: i === 0, completa: familia.data.destacada }]}>
+						<a class:list={['familia', { 'familia--cm': familia.data.destacada }]} href={`/productos/${familia.id}`}>
 							{familia.data.imagen && (
 								<Image
 									class="familia__foto"
@@ -86,6 +101,10 @@ const cuantas = (id: string) => categorias.filter((c) => c.data.familia.id === i
 	.rejilla .ancha {
 		grid-column: span 2;
 	}
+	/* Carburos (solo en /productos) ocupa una fila entera: así la rejilla queda completa */
+	.rejilla .completa {
+		grid-column: 1 / -1;
+	}
 	.familia {
 		position: relative;
 		display: flex;
@@ -117,6 +136,12 @@ const cuantas = (id: string) => categorias.filter((c) => c.data.familia.id === i
 		inset: 0;
 		z-index: -1;
 		background: linear-gradient(180deg, transparent 35%, oklch(22.7% 0.077 276.3 / 0.88) 100%);
+	}
+	.familia--cm {
+		background: var(--cm-verde);
+	}
+	.familia--cm::after {
+		background: linear-gradient(180deg, transparent 30%, oklch(50.8% 0.132 152.6 / 0.92) 100%);
 	}
 	.familia:hover .familia__foto,
 	.familia:focus-visible .familia__foto {

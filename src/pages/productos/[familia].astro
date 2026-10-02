@@ -1,6 +1,12 @@
 ---
-import { getCollection, type CollectionEntry } from 'astro:content';
+// Página de cada familia del catálogo. Se genera una por archivo de src/content/familias.
+// Carburos Metálicos (familia destacada) usa su verde y su logo.
+import { Image } from 'astro:assets';
+import { getCollection, getEntry, type CollectionEntry } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import IconoFamilia from '../../components/IconoFamilia.astro';
+import BandaReferencia from '../../components/BandaReferencia.astro';
+import { ctaPrincipal } from '../../data/navegacion';
 
 export async function getStaticPaths() {
 	const familias = await getCollection('familias');
@@ -11,54 +17,445 @@ interface Props {
 	familia: CollectionEntry<'familias'>;
 }
 const { familia } = Astro.props;
+const { nombre, resumen, imagen, icono, destacada, sectorRelacionado } = familia.data;
 
+const familias = (await getCollection('familias')).sort((a, b) => a.data.orden - b.data.orden);
 const todas = await getCollection('categorias');
-const familias = await getCollection('familias');
-const nombreFamilia = (id: string) => familias.find((f) => f.id === id)?.data.nombre;
+const nombreFamilia = (id: string) => familias.find((f) => f.id === id)?.data.nombre ?? '';
 
-const propias = todas
+const categorias = todas
 	.filter((c) => c.data.familia.id === familia.id)
 	.sort((a, b) => a.data.orden - b.data.orden);
 
-// Categorías de otras familias que también sirven a este sector (p. ej. Agrícola → correas, cadenas…).
-const sector = familia.data.sectorRelacionado;
-const relacionadas = sector
-	? todas.filter((c) => c.data.familia.id !== familia.id && c.data.sectores.includes(sector))
+// Categorías de otras familias que también sirven a este sector (Agrícola → correas, cadenas, rodamientos…)
+const relacionadas = sectorRelacionado
+	? todas
+			.filter((c) => c.data.familia.id !== familia.id && c.data.sectores.includes(sectorRelacionado))
+			.sort((a, b) => nombreFamilia(a.data.familia.id).localeCompare(nombreFamilia(b.data.familia.id)) || a.data.orden - b.data.orden)
 	: [];
+
+const otras = familias.filter((f) => f.id !== familia.id);
+const marcaCm = destacada ? await getEntry('marcas', 'carburos-metalicos') : undefined;
+const titulo = destacada ? `${nombre}: gases industriales en Lleida | Rodaments Segrià` : `${nombre} en Lleida | Rodaments Segrià`;
 ---
 
-<BaseLayout title={`${familia.data.nombre} | Rodaments Segrià`} description={familia.data.resumen}>
-	<p><a href="/productos">← Productos</a></p>
-	<h1>{familia.data.nombre}</h1>
-	<p>{familia.data.resumen}</p>
+<BaseLayout title={titulo} description={resumen} portada>
+	<section class:list={['cabecera-familia', { 'cabecera-familia--cm': destacada }]} aria-labelledby="t-familia">
+		{
+			imagen && (
+				<Image
+					class="cabecera-familia__foto"
+					src={imagen}
+					alt=""
+					widths={[800, 1200, 1600, 2000]}
+					sizes="100vw"
+					loading="eager"
+					fetchpriority="high"
+				/>
+			)
+		}
+		<div class="cabecera-familia__contenido">
+			<nav class="migas" aria-label="Estás en">
+				<ol>
+					<li><a href="/">Inicio</a></li>
+					<li><a href="/productos">Productos</a></li>
+					<li aria-current="page">{nombre}</li>
+				</ol>
+			</nav>
+			{
+				marcaCm?.data.logo && marcaCm.data.permisoLogo ? (
+					<div class="placa-cm">
+						<Image src={marcaCm.data.logo} alt="Carburos Metálicos" height={40} densities={[1, 2]} />
+						<small>Distribuidor autorizado</small>
+					</div>
+				) : (
+					icono && <IconoFamilia class="cabecera-familia__icono" icono={icono} />
+				)
+			}
+			<h1 id="t-familia">{nombre}</h1>
+			<p>{resumen}</p>
+			<div class="acciones">
+				<a class="btn" href={ctaPrincipal.href}>{ctaPrincipal.texto}</a>
+				<a class="btn btn--claro" href="/buscar-referencia">Buscar referencia</a>
+			</div>
+		</div>
+	</section>
 
-	{
-		propias.map((c) => (
-			<section id={c.id}>
-				<h2>{c.data.nombre}</h2>
-				<p>{c.data.resumen}</p>
-				{c.data.tipos.length > 0 && <ul>{c.data.tipos.map((t) => <li>{t}</li>)}</ul>}
-			</section>
-		))
-	}
+	<section class="categorias" aria-labelledby="t-categorias" data-fin-portada>
+		<header class="categorias__cabecera">
+			<h2 id="t-categorias">Qué encontrarás</h2>
+			<p>
+				{`${categorias.length} ${categorias.length === 1 ? 'categoría' : 'categorías'}.`} Si buscas una pieza concreta,
+				pásanos la referencia y te decimos si la tenemos al momento.
+			</p>
+		</header>
+
+		{
+			categorias.map((c) => (
+				<article class="categoria aparece" id={c.id}>
+					<div class="categoria__info">
+						<h3>{c.data.nombre}</h3>
+						<p>{c.data.resumen}</p>
+						{c.data.sinonimos.length > 0 && (
+							<p class="categoria__sinonimos">También se busca como: {c.data.sinonimos.join(', ')}</p>
+						)}
+					</div>
+					<div class="categoria__tipos">
+						{c.data.tipos.length > 0 && (
+							<ul>
+								{c.data.tipos.map((t) => (
+									<li>{t}</li>
+								))}
+							</ul>
+						)}
+						<a class="categoria__consultar" href={`/contacto?asunto=${encodeURIComponent(c.data.nombre)}`}>
+							Consultar {c.data.nombre.toLowerCase()} <span class="flecha" aria-hidden="true">→</span>
+						</a>
+					</div>
+				</article>
+			))
+		}
+	</section>
 
 	{
 		relacionadas.length > 0 && (
-			<section>
-				<h2>Componentes para maquinaria agrícola</h2>
-				<p>
-					Además de los productos específicos del campo, suministramos los componentes que utiliza la
-					maquinaria agrícola. Los encontrará en su familia correspondiente del catálogo:
-				</p>
-				<ul>
+			<section class="relacionadas" aria-labelledby="t-relacionadas">
+				<div class="aparece">
+					<h2 id="t-relacionadas">Componentes para maquinaria agrícola</h2>
+					<p>
+						Además de los productos específicos del campo, tenemos en stock los componentes que utiliza la maquinaria
+						agrícola. Los encontrarás en su familia del catálogo.
+					</p>
+				</div>
+				<ul class="relacionadas__lista aparece">
 					{relacionadas.map((c) => (
 						<li>
-							<a href={`/productos/${c.data.familia.id}#${c.id}`}>{c.data.nombre}</a> ·{' '}
-							{nombreFamilia(c.data.familia.id)}
+							<a href={`/productos/${c.data.familia.id}#${c.id}`}>
+								<strong>{c.data.nombre}</strong>
+								<span>{nombreFamilia(c.data.familia.id)}</span>
+							</a>
 						</li>
 					))}
 				</ul>
 			</section>
 		)
 	}
+
+	<BandaReferencia />
+
+	<nav class="otras" aria-labelledby="t-otras">
+		<h2 id="t-otras">Otras familias</h2>
+		<ul>
+			{
+				otras.map((f) => (
+					<li>
+						<a href={`/productos/${f.id}`} class:list={{ 'otras--cm': f.data.destacada }}>
+							{f.data.icono && <IconoFamilia class="otras__icono" icono={f.data.icono} />}
+							<span>{f.data.nombre}</span>
+						</a>
+					</li>
+				))
+			}
+		</ul>
+	</nav>
 </BaseLayout>
+
+<style>
+	/* ---------- Cabecera con foto ---------- */
+	.cabecera-familia {
+		position: relative;
+		display: flex;
+		align-items: flex-end;
+		min-height: clamp(460px, 68vh, 680px);
+		padding: 120px var(--g) clamp(2.5rem, 6vh, 4rem);
+		overflow: hidden;
+		background: var(--noche);
+		color: oklch(98.9% 0.003 286.4 / 0.92);
+		isolation: isolate;
+	}
+	.cabecera-familia__foto {
+		position: absolute;
+		inset: 0;
+		z-index: -2;
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+	}
+	.cabecera-familia::after {
+		content: '';
+		position: absolute;
+		inset: 0;
+		z-index: -1;
+		background:
+			linear-gradient(90deg, oklch(22.7% 0.077 276.3 / 0.88) 0%, oklch(22.7% 0.077 276.3 / 0.55) 55%, oklch(22.7% 0.077 276.3 / 0.25) 100%),
+			linear-gradient(180deg, oklch(22.7% 0.077 276.3 / 0.45) 0%, transparent 30%);
+	}
+	.cabecera-familia--cm {
+		background: var(--cm-verde);
+	}
+	.cabecera-familia--cm::after {
+		background:
+			linear-gradient(90deg, oklch(50.8% 0.132 152.6 / 0.95) 0%, oklch(50.8% 0.132 152.6 / 0.7) 50%, oklch(50.8% 0.132 152.6 / 0.15) 100%),
+			linear-gradient(180deg, oklch(22.7% 0.077 276.3 / 0.35) 0%, transparent 30%);
+	}
+	.cabecera-familia__contenido {
+		max-width: 46rem;
+	}
+	.cabecera-familia h1 {
+		margin-block: var(--s-4) var(--s-5);
+		color: var(--n0);
+		font-size: clamp(3rem, 7vw, 6.5rem);
+		line-height: var(--lh-display-tildes);
+	}
+	.cabecera-familia p {
+		max-width: 46ch;
+		font-size: var(--t-lead);
+	}
+	.cabecera-familia :global(.cabecera-familia__icono) {
+		display: block;
+		width: clamp(52px, 5vw, 68px);
+		height: auto;
+		margin-top: var(--s-6);
+		color: var(--n0);
+	}
+	.acciones {
+		display: flex;
+		flex-wrap: wrap;
+		gap: var(--s-3);
+		margin-top: var(--s-6);
+	}
+	.cabecera-familia--cm .acciones .btn:not(.btn--claro) {
+		background: var(--noche);
+	}
+
+	.migas ol {
+		display: flex;
+		flex-wrap: wrap;
+		gap: var(--s-2);
+		margin: 0;
+		padding: 0;
+		list-style: none;
+		font-size: var(--t-sm);
+		font-weight: 600;
+	}
+	.migas li + li::before {
+		content: '/';
+		margin-right: var(--s-2);
+		opacity: 0.5;
+	}
+	.migas a {
+		text-decoration: none;
+		opacity: 0.8;
+	}
+	.migas a:hover {
+		opacity: 1;
+		text-decoration: underline;
+		text-underline-offset: 4px;
+	}
+
+	.placa-cm {
+		display: inline-block;
+		margin-top: var(--s-6);
+		padding: var(--s-3) var(--s-4);
+		background: var(--n0);
+	}
+	.placa-cm img {
+		width: auto;
+		height: 40px;
+	}
+	.placa-cm small {
+		display: block;
+		margin-top: var(--s-2);
+		font-size: 0.6875rem;
+		font-weight: 700;
+		letter-spacing: 0.08em;
+		text-transform: uppercase;
+		color: var(--cm-verde);
+	}
+
+	/* ---------- Categorías en filas ---------- */
+	.categorias {
+		padding: var(--seccion) var(--g);
+		background: var(--n0);
+	}
+	.categorias__cabecera {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: space-between;
+		align-items: end;
+		gap: var(--s-4) var(--s-7);
+		margin-bottom: var(--s-7);
+	}
+	.categorias__cabecera h2 {
+		color: var(--noche);
+	}
+	.categorias__cabecera p {
+		max-width: 44ch;
+	}
+	.categoria {
+		display: grid;
+		grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+		gap: var(--s-5) var(--s-8);
+		padding-block: var(--s-7);
+		border-top: 1px solid var(--n2);
+		scroll-margin-top: 96px;
+	}
+	.categoria:last-of-type {
+		border-bottom: 1px solid var(--n2);
+	}
+	.categoria:target {
+		background: linear-gradient(90deg, var(--n1), transparent);
+	}
+	.categoria h3 {
+		margin-bottom: var(--s-3);
+		color: var(--noche);
+		font-size: clamp(1.9rem, 3.2vw, 3rem);
+	}
+	.categoria__sinonimos {
+		margin-top: var(--s-3);
+		font-size: var(--t-sm);
+		color: var(--n6);
+	}
+	.categoria__tipos ul {
+		display: grid;
+		grid-template-columns: repeat(auto-fill, minmax(14rem, 1fr));
+		gap: var(--s-2) var(--s-6);
+		margin: 0 0 var(--s-5);
+		padding: 0;
+		list-style: none;
+		color: var(--tinta);
+	}
+	.categoria__tipos li {
+		display: flex;
+		gap: var(--s-3);
+		align-items: baseline;
+	}
+	.categoria__tipos li::before {
+		content: '';
+		flex: none;
+		width: 7px;
+		height: 7px;
+		background: var(--azul);
+		transform: translateY(-2px);
+	}
+	.categoria__consultar {
+		display: inline-flex;
+		gap: var(--s-2);
+		font-weight: 700;
+		color: var(--azul);
+		text-decoration: none;
+	}
+	.categoria__consultar:hover {
+		color: var(--azul-hover);
+		text-decoration: underline;
+		text-underline-offset: 4px;
+	}
+	.categoria__consultar .flecha {
+		transition: transform var(--d-media) var(--ease);
+	}
+	.categoria__consultar:hover .flecha {
+		transform: translateX(3px);
+	}
+
+	/* ---------- Relacionadas (Agrícola) ---------- */
+	.relacionadas {
+		display: grid;
+		grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr);
+		gap: var(--s-6) var(--s-8);
+		padding: var(--seccion) var(--g);
+		background: var(--n1);
+	}
+	.relacionadas h2 {
+		margin-bottom: var(--s-4);
+		color: var(--noche);
+	}
+	.relacionadas__lista {
+		display: grid;
+		grid-template-columns: repeat(auto-fill, minmax(13rem, 1fr));
+		gap: 4px;
+		margin: 0;
+		padding: 0;
+		list-style: none;
+	}
+	.relacionadas__lista a {
+		display: grid;
+		gap: var(--s-1);
+		height: 100%;
+		padding: var(--s-4) var(--s-5);
+		background: var(--n0);
+		text-decoration: none;
+		transition: background-color var(--d-media) var(--ease);
+	}
+	.relacionadas__lista a:hover {
+		background: var(--n2);
+	}
+	.relacionadas__lista strong {
+		font-family: var(--f-display);
+		font-weight: 800;
+		font-size: 1.5rem;
+		line-height: 1.05;
+		text-transform: uppercase;
+		color: var(--noche);
+	}
+	.relacionadas__lista span {
+		font-size: var(--t-sm);
+		color: var(--n6);
+	}
+
+	/* ---------- Otras familias ---------- */
+	.otras {
+		padding: var(--s-8) var(--g);
+		background: var(--n1);
+	}
+	.otras h2 {
+		margin-bottom: var(--s-5);
+		font-size: var(--t-2);
+		color: var(--noche);
+	}
+	/* flex con crecimiento: cada fila se reparte el ancho entero, sin tarjetas huérfanas */
+	.otras ul {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 4px;
+		margin: 0;
+		padding: 0;
+		list-style: none;
+	}
+	.otras li {
+		flex: 1 1 13rem;
+	}
+	.otras a {
+		display: flex;
+		align-items: center;
+		gap: var(--s-4);
+		height: 100%;
+		padding: var(--s-5);
+		background: var(--noche);
+		color: var(--n0);
+		font-family: var(--f-display);
+		font-weight: 800;
+		font-size: 1.35rem;
+		line-height: 1.05;
+		text-transform: uppercase;
+		text-decoration: none;
+		transition: background-color var(--d-media) var(--ease);
+	}
+	.otras a:hover {
+		background: var(--indigo);
+	}
+	.otras a.otras--cm {
+		background: var(--cm-verde);
+	}
+	.otras :global(.otras__icono) {
+		flex: none;
+		width: 36px;
+		height: 36px;
+	}
+
+	@media (max-width: 900px) {
+		.categoria,
+		.relacionadas {
+			grid-template-columns: 1fr;
+		}
+	}
+</style>

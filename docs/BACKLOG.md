@@ -44,7 +44,9 @@ Estado: ✅ hecho · 🔲 pendiente · ❓ decisión abierta
 - ✅ Layout base, cabecera (transparente sobre la portada, sólida en el resto), menú móvil accesible a pantalla completa y pie con datos de `empresa.ts`
 - 🔲 Favicons nuevos a partir de `simbolo.svg`
 - ✅ **Portada construida** en Astro (`src/components/inicio/`): secuencia fachada → almacén con GSAP, familias desde el catálogo, buscador, Carburos
-- 🔲 Diseño de cada página: productos → familia → empresa → contacto → buscar referencia
+- ✅ Páginas de familia (`/productos/[familia]`): cabecera con foto, categorías con tipos y sinónimos, bloque agrícola, franja «¿No ves lo que buscas?», otras familias. Carburos con su verde
+- ✅ Índice `/productos`: familias (Carburos incluido) y listado completo de categorías
+- 🔲 Diseño de cada página: empresa → contacto → buscar referencia → legales
 - 🔲 Responsive y accesibilidad (contraste, foco y navegación con teclado)
 
 ## Fase 3 — Animaciones
