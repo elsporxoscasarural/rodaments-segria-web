@@ -47,6 +47,7 @@ Se avanza **por pasos pequeños, con revisión en cada uno**, para cuidar el res
 ```bash
 npm install        # instalar dependencias (Node >= 22.12, ver .nvmrc)
 npm run dev        # servidor de desarrollo → http://localhost:4321
+npm run dev:limpio # igual, pero rehace la caché de librerías (usar si tras instalar algo las animaciones dejan de funcionar)
 npm run build      # genera la web estática en dist/
 npm run preview    # sirve dist/ para revisar el resultado final
 npm run revision   # regenera docs/REVISION-CATALOGO.md desde src/content/

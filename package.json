@@ -11,7 +11,8 @@
     "preview": "astro preview",
     "astro": "astro",
     "revision": "python3 tools/revision-catalogo.py",
-    "imagen-social": "node tools/generar-imagen-social.mjs"
+    "imagen-social": "node tools/generar-imagen-social.mjs",
+    "dev:limpio": "astro dev --force"
   },
   "dependencies": {
     "@astrojs/sitemap": "^3.7.4",
