@@ -6,7 +6,20 @@ interface Props {
 	claro?: boolean;
 }
 const { ruta, claro = false } = Astro.props;
+
+const lista = {
+	'@context': 'https://schema.org',
+	'@type': 'BreadcrumbList',
+	itemListElement: [{ texto: 'Inicio', href: '/' }, ...ruta].map((paso, i) => ({
+		'@type': 'ListItem',
+		position: i + 1,
+		name: paso.texto,
+		item: new URL(paso.href ?? Astro.url.pathname, Astro.site).href,
+	})),
+};
 ---
+
+<script type="application/ld+json" set:html={JSON.stringify(lista)} is:inline />
 
 <nav class:list={['migas', { 'migas--claro': claro }]} aria-label="Estás en">
 	<ol>

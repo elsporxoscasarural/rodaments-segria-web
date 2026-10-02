@@ -69,9 +69,9 @@ El SEO (Google) y el GEO (aparecer en respuestas de IA como ChatGPT, Gemini o lo
 - **Fuera de la web (en paralelo, ya):** ficha de Google Business completa y coherente (nombre, dirección y teléfono idénticos en todas partes), reseñas, directorios del sector.
 
 ## Fase 4 — SEO técnico
-- 🔲 Título, descripción, Open Graph y URL canónica en cada página (desde el layout)
-- 🔲 Datos estructurados `LocalBusiness` (dirección, horario, teléfono)
-- 🔲 `robots.txt` y `sitemap.xml` (@astrojs/sitemap), antes del lanzamiento
+- ✅ Título, descripción, Open Graph (imagen para compartir 1200×630) y URL canónica en cada página (`src/components/Seo.astro`)
+- ✅ Datos estructurados `LocalBusiness` en todas las páginas y `BreadcrumbList` en las que tienen migas
+- ✅ `sitemap-index.xml` automático y `robots.txt` generado según el interruptor `indexable` de `src/data/sitio.ts`
 - 🔲 Ficha de Google Business coherente con la web
 - 🔲 Revisión con Lighthouse: rendimiento, accesibilidad y SEO
 
@@ -82,7 +82,8 @@ El SEO (Google) y el GEO (aparecer en respuestas de IA como ChatGPT, Gemini o lo
 - ⚠️ **No romper el email** `rodsegria@rodsegria.es`: al cambiar los DNS hay que conservar los registros MX del correo. Revisarlo antes de tocar nada
 - 🔲 Recomendado: publicar una versión de pruebas (sin indexar) al terminar la fase 2 para revisarla en móviles reales y probar el formulario. El dominio se conecta en el lanzamiento
 - ❓ **Envío de los formularios** (ahora provisional: abre el correo del cliente con la consulta redactada). Para activarlo: poner el `endpoint` en `src/data/formularios.ts` y, si acepta archivos, `adjuntos: true` (foto de la pieza). Una web estática no puede enviar emails. Opciones: un servicio externo (Formspree, Web3Forms…), funciones del hosting o un `mailto:` provisional. Se decide junto al hosting
-- 🔲 Quitar el `noindex` provisional
+- 🔲 **Lanzamiento:** poner `indexable: true` en `src/data/sitio.ts` (quita el noindex y abre robots.txt)
+- 🔲 Al elegir hosting: decidir barra final en las URL (`trailingSlash`) para que enlaces, canónicas y sitemap coincidan sin redirecciones
 - 🔲 HTTPS, redirecciones desde la web antigua y analítica respetuosa con la privacidad (si se quiere)
 
 ## Ideas para estudiar en la empresa

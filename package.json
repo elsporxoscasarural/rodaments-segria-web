@@ -10,9 +10,11 @@
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "revision": "python3 tools/revision-catalogo.py"
+    "revision": "python3 tools/revision-catalogo.py",
+    "imagen-social": "node tools/generar-imagen-social.mjs"
   },
   "dependencies": {
+    "@astrojs/sitemap": "^3.7.4",
     "@fontsource-variable/big-shoulders-display": "^5.3.0",
     "@fontsource-variable/hanken-grotesk": "^5.3.0",
     "astro": "^7.3.5",

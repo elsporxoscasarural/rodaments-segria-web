@@ -1,0 +1,71 @@
+---
+// Metadatos para buscadores y para compartir (WhatsApp, redes), y datos estructurados del negocio (schema.org).
+import { empresa } from '../data/empresa';
+import { sitio } from '../data/sitio';
+
+interface Props {
+	title: string;
+	description?: string;
+	/** Imagen para compartir (ruta en public/ o URL). Por defecto, la de sitio.ts. */
+	imagen?: string;
+}
+const { title, description, imagen = sitio.imagenSocial } = Astro.props;
+const canonica = new URL(Astro.url.pathname, Astro.site).href;
+const imagenAbsoluta = new URL(imagen, Astro.site).href;
+const { direccion, horario } = empresa;
+
+// Negocio local: dirección, horario, contacto. Ayuda a Google (Maps, resultados locales) y a las IAs.
+const negocio = {
+	'@context': 'https://schema.org',
+	'@type': 'LocalBusiness',
+	'@id': `${Astro.site?.href}#empresa`,
+	name: empresa.nombre,
+	legalName: empresa.razonSocial,
+	description:
+		'Empresa familiar de suministro industrial en Lleida: rodamientos, soportes, correas, transmisión de potencia, retenes, material de taller y distribuidor autorizado de Carburos Metálicos.',
+	url: Astro.site?.href,
+	logo: new URL('/icon-512.png', Astro.site).href,
+	image: imagenAbsoluta,
+	telephone: empresa.telefono.enlace,
+	email: empresa.email,
+	foundingDate: String(empresa.fundacion),
+	vatID: empresa.cif,
+	priceRange: 'Consultar',
+	address: {
+		'@type': 'PostalAddress',
+		streetAddress: `${direccion.poligono}, ${direccion.calle}`,
+		postalCode: direccion.codigoPostal,
+		addressLocality: direccion.localidad,
+		addressRegion: 'Lleida',
+		addressCountry: direccion.pais,
+	},
+	geo: { '@type': 'GeoCoordinates', latitude: direccion.geo.lat, longitude: direccion.geo.lng },
+	openingHoursSpecification: horario.tramos.map((t) => ({
+		'@type': 'OpeningHoursSpecification',
+		dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
+		opens: t.abre,
+		closes: t.cierra,
+	})),
+	areaServed: [
+		{ '@type': 'City', name: 'Lleida' },
+		{ '@type': 'Country', name: 'España' },
+	],
+};
+---
+
+<link rel="canonical" href={canonica} />
+<meta name="robots" content={sitio.indexable ? 'index, follow' : 'noindex, nofollow'} />
+
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content={empresa.nombre} />
+<meta property="og:locale" content={sitio.idioma} />
+<meta property="og:url" content={canonica} />
+<meta property="og:title" content={title} />
+{description && <meta property="og:description" content={description} />}
+<meta property="og:image" content={imagenAbsoluta} />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:image:alt" content={`${empresa.nombre}: rodamientos y suministro industrial en Lleida`} />
+<meta name="twitter:card" content="summary_large_image" />
+
+<script type="application/ld+json" set:html={JSON.stringify(negocio)} is:inline />

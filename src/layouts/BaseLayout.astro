@@ -3,6 +3,7 @@
 import '../styles/global.css';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
+import Seo from '../components/Seo.astro';
 
 interface Props {
 	title: string;
@@ -22,10 +23,10 @@ const { title, description, portada = false } = Astro.props;
 		<link rel="icon" href="/favicon.svg" type="image/svg+xml" />
 		<link rel="apple-touch-icon" href="/apple-touch-icon.png" />
 		<link rel="manifest" href="/site.webmanifest" />
-		<meta name="robots" content="noindex" />
 		<meta name="theme-color" content="#14163F" />
 		<title>{title}</title>
 		{description && <meta name="description" content={description} />}
+		<Seo title={title} description={description} />
 		<!--
 			Precarga de páginas: al posar el ratón (o el dedo) sobre un enlace interno, el navegador prepara esa página
 			con sus fotos. La navegación es instantánea y la transición de la foto de familia se ve completa.

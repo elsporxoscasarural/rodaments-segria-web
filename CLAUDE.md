@@ -12,7 +12,8 @@ Rodaments Segrià es una empresa familiar de suministros industriales en Lleida 
 - **Repo propio:** `elsporxoscasarural/rodaments-segria-web`. No se anidan repos dentro de este.
 - **Web anterior:** guardada en la etiqueta git `v1-legacy`. Era un HTML único con fondo oscuro y acentos azules.
 - **Idioma:** castellano en la raíz (`/`). El catalán llegará más adelante en `/ca/` (ver `i18n` en `astro.config.mjs`). Escribe las URLs y los textos pensando en que se traducirán.
-- **`robots.txt` y `sitemap.xml`:** se crean en la fase de SEO. Hasta el lanzamiento, las páginas llevan `noindex`.
+- **Interruptor de lanzamiento:** `src/data/sitio.ts` → `indexable`. En `false`, todas las páginas llevan `noindex` y `robots.txt` bloquea. Se pone en `true` solo el día del lanzamiento. El sitemap es automático (`@astrojs/sitemap`).
+- **SEO:** metadatos, Open Graph y datos estructurados (`LocalBusiness`, `BreadcrumbList`) en `src/components/Seo.astro` y `Migas.astro`. La imagen para compartir se regenera con `npm run imagen-social`.
 - **Formulario de presupuesto:** la interfaz se diseña con el resto de la web. El envío (servicio o funciones del hosting) se decide junto al hosting.
 
 ## Identidad visual
