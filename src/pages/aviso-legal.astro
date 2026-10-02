@@ -1,0 +1,70 @@
+---
+// Aviso legal (LSSI-CE, art. 10). Revisar con la gestoría antes del lanzamiento.
+import PaginaLegal from '../components/legal/PaginaLegal.astro';
+import { empresa } from '../data/empresa';
+import { inscripcionRegistral, domicilio, fechaLegal } from '../data/legal';
+---
+
+<PaginaLegal titulo="Aviso legal" descripcion={`Aviso legal del sitio web de ${empresa.razonSocial}.`} actualizado={fechaLegal}>
+	<h2>Titular del sitio web</h2>
+	<p>
+		En cumplimiento de la Ley 34/2002, de servicios de la sociedad de la información y de comercio electrónico
+		(LSSI-CE), te informamos de los datos del titular de este sitio web:
+	</p>
+	<dl>
+		<dt>Razón social</dt><dd>{empresa.razonSocial}</dd>
+		<dt>Nombre comercial</dt><dd>{empresa.nombre}</dd>
+		<dt>CIF</dt><dd>{empresa.cif}</dd>
+		<dt>Domicilio</dt><dd>{domicilio}</dd>
+		<dt>Teléfono</dt><dd>{empresa.telefono.visible}</dd>
+		<dt>Email</dt><dd><a href={`mailto:${empresa.email}`}>{empresa.email}</a></dd>
+		<dt>Datos registrales</dt><dd>{inscripcionRegistral}</dd>
+	</dl>
+
+	<h2>Objeto</h2>
+	<p>
+		Este sitio web informa sobre la empresa y sobre los productos que comercializa (rodamientos, transmisión de
+		potencia, estanqueidad, material de taller, componentes agrícolas y, como distribuidor autorizado, gases de Carburos
+		Metálicos), y permite solicitar presupuestos y consultar referencias. El sitio no vende en línea ni publica precios.
+	</p>
+
+	<h2>Condiciones de uso</h2>
+	<p>
+		El acceso a este sitio web es gratuito y supone la aceptación de este aviso legal. Te comprometes a hacer un uso
+		adecuado de los contenidos y a no emplearlos para actividades ilícitas o contrarias a la buena fe.
+	</p>
+
+	<h2>Propiedad intelectual e industrial</h2>
+	<p>
+		Los textos, fotografías, logotipos, diseño gráfico y código de este sitio web son propiedad de {empresa.razonSocial} o
+		cuenta con autorización para utilizarlos. No se permite su reproducción, distribución o transformación sin
+		autorización expresa.
+	</p>
+	<p>
+		Las marcas de terceros citadas en este sitio (como SKF, FAG, INA, NTN-SNR, Timken, Challenge o Carburos Metálicos)
+		pertenecen a sus respectivos titulares y se mencionan únicamente para identificar los productos que comercializamos.
+	</p>
+
+	<h2>Responsabilidad</h2>
+	<p>
+		Procuramos que la información de este sitio sea correcta y esté actualizada, pero no podemos garantizar la ausencia
+		de errores. La información sobre productos es orientativa: la disponibilidad, las características y las condiciones
+		se confirman siempre en el presupuesto.
+	</p>
+	<p>
+		Este sitio puede incluir enlaces a sitios de terceros. No somos responsables de sus contenidos ni de sus políticas de
+		privacidad.
+	</p>
+
+	<h2>Protección de datos y cookies</h2>
+	<p>
+		El tratamiento de tus datos personales se explica en la <a href="/privacidad">política de privacidad</a>, y el uso de
+		cookies en la <a href="/cookies">política de cookies</a>.
+	</p>
+
+	<h2>Legislación aplicable</h2>
+	<p>
+		Este aviso legal se rige por la legislación española. Para cualquier controversia, las partes se someten a los
+		juzgados y tribunales que correspondan conforme a la ley.
+	</p>
+</PaginaLegal>

@@ -5,12 +5,13 @@ Estado: ✅ hecho · 🔲 pendiente · ❓ decisión abierta
 ## 📋 Pendiente del cliente (no bloquea el diseño)
 | Tarea | Para qué | Dónde / cómo |
 |---|---|---|
-| **Hoja del Registro Mercantil** (L-…) | Aviso legal (obligatorio) | Últimas páginas de la escritura de 2009/10 o de constitución (sello de *inscripción*), gestoría o nota simple en sede.registradores.org (CIF B25337767) |
+| **Hoja del Registro Mercantil** (L-…) → `empresa.ts` | Aviso legal (obligatorio). La compilación avisa mientras falte | Últimas páginas de la escritura de 2009/10 o de constitución (sello de *inscripción*), gestoría o nota simple en sede.registradores.org (CIF B25337767) |
 | **Número de WhatsApp** (móvil) | Botones y contacto | Cuando esté dado de alta → `src/data/empresa.ts` |
 | **Logo de Carburos Metálicos** en buena calidad y sus normas de uso | Familia Carburos | El cliente lo tiene. Mejor SVG o PNG grande |
 | **Marcas que se pueden mostrar** (y sus logos) | Sección de marcas | Confirmar permiso con cada marca. Hasta entonces, ocultas |
 | **Confirmar el email** donde llegan los presupuestos | Formularios | ¿rodsegria@rodsegria.es u otro? |
 | **Sesión de fotos** (serie de producto sobre fondo claro, correas, detalles) | Catálogo y diseño | Lista y consejos en `docs/FOTOS.md` |
+| **Revisión de los textos legales por la gestoría** | Aviso legal, privacidad y cookies | Antes del lanzamiento |
 | **Revisar la foto de piñones y poleas** (retocada con IA) | Evitar textos alterados | Si las etiquetas dicen cosas raras, repetirla |
 
 
@@ -49,7 +50,10 @@ Estado: ✅ hecho · 🔲 pendiente · ❓ decisión abierta
 - ✅ Contacto (`/contacto`): formulario de presupuesto, datos de contacto, «Cómo llegar» y mapa bajo demanda
 - ✅ Buscar referencia (`/buscar-referencia`): formulario con referencias, marca y uso; recibe `?ref=` desde la portada
 - ✅ Empresa (`/empresa`): historia del cliente, datos clave, «Familia, oficio y stock», instalaciones con galería, equipo, marcas
-- 🔲 Legales (aviso legal, privacidad, cookies) y página 404
+- ✅ Página 404 con accesos al catálogo, buscador y familias
+- ✅ Aviso legal, privacidad y cookies redactados con los datos reales (`src/data/legal.ts`). **Pendiente:** hoja del Registro Mercantil y **revisión por la gestoría** antes del lanzamiento
+- 🔲 Al elegir hosting y servicio de formularios: añadirlos como encargados del tratamiento en `/privacidad`
+- 🔲 Si algún día se añade analítica: actualizar `/cookies` y poner banner de consentimiento
 - 🔲 Responsive y accesibilidad (contraste, foco y navegación con teclado)
 
 ## Fase 3 — Animaciones

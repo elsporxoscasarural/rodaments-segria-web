@@ -1,0 +1,68 @@
+---
+// Política de privacidad (RGPD y LOPDGDD). Revisar con la gestoría antes del lanzamiento.
+// Cuando se elija el servicio de envío de formularios y el hosting, añadirlos como encargados del tratamiento.
+import PaginaLegal from '../components/legal/PaginaLegal.astro';
+import { empresa } from '../data/empresa';
+import { domicilio, fechaLegal } from '../data/legal';
+---
+
+<PaginaLegal
+	titulo="Política de privacidad"
+	descripcion={`Cómo trata ${empresa.razonSocial} los datos personales que nos facilitas a través de este sitio web.`}
+	actualizado={fechaLegal}
+>
+	<h2>Responsable del tratamiento</h2>
+	<dl>
+		<dt>Responsable</dt><dd>{empresa.razonSocial} (CIF {empresa.cif})</dd>
+		<dt>Domicilio</dt><dd>{domicilio}</dd>
+		<dt>Email</dt><dd><a href={`mailto:${empresa.email}`}>{empresa.email}</a></dd>
+		<dt>Teléfono</dt><dd>{empresa.telefono.visible}</dd>
+	</dl>
+
+	<h2>Qué datos tratamos</h2>
+	<p>
+		Solo los que nos facilitas en los formularios de contacto, presupuesto y consulta de referencias: nombre, empresa (si
+		la indicas), email, teléfono (si lo indicas) y el contenido de tu consulta (referencias, marcas, uso o mensaje).
+	</p>
+
+	<h2>Para qué los usamos</h2>
+	<ul>
+		<li>Responder a tu consulta y, si lo pides, enviarte un presupuesto.</li>
+		<li>Contactarte por el medio que prefieras (email o teléfono) en relación con esa consulta.</li>
+	</ul>
+	<p>No usamos tus datos para enviarte publicidad ni tomamos decisiones automatizadas con ellos.</p>
+
+	<h2>Base legal</h2>
+	<p>
+		Tu consentimiento, que das al marcar la casilla de aceptación del formulario, y la aplicación de medidas
+		precontractuales a petición tuya (como preparar un presupuesto).
+	</p>
+
+	<h2>Cuánto tiempo los conservamos</h2>
+	<p>
+		El tiempo necesario para atender tu consulta. Si llegas a ser cliente, los plazos que marque la legislación
+		mercantil y fiscal. Si no, los eliminamos como máximo un año después de la última comunicación.
+	</p>
+
+	<h2>Con quién los compartimos</h2>
+	<p>
+		No cedemos tus datos a terceros, salvo obligación legal. Pueden acceder a ellos los proveedores que nos prestan
+		servicios técnicos (como el alojamiento del sitio web o el envío de formularios), siempre con un contrato que les
+		obliga a tratarlos solo por nuestra cuenta y con las garantías del RGPD.
+	</p>
+
+	<h2>Tus derechos</h2>
+	<p>
+		Puedes ejercer en cualquier momento tus derechos de acceso, rectificación, supresión, oposición, limitación del
+		tratamiento y portabilidad, y retirar tu consentimiento, escribiendo a
+		<a href={`mailto:${empresa.email}`}>{empresa.email}</a> o por correo postal a nuestro domicilio. Si consideras que no
+		hemos tratado bien tus datos, puedes reclamar ante la Agencia Española de Protección de Datos
+		(<a href="https://www.aepd.es" rel="noopener">www.aepd.es</a>).
+	</p>
+
+	<h2>Seguridad</h2>
+	<p>
+		Aplicamos las medidas técnicas y organizativas adecuadas para proteger tus datos frente a pérdidas, accesos no
+		autorizados o usos indebidos.
+	</p>
+</PaginaLegal>

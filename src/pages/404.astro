@@ -1,0 +1,131 @@
+---
+// Página de error 404: enlace roto o antiguo. En lugar de perder al cliente, lo llevamos al catálogo o al buscador.
+import { getCollection } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import IconoFamilia from '../components/IconoFamilia.astro';
+import { empresa } from '../data/empresa';
+
+const familias = (await getCollection('familias')).sort((a, b) => a.data.orden - b.data.orden);
+---
+
+<BaseLayout title="Página no encontrada | Rodaments Segrià" description="Esta página no existe. Visita nuestro catálogo o pregúntanos por la referencia que buscas.">
+	<section class="error" aria-labelledby="t-error">
+		<p class="error__codigo" aria-hidden="true">404</p>
+		<h1 id="t-error">Esta página no existe</h1>
+		<p class="error__texto">
+			Puede que el enlace sea antiguo o esté mal escrito. Pero la pieza que buscas, seguramente sí la tenemos.
+		</p>
+		<div class="error__acciones">
+			<a class="btn" href="/productos">Ver catálogo</a>
+			<a class="btn btn--noche" href="/buscar-referencia">Buscar referencia</a>
+			<a class="error__tel" href={`tel:${empresa.telefono.enlace}`}>o llama al {empresa.telefono.visible}</a>
+		</div>
+	</section>
+
+	<nav class="atajos" aria-label="Familias de producto">
+		<ul>
+			{
+				familias.map((f) => (
+					<li>
+						<a href={`/productos/${f.id}`} class:list={{ 'atajos--cm': f.data.destacada }}>
+							{f.data.icono && <IconoFamilia class="atajos__icono" icono={f.data.icono} />}
+							<span>{f.data.nombre}</span>
+						</a>
+					</li>
+				))
+			}
+		</ul>
+	</nav>
+</BaseLayout>
+
+<style>
+	.error {
+		position: relative;
+		padding: var(--seccion) var(--g);
+		overflow: hidden;
+		background: var(--n1);
+	}
+	.error__codigo {
+		position: absolute;
+		right: var(--g);
+		bottom: -0.18em;
+		max-width: none;
+		font-family: var(--f-display);
+		font-weight: 900;
+		font-size: clamp(10rem, 32vw, 26rem);
+		line-height: 1;
+		color: var(--n2);
+		pointer-events: none;
+		user-select: none;
+	}
+	h1 {
+		position: relative;
+		max-width: 12ch;
+		color: var(--noche);
+		font-size: clamp(3rem, 7vw, 6.5rem);
+		line-height: 0.98;
+	}
+	.error__texto {
+		position: relative;
+		margin-block: var(--s-5) var(--s-6);
+		font-size: var(--t-lead);
+	}
+	.error__acciones {
+		position: relative;
+		display: flex;
+		flex-wrap: wrap;
+		align-items: center;
+		gap: var(--s-3) var(--s-4);
+	}
+	.error__tel {
+		font-weight: 700;
+		color: var(--noche);
+		text-decoration: none;
+	}
+	.error__tel:hover {
+		color: var(--azul);
+	}
+
+	.atajos {
+		padding: var(--s-7) var(--g) var(--seccion);
+		background: var(--n1);
+	}
+	.atajos ul {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 4px;
+		margin: 0;
+		padding: 0;
+		list-style: none;
+	}
+	.atajos li {
+		flex: 1 1 13rem;
+	}
+	.atajos a {
+		display: flex;
+		align-items: center;
+		gap: var(--s-4);
+		height: 100%;
+		padding: var(--s-5);
+		background: var(--noche);
+		color: var(--n0);
+		font-family: var(--f-display);
+		font-weight: 800;
+		font-size: 1.3rem;
+		line-height: 1.05;
+		text-transform: uppercase;
+		text-decoration: none;
+		transition: background-color var(--d-media) var(--ease);
+	}
+	.atajos a:hover {
+		background: var(--indigo);
+	}
+	.atajos a.atajos--cm {
+		background: var(--cm-verde);
+	}
+	.atajos :global(.atajos__icono) {
+		flex: none;
+		width: 34px;
+		height: 34px;
+	}
+</style>

@@ -1,0 +1,51 @@
+---
+// Política de cookies. La web no instala cookies propias ni de analítica.
+// Si algún día se añade analítica o publicidad, hay que actualizar esta página y añadir un banner de consentimiento.
+import PaginaLegal from '../components/legal/PaginaLegal.astro';
+import { empresa } from '../data/empresa';
+import { fechaLegal } from '../data/legal';
+---
+
+<PaginaLegal
+	titulo="Política de cookies"
+	descripcion={`Qué cookies usa el sitio web de ${empresa.nombre}.`}
+	actualizado={fechaLegal}
+>
+	<h2>Qué son las cookies</h2>
+	<p>
+		Las cookies son pequeños archivos que algunos sitios web guardan en tu navegador para recordar información sobre tu
+		visita.
+	</p>
+
+	<h2>Cookies que usa este sitio</h2>
+	<p>
+		<strong>Este sitio no instala cookies propias, ni de analítica, ni de publicidad.</strong> Por eso no te mostramos
+		ningún banner de cookies al entrar.
+	</p>
+
+	<h2>Cookies de terceros: Google Maps</h2>
+	<p>
+		En la página de <a href="/contacto">contacto</a> puedes ver nuestra ubicación en un mapa de Google Maps. El mapa
+		<strong>solo se carga si pulsas «Ver mapa»</strong>. A partir de ese momento, Google puede instalar sus propias
+		cookies, que se rigen por su política:
+	</p>
+	<table>
+		<thead>
+			<tr><th>Proveedor</th><th>Finalidad</th><th>Más información</th></tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>Google (Google Maps)</td>
+				<td>Mostrar el mapa interactivo y recordar preferencias del mapa</td>
+				<td><a href="https://policies.google.com/technologies/cookies?hl=es" rel="noopener">Política de cookies de Google</a></td>
+			</tr>
+		</tbody>
+	</table>
+	<p>Si no pulsas «Ver mapa», no se carga nada de Google.</p>
+
+	<h2>Cómo gestionar las cookies</h2>
+	<p>
+		Puedes ver y borrar las cookies, o bloquearlas, desde la configuración de tu navegador (Chrome, Safari, Firefox,
+		Edge…). Bloquearlas no afecta al funcionamiento de este sitio.
+	</p>
+</PaginaLegal>
