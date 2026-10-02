@@ -58,7 +58,8 @@ Estado: ✅ hecho · 🔲 pendiente · ❓ decisión abierta
 
 ## Fase 3 — Animaciones
 - ✅ GSAP + ScrollTrigger (secuencia de portada) y Lenis (scroll con inercia) + apariciones en `src/scripts/movimiento.ts`
-- 🔲 Animación de entrada del hero, apariciones al hacer scroll y transiciones entre páginas (View Transitions de Astro)
+- ✅ Animación de entrada del hero y apariciones al hacer scroll
+- ✅ Transiciones entre páginas (View Transitions nativas) con la foto de familia compartida + precarga al pasar el ratón (Speculation Rules)
 - 🔲 Comprobar `prefers-reduced-motion` y el rendimiento en móvil
 
 ## SEO y GEO desde el principio

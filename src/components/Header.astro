@@ -67,6 +67,8 @@ const activo = (href: string) => ruta === href || ruta.startsWith(href + '/');
 
 <style>
 	.cabecera {
+		/* Se queda quieta al cambiar de página (ver transiciones en global.css) */
+		view-transition-name: cabecera;
 		position: fixed;
 		inset: 0 0 auto 0;
 		z-index: var(--z-nav);

@@ -72,7 +72,7 @@ Estrategia: **Comprometida en momentos concretos y contenida en el resto.** El 8
 - **Scroll con inercia** (Lenis, `lerp 0.1`) y **animaciones ligadas al scroll** (GSAP ScrollTrigger con `scrub`).
 - **Momento estrella:** la entrada en la nave (fachada que se acerca, la nave se abre desde la puerta, las cifras aparecen línea a línea). Es el único movimiento llamativo. El resto es discreto.
 - **Apariciones:** desplazamiento de 28 px y opacidad, `--d-lenta` con `--ease` (ease-out-quint). Escalonado de 70 ms en rejillas.
-- **Transiciones entre páginas** con View Transitions de Astro.
+- **Transiciones entre páginas:** View Transitions nativas del navegador (`@view-transition` en `global.css`), sin JS. La cabecera se queda quieta, el contenido sale hacia arriba y el nuevo entra suave. **La foto de una familia viaja de su tarjeta a la cabecera de su página** (`view-transition-name: foto-<id>`). Las páginas se precargan al posar el ratón sobre el enlace (Speculation Rules), así la navegación es instantánea.
 - Sin rebotes ni curvas elásticas. Solo se animan `transform`, `opacity` y `clip-path`.
 - `prefers-reduced-motion`: sin inercia ni secuencia fijada. Todo se muestra estático y completo.
 

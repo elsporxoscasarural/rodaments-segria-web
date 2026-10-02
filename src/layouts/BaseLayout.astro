@@ -22,6 +22,21 @@ const { title, description, portada = false } = Astro.props;
 		<meta name="theme-color" content="#14163F" />
 		<title>{title}</title>
 		{description && <meta name="description" content={description} />}
+		<!--
+			Precarga de páginas: al posar el ratón (o el dedo) sobre un enlace interno, el navegador prepara esa página
+			con sus fotos. La navegación es instantánea y la transición de la foto de familia se ve completa.
+			Navegadores sin soporte lo ignoran.
+		-->
+		<script type="speculationrules" is:inline>
+			{
+				"prerender": [
+					{
+						"where": { "and": [{ "href_matches": "/*" }, { "not": { "href_matches": "/*\\?*" } }] },
+						"eagerness": "moderate"
+					}
+				]
+			}
+		</script>
 	</head>
 	<body>
 		<a class="saltar" href="#contenido">Saltar al contenido</a>

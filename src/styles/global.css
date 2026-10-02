@@ -173,3 +173,40 @@ html.lenis body {
 .unidad {
 	text-transform: none;
 }
+
+/* ---------------------------------------------------------------
+   Transiciones entre páginas (View Transitions nativas del navegador).
+   Sin JS: si el navegador no las soporta, cambia de página como siempre.
+   La cabecera se queda fija; el contenido sale hacia arriba y el nuevo entra suave.
+   La foto de una familia «viaja» de su tarjeta a la cabecera de su página (view-transition-name: foto-<id>).
+---------------------------------------------------------------- */
+@view-transition {
+	navigation: auto;
+}
+::view-transition-old(root) {
+	animation: vt-salida 260ms var(--ease-io) both;
+}
+::view-transition-new(root) {
+	animation: vt-entrada 560ms var(--ease) 60ms both;
+}
+::view-transition-group(*) {
+	animation-duration: 620ms;
+	animation-timing-function: var(--ease);
+}
+@keyframes vt-salida {
+	to {
+		opacity: 0;
+		transform: translateY(-14px);
+	}
+}
+@keyframes vt-entrada {
+	from {
+		opacity: 0;
+		transform: translateY(22px);
+	}
+}
+@media (prefers-reduced-motion: reduce) {
+	@view-transition {
+		navigation: none;
+	}
+}
