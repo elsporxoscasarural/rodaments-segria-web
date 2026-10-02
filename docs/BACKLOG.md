@@ -37,7 +37,8 @@ Estado: ✅ hecho · 🔲 pendiente · ❓ decisión abierta
 
 ## Fase 2 — Diseño
 - ✅ Paleta decidida: azules del logo (`#015BFE`, `#282B98`) sobre grises claros y blancos. Web clara
-- 🔲 Proponer una dirección visual (tipografía, tono, referencias) y aprobarla antes de construir
+- ✅ PRODUCT.md (brief de marca para impeccable): sólida, comprador habitual, «aquí lo tienen» + «me van a ayudar»
+- 🔄 Dirección visual: 3 propuestas (A Ficha técnica · B Señalética de nave · C Mostrador) en https://claude.ai/artifact/EuVDs5Uo9A6JgvihpWpUF2. Pendiente de elección
 - 🔲 Sistema de diseño (escala de neutros, contraste AA de los azules sobre fondos claros): tokens de color, tipografía y espaciado en `src/styles/`
 - 🔲 Layout base, cabecera con navegación (también en móvil) y pie
 - 🔲 Favicons nuevos a partir de `simbolo.svg`
