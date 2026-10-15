@@ -1,0 +1,208 @@
+---
+// Muro de marcas: los logos de las marcas que hay en stock, grandes y en fichas como las placas de las estanterías.
+// Solo salen las marcas con `publicar` y logo con `permisoLogo`; el orden lo marca `orden` (NTN-SNR primero).
+// Al entrar en pantalla las fichas se encienden una a una; sin JS o con movimiento reducido se ven directamente.
+import { Image } from 'astro:assets';
+import { getCollection } from 'astro:content';
+
+interface Props {
+	titulo?: string;
+	texto?: string;
+}
+const {
+	titulo = 'Marcas que tenemos en stock',
+	texto = 'Trabajamos con fabricantes de primera línea. Si buscas una pieza de una marca que no está aquí, te proponemos la equivalencia.',
+} = Astro.props;
+
+const marcas = (
+	await getCollection('marcas', (m) => m.data.publicar && m.id !== 'carburos-metalicos' && !!m.data.logo && m.data.permisoLogo)
+).sort((a, b) => a.data.orden - b.data.orden);
+---
+
+{
+	marcas.length > 0 && (
+		<section class="muro" aria-labelledby="t-muro-marcas">
+			<header class="muro__cabecera">
+				<h2 id="t-muro-marcas">{titulo}</h2>
+				<p>{texto}</p>
+			</header>
+			<ul class="muro__lista" translate="no" data-muro>
+				{marcas.map((m, i) => (
+					<li class="ficha" style={`--i: ${i}`} data-marca={m.id}>
+						<span class="ficha__num" aria-hidden="true">
+							{String(i + 1).padStart(2, '0')}
+						</span>
+						<Image class="ficha__logo" src={m.data.logo!} alt={m.data.nombre} height={160} loading="lazy" />
+						<span class="ficha__nombre" aria-hidden="true">
+							{m.data.nombre}
+						</span>
+					</li>
+				))}
+			</ul>
+			<slot />
+		</section>
+	)
+}
+
+<style>
+	.muro {
+		padding: var(--seccion) var(--g);
+		background: var(--n1);
+	}
+	.muro__cabecera {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: space-between;
+		align-items: end;
+		gap: var(--s-4) var(--s-7);
+		margin-bottom: var(--s-7);
+	}
+	.muro__cabecera h2 {
+		max-width: 14ch;
+		color: var(--noche);
+	}
+	.muro__cabecera p {
+		max-width: 42ch;
+		font-size: var(--t-lead);
+	}
+	.muro > :global(p) {
+		margin-top: var(--s-5);
+		color: var(--n6);
+	}
+
+	/* Rejilla con juntas de 1 px: fichas blancas sobre gris, como placas atornilladas */
+	.muro__lista {
+		display: grid;
+		grid-template-columns: repeat(3, minmax(0, 1fr));
+		gap: 1px;
+		margin: 0;
+		padding: 1px;
+		list-style: none;
+		background: var(--n2);
+	}
+	.ficha {
+		position: relative;
+		display: grid;
+		place-items: center;
+		min-height: clamp(9.5rem, 17vw, 14rem);
+		padding: var(--s-6) var(--s-5);
+		background: var(--n0);
+		overflow: hidden;
+	}
+	/* Barra azul inferior: aparece al pasar el ratón */
+	.ficha::after {
+		content: '';
+		position: absolute;
+		inset: auto 0 0 0;
+		height: 4px;
+		background: var(--azul);
+		transform: scaleX(0);
+		transform-origin: left;
+		transition: transform var(--d-media) var(--ease);
+	}
+	.ficha__logo {
+		width: min(78%, 17rem);
+		height: clamp(3.2rem, 6.4vw, 5.6rem);
+		object-fit: contain;
+		transition: transform var(--d-media) var(--ease);
+	}
+	/* El rombo de INA es cuadrado: a igual altura parece más pequeño que los logos apaisados */
+	.ficha[data-marca='ina'] .ficha__logo {
+		height: clamp(4.2rem, 8.4vw, 7.4rem);
+	}
+	.ficha__num,
+	.ficha__nombre {
+		position: absolute;
+		font-size: var(--t-xs);
+		font-weight: 600;
+		color: var(--n6);
+	}
+	.ficha__num {
+		top: var(--s-4);
+		left: var(--s-4);
+		font-family: var(--f-display);
+		font-weight: 800;
+		font-size: var(--t-sm);
+		transition: color var(--d-media) var(--ease);
+	}
+	.ficha__nombre {
+		bottom: var(--s-4);
+		right: var(--s-4);
+		text-transform: uppercase;
+		letter-spacing: 0.06em;
+	}
+	@media (hover: hover) and (pointer: fine) {
+		.ficha:hover::after {
+			transform: scaleX(1);
+		}
+		.ficha:hover .ficha__logo {
+			transform: scale(1.05);
+		}
+		.ficha:hover .ficha__num {
+			color: var(--azul);
+		}
+	}
+
+	/* Encendido escalonado: primero la ficha, un poco después el logo */
+	:global(.con-movimiento) .muro__lista.preparada .ficha {
+		opacity: 0.001;
+		transform: translateY(32px);
+		transition:
+			opacity 700ms var(--ease),
+			transform var(--d-lenta) var(--ease);
+		transition-delay: calc(var(--i) * 90ms);
+	}
+	:global(.con-movimiento) .muro__lista.preparada .ficha__logo {
+		opacity: 0.001;
+		transform: scale(0.86);
+		transition:
+			opacity 700ms var(--ease),
+			transform var(--d-lenta) var(--ease);
+		transition-delay: calc(var(--i) * 90ms + 180ms);
+	}
+	:global(.con-movimiento) .muro__lista.encendida .ficha,
+	:global(.con-movimiento) .muro__lista.encendida .ficha__logo {
+		opacity: 1;
+		transform: none;
+	}
+
+	@media (max-width: 760px) {
+		.muro__lista {
+			grid-template-columns: repeat(2, minmax(0, 1fr));
+		}
+		.ficha__logo {
+			height: clamp(2.4rem, 9vw, 3.4rem);
+		}
+		.ficha[data-marca='ina'] .ficha__logo {
+			height: clamp(3.2rem, 12vw, 4.4rem);
+		}
+	}
+	@media (max-width: 22rem) {
+		.muro__lista {
+			grid-template-columns: minmax(0, 1fr);
+		}
+	}
+</style>
+
+<script>
+	// Enciende las fichas al entrar en pantalla (una sola vez). Sin movimiento reducido.
+	const reducido = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+	document.querySelectorAll<HTMLElement>('[data-muro]').forEach((lista) => {
+		if (reducido || !('IntersectionObserver' in window)) return;
+		// Si ya está en pantalla al cargar, no se oculta para volver a mostrarse
+		if (lista.getBoundingClientRect().top < window.innerHeight) return;
+		lista.classList.add('preparada');
+		const observador = new IntersectionObserver(
+			(entradas) => {
+				if (entradas.some((e) => e.isIntersecting)) {
+					lista.classList.add('encendida');
+					observador.disconnect();
+					// Quita los retrasos al terminar para que el hover responda al instante
+					setTimeout(() => lista.classList.remove('preparada'), 1800);
+				}
+			},
+			{ threshold: 0.2 },
+		);
+		observador.observe(lista);
+	});
+</script>

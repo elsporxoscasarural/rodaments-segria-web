@@ -1,9 +1,9 @@
 ---
 // Empresa: historia (texto del cliente), forma de trabajar, instalaciones, equipo y marcas. Textos en docs/TEXTOS.md.
 import { Picture } from 'astro:assets';
-import { getCollection } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Migas from '../components/Migas.astro';
+import MuroMarcas from '../components/MuroMarcas.astro';
 import { empresa, anosTrayectoria, formatoNumero } from '../data/empresa';
 import { ctaPrincipal } from '../data/navegacion';
 import cabecera from '../assets/img/fotos/nave-almacen-vista-elevada.jpg';
@@ -16,9 +16,6 @@ import fachada from '../assets/img/fotos/fachada-rodaments-segria-lleida.jpg';
 const anos = Math.floor(anosTrayectoria() / 5) * 5;
 const referencias = formatoNumero(empresa.referenciasEnStock);
 const generacion = ['Primera', 'Segunda', 'Tercera', 'Cuarta', 'Quinta'][empresa.generacionActual - 1];
-const marcas = (await getCollection('marcas', (m) => m.data.publicar && m.id !== 'carburos-metalicos'))
-	.sort((a, b) => a.data.orden - b.data.orden)
-	.map((m) => m.data.nombre);
 const { direccion } = empresa;
 ---
 
@@ -116,19 +113,9 @@ const { direccion } = empresa;
 		</div>
 	</section>
 
-	{
-		marcas.length > 0 && (
-			<section class="marcas" aria-labelledby="t-marcas">
-				<h2 id="t-marcas">Trabajamos con las mejores marcas</h2>
-				<ul translate="no">
-					{marcas.map((m) => (
-						<li>{m}</li>
-					))}
-				</ul>
-				<p>Y somos distribuidores autorizados de Carburos Metálicos en Lleida.</p>
-			</section>
-		)
-	}
+	<MuroMarcas titulo="Trabajamos con las mejores marcas">
+		<p>Y somos distribuidores autorizados de Carburos Metálicos en Lleida.</p>
+	</MuroMarcas>
 
 	<section class="visita sobre-oscuro" aria-labelledby="t-visita">
 		<div class="aparece">
@@ -313,33 +300,6 @@ const { direccion } = empresa;
 	}
 	.galeria :global(.galeria__b) {
 		grid-row: span 2;
-	}
-
-	/* ---------- Marcas ---------- */
-	.marcas {
-		padding: var(--s-8) var(--g);
-		background: var(--n0);
-	}
-	.marcas h2 {
-		margin-bottom: var(--s-5);
-		font-size: var(--t-2);
-		color: var(--noche);
-	}
-	.marcas ul {
-		display: flex;
-		flex-wrap: wrap;
-		gap: var(--s-2) var(--s-7);
-		margin: 0 0 var(--s-4);
-		padding: 0;
-		list-style: none;
-		font-family: var(--f-display);
-		font-weight: 800;
-		font-size: clamp(1.75rem, 3.4vw, 3rem);
-		text-transform: uppercase;
-		color: var(--n5);
-	}
-	.marcas p {
-		color: var(--n6);
 	}
 
 	/* ---------- Visita ---------- */

@@ -8,7 +8,7 @@ Estado: ✅ hecho · 🔲 pendiente · ❓ decisión abierta
 | **Hoja del Registro Mercantil** (L-…) → `empresa.ts` | Aviso legal (obligatorio). La compilación avisa mientras falte | Últimas páginas de la escritura de 2009/10 o de constitución (sello de *inscripción*), gestoría o nota simple en sede.registradores.org (CIF B25337767) |
 | **Número de WhatsApp** (móvil) | Botones y contacto | Cuando esté dado de alta → `src/data/empresa.ts` |
 | **Logo de Carburos Metálicos** en buena calidad y sus normas de uso | Familia Carburos | El cliente lo tiene. Mejor SVG o PNG grande |
-| **Marcas que se pueden mostrar** (y sus logos) | Sección de marcas | Confirmar permiso con cada marca. Hasta entonces, ocultas |
+| **Permiso y logos oficiales de las marcas** (NTN-SNR, SKF, FAG, INA, Timken, Challenge) | Muro de marcas y portada | Ya se muestran con logos públicos (Wikimedia y webs de las marcas). Antes del lanzamiento: pedir a cada proveedor el logo oficial y el OK para usarlo como distribuidor. Sustituir en `src/assets/marcas/` con el mismo nombre. Si alguna dice que no: `permisoLogo: false` |
 | **Confirmar el email** donde llegan los presupuestos | Formularios | ¿rodsegria@rodsegria.es u otro? |
 | **Sesión de fotos** (serie de producto sobre fondo claro, correas, detalles) | Catálogo y diseño | Lista y consejos en `docs/FOTOS.md` |
 | **Revisión de los textos legales por la gestoría** | Aviso legal, privacidad y cookies | Antes del lanzamiento |
