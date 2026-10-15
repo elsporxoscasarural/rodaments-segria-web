@@ -37,6 +37,11 @@ const activo = (href: string) => ruta === href || ruta.startsWith(href + '/');
 
 	<a class="tel" href={`tel:${empresa.telefono.enlace}`}>{empresa.telefono.visible}</a>
 	<a class="btn cta" href={ctaPrincipal.href}>{ctaPrincipal.texto}</a>
+	<!-- En el móvil se llama más que se pide presupuesto (que sigue en el menú) -->
+	<a class="btn cta cta--llamar" href={`tel:${empresa.telefono.enlace}`} aria-label={`Llamar al ${empresa.telefono.visible}`}>
+		<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 3h3l1.5 4-2 1.3a12 12 0 0 0 6.6 6.6l1.3-2 4 1.5v3a2 2 0 0 1-2.2 2A17 17 0 0 1 4.6 5.2 2 2 0 0 1 6.6 3Z" /></svg>
+		Llamar
+	</a>
 
 	<button class="boton-menu" type="button" aria-expanded="false" aria-controls="menu-movil" data-boton-menu>
 		<span class="boton-menu__texto">Menú</span>
@@ -149,6 +154,19 @@ const activo = (href: string) => ruta === href || ruta.startsWith(href + '/');
 
 	.cta {
 		flex: none;
+	}
+	.cta--llamar {
+		display: none;
+		gap: var(--s-2);
+	}
+	.cta--llamar svg {
+		flex: none;
+		width: 18px;
+		height: 18px;
+		fill: none;
+		stroke: currentColor;
+		stroke-width: 2;
+		stroke-linejoin: round;
 	}
 	.cabecera--sobre-foto:not(.es-solida) .cta {
 		background: var(--noche);
@@ -309,6 +327,12 @@ const activo = (href: string) => ruta === href || ruta.startsWith(href + '/');
 	@container cabecera (max-width: 35em) {
 		.marca {
 			height: 30px;
+		}
+		.cta:not(.cta--llamar) {
+			display: none;
+		}
+		.cta--llamar {
+			display: inline-flex;
 		}
 		.cta {
 			min-height: 44px;
