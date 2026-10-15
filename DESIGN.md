@@ -57,9 +57,6 @@ Estrategia: **Comprometida en momentos concretos y contenida en el resto.** El 8
 - **Campo de búsqueda de referencia:** borde de 2 px en noche, texto grande, botón noche que pasa a azul. Siempre con ejemplo real (`6205-2RS x 10`).
 - **Bloque Carburos:** fondo `--cm-verde`, logo sobre **placa blanca** con «Distribuidor autorizado», etiquetas con borde blanco y foto del **camión de Carburos** (matrícula difuminada) fundida con el verde.
 - **Pie:** a la izquierda «¿Buscas una pieza? Pregúntanos.»; a la derecha, teléfono (Big Shoulders, enorme) y email grandes. Debajo, dirección, horario y aparcamiento.
-- **Cómo pedir una pieza (portada):** 3 pasos reales numerados (01–03) con una vía vertical gris y el progreso en azul que avanza con el scroll. Cada paso se «enciende» al llegar al centro de la pantalla. El título se queda fijo al lado en escritorio.
-- **Barra fija móvil:** «Llamar» + «Pedir presupuesto» (y WhatsApp cuando exista). Aparece tras la portada y se oculta en el pie y con el menú abierto.
-- **Firma del pie:** «RODAMENTS SEGRIÀ» en Big Shoulders 900 ocupando exactamente el ancho (SVG con `textLength`), al 7 % de opacidad y cortada por abajo.
 - **Navegación:** fija. Transparente con logo blanco sobre fotos; sólida (n0 al 96 %) con logo a color sobre contenido claro. Teléfono siempre visible en escritorio.
 - **Iconos:** ninguno decorativo. Nunca emojis.
 

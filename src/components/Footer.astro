@@ -60,39 +60,13 @@ const anio = new Date().getFullYear();
 		<ul>{enlacesLegales.map((item) => <li><a href={item.href}>{item.texto}</a></li>)}</ul>
 		<p>© {anio} <span translate="no">{empresa.razonSocial}</span></p>
 	</div>
-	<!-- Firma: el nombre de la empresa ocupa exactamente todo el ancho (textLength), como la rotulación de la nave -->
-	<div class="pie__firma" aria-hidden="true" translate="no">
-		<svg viewBox="0 0 1000 120">
-			<text x="0" y="118" textLength="1000" lengthAdjust="spacingAndGlyphs">{empresa.nombre.toUpperCase()}</text>
-		</svg>
-	</div>
 </footer>
 
 <style>
 	.pie {
 		background: var(--noche);
 		color: color-mix(in oklch, var(--n0) 92%, transparent);
-		padding: var(--seccion) var(--g) 0;
-		overflow: hidden;
-	}
-	.pie__firma {
-		margin-top: var(--s-7);
-		/* Se corta un poco por abajo: como un rótulo que sigue más allá del borde */
-		margin-bottom: calc(-0.9vw - env(safe-area-inset-bottom, 0px));
-		padding-bottom: env(safe-area-inset-bottom, 0px);
-	}
-	.pie__firma svg {
-		display: block;
-		width: 100%;
-		height: auto;
-		overflow: visible;
-	}
-	/* :global, porque el texto va dentro del SVG */
-	.pie__firma :global(text) {
-		font-family: var(--f-display);
-		font-weight: 900;
-		font-size: 150px;
-		fill: color-mix(in oklch, var(--n0) 7%, transparent);
+		padding: var(--seccion) var(--g) calc(env(safe-area-inset-bottom, 0px) + var(--s-6));
 	}
 	.pie a {
 		text-decoration: none;
