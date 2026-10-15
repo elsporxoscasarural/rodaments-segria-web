@@ -395,6 +395,7 @@ const asunto = tipo === 'presupuesto' ? 'Solicitud de presupuesto' : 'Consulta d
 				return;
 			}
 
+			datos.set('asunto', form.dataset.asunto ?? '');
 			boton.disabled = true;
 			boton.textContent = 'Enviando…';
 			try {

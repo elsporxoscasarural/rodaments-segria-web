@@ -1,0 +1,46 @@
+# Rodaments Segrià · configuración del servidor (Apache, Dinahosting)
+# Se sube con la web desde public/. No editar en el servidor: se sobrescribe en cada publicación.
+
+ErrorDocument 404 /404.html
+Options -Indexes
+DirectoryIndex index.html
+
+<IfModule mod_rewrite.c>
+	RewriteEngine On
+
+	# Siempre por HTTPS
+	RewriteCond %{HTTPS} !=on
+	RewriteCond %{HTTP:X-Forwarded-Proto} !=https
+	RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+	# rodsegria.es → www.rodsegria.es (la de pruebas no se toca)
+	RewriteCond %{HTTP_HOST} ^rodsegria\.es$ [NC]
+	RewriteRule ^ https://www.rodsegria.es%{REQUEST_URI} [L,R=301]
+</IfModule>
+
+# Archivo interno de la subida automática: no se sirve
+<Files ".ftp-deploy-sync-state.json">
+	Require all denied
+</Files>
+
+<IfModule mod_headers.c>
+	Header always set X-Content-Type-Options "nosniff"
+	Header always set Referrer-Policy "strict-origin-when-cross-origin"
+	Header always set X-Frame-Options "SAMEORIGIN"
+	Header always set Permissions-Policy "camera=(), microphone=(), geolocation=()"
+	# Archivos con huella en el nombre (/_astro/): no cambian nunca, caché de un año
+	<If "%{REQUEST_URI} =~ m#^/_astro/#">
+		Header set Cache-Control "public, max-age=31536000, immutable"
+	</If>
+	# Páginas: siempre la última versión
+	<FilesMatch "\.html$">
+		Header set Cache-Control "no-cache"
+	</FilesMatch>
+</IfModule>
+
+<IfModule mod_deflate.c>
+	AddOutputFilterByType DEFLATE text/html text/css text/plain text/xml application/javascript application/json application/xml image/svg+xml application/manifest+json
+</IfModule>
+
+AddType image/avif .avif
+AddType application/manifest+json .webmanifest

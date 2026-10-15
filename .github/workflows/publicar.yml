@@ -1,0 +1,42 @@
+# Publica la web en Dinahosting en cada push a main (y a mano desde la pestaña Actions).
+# Datos que se configuran en GitHub (Settings → Secrets and variables → Actions), nunca en el repo:
+#   - Secretos: FTP_USUARIO y FTP_CONTRASENA (la cuenta FTP de Dinahosting)
+#   - Variable: FTP_CARPETA = carpeta del servidor donde va la web, acabada en «/».
+#     Hoy: la del subdominio de pruebas. El día del lanzamiento: la de www.rodsegria.es.
+# Mientras FTP_CARPETA no exista, no se publica nada.
+name: Publicar en Dinahosting
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+concurrency:
+  group: publicar
+  cancel-in-progress: false
+
+jobs:
+  publicar:
+    if: vars.FTP_CARPETA != ''
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+
+      - run: npm ci
+      - run: npm run build
+
+      # Solo sube lo que ha cambiado. Borra del servidor únicamente archivos que subió ella misma antes.
+      - uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: rodsegria-es.espacioseguro.com
+          protocol: ftps
+          port: 21
+          username: ${{ secrets.FTP_USUARIO }}
+          password: ${{ secrets.FTP_CONTRASENA }}
+          local-dir: ./dist/
+          server-dir: ${{ vars.FTP_CARPETA }}

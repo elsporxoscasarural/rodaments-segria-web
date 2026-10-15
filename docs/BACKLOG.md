@@ -15,6 +15,14 @@ Estado: ✅ hecho · 🔲 pendiente · ❓ decisión abierta
 | **Revisar la foto de piñones y poleas** (retocada con IA) | Evitar textos alterados | Si las etiquetas dicen cosas raras, repetirla |
 
 
+## 🚀 Publicación (Dinahosting)
+- **Cómo funciona:** cada push a `main` compila la web en GitHub y la sube por FTPS a Dinahosting (`.github/workflows/publicar.yml`). Solo sube lo que cambia.
+- **Datos en GitHub** (Settings → Secrets and variables → Actions): secretos `FTP_USUARIO` y `FTP_CONTRASENA`, y la variable `FTP_CARPETA`. Nunca en el repo.
+- **Formulario:** `/enviar.php` (generado por `src/pages/enviar.php.ts`) envía el email con PHP al correo de `empresa.ts`. En local se abre el programa de correo.
+- **Servidor:** `public/.htaccess` (HTTPS, `rodsegria.es` → `www`, página 404, caché y cabeceras de seguridad).
+- [ ] Subdominio `pruebas.rodsegria.es` con certificado SSL → `FTP_CARPETA` apuntando a su carpeta → revisar la web y probar el formulario
+- [ ] **Lanzamiento:** copia de la web antigua → `FTP_CARPETA` a la carpeta de www → `sitio.indexable = true` → Search Console
+
 ## Fase 0 — Espacio de trabajo ✅
 - ✅ Web anterior guardada en la etiqueta `v1-legacy`
 - ✅ Proyecto Astro, estructura de carpetas, `.gitignore`, `CLAUDE.md`

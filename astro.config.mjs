@@ -11,7 +11,7 @@ export default defineConfig({
 		locales: ['es'],
 		routing: { prefixDefaultLocale: false },
 	},
-	// Sin la barra de herramientas de desarrollo de Astro: tapaba la barra fija del móvil al revisar en local
+	// Sin la barra de herramientas de desarrollo de Astro: tapa partes de la web al revisarla en local
 	devToolbar: { enabled: false },
 	// CSS dentro del HTML: sin peticiones que bloqueen el primer pintado (la web es pequeña, compensa)
 	build: { inlineStylesheets: 'always' },
