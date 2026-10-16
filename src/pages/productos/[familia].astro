@@ -8,6 +8,7 @@ import IconoFamilia from '../../components/IconoFamilia.astro';
 import BandaReferencia from '../../components/BandaReferencia.astro';
 import Migas from '../../components/Migas.astro';
 import { ctaPrincipal } from '../../data/navegacion';
+import { miniatura } from '../../utils/miniatura';
 
 export async function getStaticPaths() {
 	const familias = await getCollection('familias');
@@ -35,6 +36,7 @@ const relacionadas = sectorRelacionado
 			.sort((a, b) => nombreFamilia(a.data.familia.id).localeCompare(nombreFamilia(b.data.familia.id)) || a.data.orden - b.data.orden)
 	: [];
 
+const fondoFoto = imagen ? await miniatura(imagen) : '';
 const otras = familias.filter((f) => f.id !== familia.id);
 const marcaCm = destacada ? await getEntry('marcas', 'carburos-metalicos') : undefined;
 const titulo = destacada ? `${nombre}: gases industriales en Lleida | Rodaments Segrià` : `${nombre} en Lleida | Rodaments Segrià`;
@@ -46,7 +48,7 @@ const titulo = destacada ? `${nombre}: gases industriales en Lleida | Rodaments 
 			imagen && (
 				<Picture formats={['avif', 'webp']}
 					class="cabecera-familia__foto"
-					style={`view-transition-name: foto-${familia.id}`}
+					style={`view-transition-name: foto-${familia.id}; view-transition-class: foto; ${fondoFoto}`}
 					src={imagen}
 					alt=""
 					widths={[800, 1200, 1600, 2000]}

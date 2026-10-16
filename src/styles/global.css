@@ -207,6 +207,13 @@ html.lenis body {
 	animation-duration: 620ms;
 	animation-timing-function: var(--ease);
 }
+/* La foto que viaja mantiene su encuadre (sin estirarse) mientras cambia de tamaño */
+::view-transition-old(*.foto),
+::view-transition-new(*.foto) {
+	height: 100%;
+	object-fit: cover;
+	overflow: clip;
+}
 @keyframes vt-salida {
 	to {
 		opacity: 0;

@@ -43,7 +43,7 @@ const cuantas = (id: string) => categorias.filter((c) => c.data.familia.id === i
 							{familia.data.imagen && (
 								<Picture formats={['avif', 'webp']}
 									class="familia__foto"
-									style={`view-transition-name: foto-${familia.id}`}
+									style={`view-transition-name: foto-${familia.id}; view-transition-class: foto`}
 									src={familia.data.imagen}
 									alt=""
 									widths={[400, 600, 900, 1300]}

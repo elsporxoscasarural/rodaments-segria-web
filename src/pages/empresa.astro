@@ -6,6 +6,7 @@ import Migas from '../components/Migas.astro';
 import MuroMarcas from '../components/MuroMarcas.astro';
 import { empresa, anosTrayectoria, formatoNumero } from '../data/empresa';
 import { ctaPrincipal } from '../data/navegacion';
+import { miniatura } from '../utils/miniatura';
 import cabecera from '../assets/img/fotos/nave-almacen-vista-elevada.jpg';
 import nave from '../assets/img/fotos/nave-almacen-suministro-industrial.jpg';
 import pasillo from '../assets/img/fotos/estanterias-rodamientos-en-stock.jpg';
@@ -17,6 +18,7 @@ const anos = Math.floor(anosTrayectoria() / 5) * 5;
 const referencias = formatoNumero(empresa.referenciasEnStock);
 const generacion = ['Primera', 'Segunda', 'Tercera', 'Cuarta', 'Quinta'][empresa.generacionActual - 1];
 const { direccion } = empresa;
+const fondoCabecera = await miniatura(cabecera);
 ---
 
 <BaseLayout
@@ -25,7 +27,7 @@ const { direccion } = empresa;
 	portada
 >
 	<section class="cabecera" aria-labelledby="t-empresa">
-		<Picture formats={['avif', 'webp']} class="cabecera__foto" src={cabecera} alt="" widths={[800, 1200, 1448]} sizes="100vw" loading="eager" fetchpriority="high" />
+		<Picture formats={['avif', 'webp']} class="cabecera__foto" style={fondoCabecera} src={cabecera} alt="" widths={[800, 1200, 1448]} sizes="100vw" loading="eager" fetchpriority="high" />
 		<div class="cabecera__contenido">
 			<Migas ruta={[{ texto: 'Empresa' }]} claro />
 			<h1 id="t-empresa">Una empresa familiar al servicio de la industria desde {empresa.fundacion}</h1>
