@@ -207,6 +207,19 @@ html.lenis body {
 	animation-duration: 620ms;
 	animation-timing-function: var(--ease);
 }
+/* Capas durante la transición: la foto (con su velo) debajo, el texto de la cabecera encima y el menú siempre arriba */
+::view-transition-group(*.foto) {
+	z-index: 1;
+}
+::view-transition-group(texto-familia) {
+	z-index: 2;
+}
+::view-transition-group(cabecera) {
+	z-index: 3;
+}
+::view-transition-new(texto-familia) {
+	animation: vt-entrada 560ms var(--ease) 180ms both;
+}
 /* La foto que viaja mantiene su encuadre (sin estirarse) mientras cambia de tamaño */
 ::view-transition-old(*.foto),
 ::view-transition-new(*.foto) {
