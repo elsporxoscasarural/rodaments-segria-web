@@ -8,13 +8,13 @@ Rodaments Segrià es una empresa familiar de suministros industriales en Lleida 
 ## Decisiones tomadas
 - **Stack:** Astro, con salida estática (HTML, CSS y JS). No depende de ningún proveedor de hosting.
 - **Dominio:** `rodsegria.es` (definitivo; se mantiene por el email, la antigüedad y el material impreso). La web principal es `https://www.rodsegria.es`. `rodamentssegria.es` y `.com` se comprarán para redirigir a él.
-- **Hosting:** pendiente. No asumas ningún proveedor ni añadas adaptadores o archivos de configuración de un host concreto.
+- **Hosting:** Dinahosting (mismo servidor que el dominio y el **correo de la empresa: no tocar nunca sus DNS, MX ni `Maildir`**). Se publica sola por FTPS en cada push a `main` (`.github/workflows/publicar.yml`); la carpeta destino es la variable `FTP_CARPETA` de GitHub (hoy `www/pruebas/` → https://pruebas.rodsegria.es). Configuración de Apache en `public/.htaccess`. El PHP del servidor puede ser antiguo: `enviar.php` se escribe compatible con PHP 5.3.
 - **Repo propio:** `elsporxoscasarural/rodaments-segria-web`. No se anidan repos dentro de este.
 - **Web anterior:** guardada en la etiqueta git `v1-legacy`. Era un HTML único con fondo oscuro y acentos azules.
 - **Idioma:** castellano en la raíz (`/`). El catalán llegará más adelante en `/ca/` (ver `i18n` en `astro.config.mjs`). Escribe las URLs y los textos pensando en que se traducirán.
 - **Interruptor de lanzamiento:** `src/data/sitio.ts` → `indexable`. En `false`, todas las páginas llevan `noindex` y `robots.txt` bloquea. Se pone en `true` solo el día del lanzamiento. El sitemap es automático (`@astrojs/sitemap`).
 - **SEO:** metadatos, Open Graph y datos estructurados (`LocalBusiness`, `BreadcrumbList`) en `src/components/Seo.astro` y `Migas.astro`. La imagen para compartir se regenera con `npm run imagen-social`.
-- **Formulario de presupuesto:** la interfaz se diseña con el resto de la web. El envío (servicio o funciones del hosting) se decide junto al hosting.
+- **Formularios:** se envían a `/enviar.php` (generado por `src/pages/enviar.php.ts`), que manda el email con `mail()` de PHP. En local se abre el programa de correo.
 
 ## Identidad visual
 - **Paleta:** los azules del logo como protagonistas, sobre fondos y complementos en una escala de grises claros que tira a blanco. Es una web **clara**, no oscura como la anterior.

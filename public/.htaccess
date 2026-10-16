@@ -4,6 +4,8 @@
 ErrorDocument 404 /404.html
 Options -Indexes
 DirectoryIndex index.html
+# La barra final de las carpetas la añadimos nosotros (Apache redirigía a http://)
+DirectorySlash Off
 
 <IfModule mod_rewrite.c>
 	RewriteEngine On
@@ -16,6 +18,11 @@ DirectoryIndex index.html
 	# rodsegria.es → www.rodsegria.es (la de pruebas no se toca)
 	RewriteCond %{HTTP_HOST} ^rodsegria\.es$ [NC]
 	RewriteRule ^ https://www.rodsegria.es%{REQUEST_URI} [L,R=301]
+
+	# /empresa → /empresa/ en un solo salto y siempre por HTTPS
+	RewriteCond %{REQUEST_FILENAME} -d
+	RewriteCond %{REQUEST_URI} !/$
+	RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI}/ [L,R=301]
 </IfModule>
 
 # Archivo interno de la subida automática: no se sirve

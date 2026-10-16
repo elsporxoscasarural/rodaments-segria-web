@@ -8,42 +8,59 @@ const destino = formularios.destino;
 
 const php = `<?php
 // Archivo generado por src/pages/enviar.php.ts: no editar en el servidor.
+// Compatible con PHP 5.3 en adelante (sin tipos, sin «??» ni funciones flecha).
 header('Content-Type: application/json; charset=utf-8');
 header('X-Robots-Tag: noindex');
 
-function responder(int $codigo, array $datos): void {
-	http_response_code($codigo);
-	echo json_encode($datos, JSON_UNESCAPED_UNICODE);
+function responder($codigo, $datos) {
+	if (function_exists('http_response_code')) {
+		http_response_code($codigo);
+	} else {
+		header('X-Estado: ' . $codigo, true, $codigo);
+	}
+	echo json_encode($datos);
 	exit;
 }
 
-if (($_SERVER['REQUEST_METHOD'] ?? '') !== 'POST') {
+function valor($clave, $origen) {
+	return isset($origen[$clave]) ? (string) $origen[$clave] : '';
+}
+
+function campo($nombre, $max) {
+	$texto = trim(valor($nombre, $_POST));
+	return function_exists('mb_substr') ? mb_substr($texto, 0, $max, 'UTF-8') : substr($texto, 0, $max);
+}
+
+function limpio($texto) {
+	return str_replace(array("\\r", "\\n"), ' ', $texto);
+}
+
+if (valor('REQUEST_METHOD', $_SERVER) !== 'POST') {
 	header('Allow: POST');
-	responder(405, ['ok' => false, 'error' => 'Método no permitido']);
+	responder(405, array('ok' => false, 'error' => 'Método no permitido'));
 }
 
 // Solo se aceptan envíos desde la propia web
-$origen = $_SERVER['HTTP_ORIGIN'] ?? '';
-if ($origen !== '' && parse_url($origen, PHP_URL_HOST) !== ($_SERVER['HTTP_HOST'] ?? '')) {
-	responder(400, ['ok' => false, 'error' => 'Origen no válido']);
+$origen = valor('HTTP_ORIGIN', $_SERVER);
+if ($origen !== '' && parse_url($origen, PHP_URL_HOST) !== valor('HTTP_HOST', $_SERVER)) {
+	responder(400, array('ok' => false, 'error' => 'Origen no válido'));
 }
 
 // Campo trampa antispam: si viene relleno, se finge que todo ha ido bien
-if (trim($_POST['web'] ?? '') !== '') {
-	responder(200, ['ok' => true]);
+if (trim(valor('web', $_POST)) !== '') {
+	responder(200, array('ok' => true));
 }
 
-function campo(string $nombre, int $max): string {
-	$valor = trim((string) ($_POST[$nombre] ?? ''));
-	return mb_substr($valor, 0, $max);
-}
-
-$asuntos = ['Solicitud de presupuesto', 'Consulta de referencia'];
-$asunto = in_array($_POST['asunto'] ?? '', $asuntos, true) ? $_POST['asunto'] : 'Consulta desde la web';
+$asuntos = array('Solicitud de presupuesto', 'Consulta de referencia');
+$asunto = in_array(valor('asunto', $_POST), $asuntos, true) ? valor('asunto', $_POST) : 'Consulta desde la web';
 
 $nombre = campo('nombre', 120);
 $email = campo('email', 160);
-$etiquetas = [
+if ($nombre === '' || !filter_var($email, FILTER_VALIDATE_EMAIL)) {
+	responder(400, array('ok' => false, 'error' => 'Faltan el nombre o un email válido'));
+}
+
+$etiquetas = array(
 	'referencias' => 'Referencias',
 	'marca' => 'Marca',
 	'uso' => 'Máquina o uso',
@@ -53,38 +70,32 @@ $etiquetas = [
 	'telefono' => 'Teléfono',
 	'contacto_preferido' => 'Prefiere que le contactemos por',
 	'mensaje' => 'Mensaje',
-];
-
-if ($nombre === '' || !filter_var($email, FILTER_VALIDATE_EMAIL)) {
-	responder(400, ['ok' => false, 'error' => 'Faltan el nombre o un email válido']);
-}
-
-$lineas = [];
+);
+$lineas = array();
 foreach ($etiquetas as $clave => $etiqueta) {
-	$valor = campo($clave, $clave === 'mensaje' || $clave === 'referencias' ? 5000 : 300);
-	if ($valor !== '') {
-		$lineas[] = $etiqueta . ': ' . $valor;
+	$texto = campo($clave, ($clave === 'mensaje' || $clave === 'referencias') ? 5000 : 300);
+	if ($texto !== '') {
+		$lineas[] = $etiqueta . ': ' . $texto;
 	}
 }
-$cuerpo = implode("\\n\\n", $lineas) . "\\n\\n--\\nEnviado desde el formulario de la web (" . ($_SERVER['HTTP_HOST'] ?? '') . ').';
+$cuerpo = implode("\\n\\n", $lineas) . "\\n\\n--\\nEnviado desde el formulario de la web (" . valor('HTTP_HOST', $_SERVER) . ').';
 
 // Sin saltos de línea en las cabeceras (evita inyectar destinatarios)
-$limpio = fn(string $texto): string => str_replace(["\\r", "\\n"], ' ', $texto);
 $remitente = '${destino}';
-$cabeceras = [
+$cabeceras = array(
 	'From: Web Rodaments Segria <' . $remitente . '>',
-	'Reply-To: ' . $limpio($email),
+	'Reply-To: ' . limpio($email),
 	'MIME-Version: 1.0',
 	'Content-Type: text/plain; charset=UTF-8',
 	'Content-Transfer-Encoding: 8bit',
-];
-$titulo = '=?UTF-8?B?' . base64_encode($asunto . ' - ' . $limpio($nombre)) . '?=';
+);
+$titulo = '=?UTF-8?B?' . base64_encode($asunto . ' - ' . limpio($nombre)) . '?=';
 
 $enviado = mail('${destino}', $titulo, $cuerpo, implode("\\r\\n", $cabeceras), '-f' . $remitente);
 if (!$enviado) {
-	responder(500, ['ok' => false, 'error' => 'No se pudo enviar']);
+	responder(500, array('ok' => false, 'error' => 'No se pudo enviar'));
 }
-responder(200, ['ok' => true]);
+responder(200, array('ok' => true));
 `;
 
 export const GET: APIRoute = () => new Response(php, { headers: { 'Content-Type': 'text/plain; charset=utf-8' } });
