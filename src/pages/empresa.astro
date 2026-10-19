@@ -55,10 +55,10 @@ const fondoCabecera = await miniatura(cabecera);
 				paradas inesperadas.
 			</p>
 			<p class="aparece">
-				{`Hoy, más de ${anos} años después, trabajamos con cientos de miles de referencias. Tenemos un amplio stock propio y la capacidad de conseguir aquello que no está en nuestro almacén, y colaboramos con algunas de las mejores marcas del mundo.`}
+				{`Hoy, más de ${anos} años después, trabajamos con miles de referencias. Tenemos un amplio stock propio y una gran capacidad de suministro para conseguir aquello que no está en nuestro almacén, y colaboramos con las mejores marcas del sector de la industria.`}
 			</p>
 			<p class="aparece">
-				Pero lo que de verdad nos diferencia es el conocimiento. Décadas escuchando a nuestros clientes y resolviendo sus
+				Pero lo que de verdad nos diferencia es el conocimiento, la experiencia y el compromiso. Décadas escuchando a nuestros clientes y resolviendo sus
 				problemas nos han dado una experiencia que no se encuentra en un catálogo. Ese saber hacer ha pasado de padres a
 				hijos, y hoy ya es la tercera generación quien está al frente. Seguimos siendo una empresa familiar, con el trato
 				cercano y el compromiso de siempre.
@@ -68,9 +68,9 @@ const fondoCabecera = await miniatura(cabecera);
 
 	<section class="oficio sobre-oscuro" aria-labelledby="t-oficio">
 		<header class="oficio__cabecera aparece">
-			<h2 id="t-oficio">Familia, oficio y stock</h2>
+			<h2 id="t-oficio">Familia, oficio, stock y servicio</h2>
 			<p>
-				{`Más de ${anos} años sirviendo a la industria y al campo nos han enseñado lo que importa: tener la pieza, conocer el producto y responder rápido.`}
+				{`Más de ${anos} años sirviendo a la industria y a la agricultura nos han enseñado lo que importa: tener la pieza, conocer el producto, responder rápido y dar un buen servicio.`}
 			</p>
 		</header>
 		<ul class="valores">
@@ -90,8 +90,15 @@ const fondoCabecera = await miniatura(cabecera);
 			<li class="aparece">
 				<h3>Rapidez</h3>
 				<p>
-					Si la tenemos, te la llevas al momento. Si no, te la conseguimos. Sabemos que cada hora de parada cuesta
-					dinero.
+					Si la tenemos, te la llevas al momento. Si no, te la conseguimos. Sabemos lo importante que es para ti y
+					para tu negocio: cada hora cuenta. Tenemos el servicio que necesitas.
+				</p>
+			</li>
+			<li class="aparece">
+				<h3>Servicio</h3>
+				<p>
+					Trato cercano de empresa familiar y seguimiento de cada pedido, de principio a fin. Si no puedes venir, te
+					enviamos la pieza a cualquier punto de España.
 				</p>
 			</li>
 		</ul>
@@ -238,16 +245,18 @@ const fondoCabecera = await miniatura(cabecera);
 		margin-bottom: var(--s-8);
 	}
 	.oficio h2 {
-		max-width: 10ch;
+		/* Dos líneas: «Familia, oficio, / stock y servicio» */
+		max-width: 17ch;
 		color: var(--n0);
 	}
 	.oficio__cabecera p {
 		max-width: 42ch;
 		font-size: var(--t-lead);
 	}
+	/* Cuatro valores: 4 columnas en pantalla ancha, 2 en tableta y 1 en móvil */
 	.valores {
 		display: grid;
-		grid-template-columns: repeat(3, minmax(0, 1fr));
+		grid-template-columns: repeat(4, minmax(0, 1fr));
 		gap: var(--s-7);
 		margin: 0;
 		padding: 0;
@@ -261,6 +270,12 @@ const fondoCabecera = await miniatura(cabecera);
 		margin-bottom: var(--s-3);
 		color: var(--azul-claro);
 		font-size: clamp(2rem, 3.2vw, 2.9rem);
+	}
+
+	@media (max-width: 1100px) {
+		.valores {
+			grid-template-columns: repeat(2, minmax(0, 1fr));
+		}
 	}
 
 	/* ---------- Instalaciones ---------- */
