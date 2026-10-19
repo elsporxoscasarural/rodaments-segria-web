@@ -1,5 +1,5 @@
 import { defineCollection, reference } from 'astro:content';
-import { glob } from 'astro/loaders';
+import { file, glob } from 'astro/loaders';
 import { z } from 'astro/zod';
 
 // Catálogo: familias → categorías. Cada entrada es un archivo en src/content/<colección>/.
@@ -59,4 +59,22 @@ const marcas = defineCollection({
 		}),
 });
 
-export const collections = { familias, categorias, marcas };
+// Catálogos y fichas técnicas: todos en un solo archivo (src/content/catalogos.yaml). Instrucciones dentro.
+const catalogos = defineCollection({
+	loader: file('src/content/catalogos.yaml'),
+	schema: z
+		.object({
+			titulo: z.string(),
+			marca: z.string().optional(),
+			categorias: z.array(reference('categorias')).min(1),
+			// PDF dentro de public/catalogos/ …
+			archivo: z.string().optional(),
+			// … o catálogo online de la marca
+			enlace: z.url().optional(),
+			ano: z.number().optional(),
+			publicar: z.boolean().default(true),
+		})
+		.refine((c) => !!c.archivo !== !!c.enlace, { message: 'Cada catálogo necesita «archivo» o «enlace» (solo uno)' }),
+});
+
+export const collections = { familias, categorias, marcas, catalogos };

@@ -1,0 +1,132 @@
+---
+// Lista de catálogos (PDF o web de la marca). Se usa en cada categoría y en /catalogos.
+// Se abren en una pestaña nueva: el comercial o el cliente no pierde la página en la que estaba.
+import type { Catalogo } from '../utils/catalogos';
+
+interface Props {
+	catalogos: Catalogo[];
+	/** Atributos para el buscador de /catalogos */
+	conBusqueda?: boolean;
+}
+const { catalogos, conBusqueda = false } = Astro.props;
+---
+
+<ul class="catalogos">
+	{
+		catalogos.map((c) => (
+			<li data-catalogo={conBusqueda ? `${c.marca ?? ''} ${c.titulo}`.toLowerCase() : undefined}>
+				<a href={c.href} target="_blank" rel={c.externo ? 'noopener external' : 'noopener'}>
+					<span class:list={['catalogos__icono', { 'catalogos__icono--web': c.externo }]} aria-hidden="true">
+						{c.externo ? (
+							<svg viewBox="0 0 24 24">
+								<path d="M14 4h6v6M20 4l-9 9M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5" />
+							</svg>
+						) : (
+							'PDF'
+						)}
+					</span>
+					<span class="catalogos__texto">
+						<strong>
+							{c.marca && (
+								<span class="catalogos__marca" translate="no">
+									{c.marca}
+								</span>
+							)}
+							{c.titulo}
+						</strong>
+						<small>
+							{c.detalle}
+							<span class="sr-only">(se abre en una pestaña nueva)</span>
+						</small>
+					</span>
+				</a>
+			</li>
+		))
+	}
+</ul>
+
+<style>
+	.catalogos {
+		display: grid;
+		grid-template-columns: repeat(auto-fill, minmax(min(100%, 17rem), 1fr));
+		margin: 0;
+		padding: 0;
+		list-style: none;
+		/* Juntas de 1 px sin rellenar de gris los huecos de la última fila */
+		border-top: 1px solid var(--n2);
+		border-left: 1px solid var(--n2);
+	}
+	.catalogos li {
+		border-right: 1px solid var(--n2);
+		border-bottom: 1px solid var(--n2);
+	}
+	.catalogos a {
+		display: flex;
+		gap: var(--s-3);
+		align-items: center;
+		height: 100%;
+		min-height: 64px;
+		padding: var(--s-3) var(--s-4);
+		background: var(--n0);
+		color: var(--tinta);
+		text-decoration: none;
+		transition: background-color var(--d-media) var(--ease);
+	}
+	.catalogos a:hover {
+		background: var(--n1);
+	}
+	/* Placa con «PDF», como una etiqueta de estantería */
+	.catalogos__icono {
+		flex: none;
+		display: grid;
+		place-items: center;
+		width: 42px;
+		height: 42px;
+		background: var(--noche);
+		color: var(--n0);
+		font: 800 0.75rem / 1 var(--f-display);
+		letter-spacing: 0.06em;
+		transition: background-color var(--d-media) var(--ease);
+	}
+	.catalogos a:hover .catalogos__icono {
+		background: var(--azul);
+	}
+	.catalogos__icono--web {
+		background: var(--n1);
+		color: var(--noche);
+		box-shadow: inset 0 0 0 1px var(--n3);
+	}
+	.catalogos__icono svg {
+		width: 20px;
+		height: 20px;
+		fill: none;
+		stroke: currentColor;
+		stroke-width: 2;
+		stroke-linecap: round;
+		stroke-linejoin: round;
+	}
+	.catalogos__texto {
+		display: grid;
+		gap: 2px;
+		min-width: 0;
+	}
+	.catalogos strong {
+		font-size: var(--t-sm);
+		line-height: 1.3;
+		overflow-wrap: anywhere;
+	}
+	.catalogos__marca {
+		color: var(--azul);
+	}
+	.catalogos__marca::after {
+		content: ' · ';
+		color: var(--n5);
+	}
+	.catalogos small {
+		font-size: var(--t-xs);
+		color: var(--n6);
+	}
+	.catalogos li[hidden] {
+		display: none;
+	}
+</style>

@@ -9,6 +9,8 @@ import BandaReferencia from '../../components/BandaReferencia.astro';
 import Migas from '../../components/Migas.astro';
 import { ctaPrincipal } from '../../data/navegacion';
 import { miniatura } from '../../utils/miniatura';
+import { catalogosDe } from '../../utils/catalogos';
+import ListaCatalogos from '../../components/ListaCatalogos.astro';
 
 export async function getStaticPaths() {
 	const familias = await getCollection('familias');
@@ -36,6 +38,7 @@ const relacionadas = sectorRelacionado
 			.sort((a, b) => nombreFamilia(a.data.familia.id).localeCompare(nombreFamilia(b.data.familia.id)) || a.data.orden - b.data.orden)
 	: [];
 
+const catalogosPorCategoria = Object.fromEntries(await Promise.all(categorias.map(async (c) => [c.id, await catalogosDe(c.id)] as const)));
 const fondoFoto = imagen ? await miniatura(imagen) : '';
 const otras = familias.filter((f) => f.id !== familia.id);
 const marcaCm = destacada ? await getEntry('marcas', 'carburos-metalicos') : undefined;
@@ -107,6 +110,12 @@ const titulo = destacada ? `${nombre}: gases industriales en Lleida | Rodaments 
 									<li>{t}</li>
 								))}
 							</ul>
+						)}
+						{catalogosPorCategoria[c.id]?.length > 0 && (
+							<div class="categoria__catalogos">
+								<h4>Catálogos y fichas técnicas</h4>
+								<ListaCatalogos catalogos={catalogosPorCategoria[c.id]} />
+							</div>
 						)}
 						<a class="categoria__consultar" href={`/contacto?asunto=${encodeURIComponent(c.data.nombre)}`}>
 							Consultar {c.data.nombre.toLowerCase()} <span class="flecha" aria-hidden="true">→</span>
@@ -322,6 +331,16 @@ const titulo = destacada ? `${nombre}: gases industriales en Lleida | Rodaments 
 		height: 7px;
 		background: var(--azul);
 		transform: translateY(-2px);
+	}
+	.categoria__catalogos {
+		margin-bottom: var(--s-5);
+	}
+	.categoria__catalogos h4 {
+		margin-bottom: var(--s-3);
+		font: 700 var(--t-xs) / 1.2 var(--f-texto);
+		letter-spacing: 0.08em;
+		text-transform: uppercase;
+		color: var(--n6);
 	}
 	.categoria__consultar {
 		display: inline-flex;

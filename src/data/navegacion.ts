@@ -7,6 +7,9 @@ export const menuPrincipal = [
 	{ texto: 'Contacto', href: '/contacto' },
 ] as const;
 
+// Enlaces útiles que no van en el menú principal (pie y menú del móvil)
+export const enlacesSecundarios = [{ texto: 'Catálogos', href: '/catalogos' }] as const;
+
 export const enlacesLegales = [
 	{ texto: 'Aviso legal', href: '/aviso-legal' },
 	{ texto: 'Privacidad', href: '/privacidad' },

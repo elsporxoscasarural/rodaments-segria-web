@@ -2,7 +2,7 @@
 // Pie común a todas las páginas. Todos los datos salen de src/data/empresa.ts.
 import LogoMono from '../assets/brand/logo-mono.svg';
 import { empresa } from '../data/empresa';
-import { menuPrincipal, enlacesLegales } from '../data/navegacion';
+import { menuPrincipal, enlacesSecundarios, enlacesLegales } from '../data/navegacion';
 
 const { direccion, horario } = empresa;
 const tramos = horario.tramos.map((t) => `${t.abre.replace(/^0/, '')} a ${t.cierra}`).join(' y ');
@@ -51,7 +51,7 @@ const anio = new Date().getFullYear();
 		</div>
 		<nav aria-label="Pie de página">
 			<h2 class="pie__etiqueta">Secciones</h2>
-			<ul>{menuPrincipal.map((item) => <li><a href={item.href}>{item.texto}</a></li>)}</ul>
+			<ul>{[...menuPrincipal, ...enlacesSecundarios].map((item) => <li><a href={item.href}>{item.texto}</a></li>)}</ul>
 		</nav>
 	</div>
 

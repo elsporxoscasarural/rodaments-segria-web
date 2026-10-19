@@ -3,7 +3,7 @@
 // En móvil, el menú se abre a pantalla completa con el botón «Menú».
 import Logo from '../assets/brand/logo.svg';
 import LogoMono from '../assets/brand/logo-mono.svg';
-import { menuPrincipal, ctaPrincipal } from '../data/navegacion';
+import { menuPrincipal, enlacesSecundarios, ctaPrincipal } from '../data/navegacion';
 import { empresa } from '../data/empresa';
 
 interface Props {
@@ -53,7 +53,7 @@ const activo = (href: string) => ruta === href || ruta.startsWith(href + '/');
 	<nav aria-label="Principal (móvil)">
 		<ul>
 			{
-				menuPrincipal.map((item) => (
+				[...menuPrincipal, ...enlacesSecundarios].map((item) => (
 					<li>
 						<a href={item.href} aria-current={activo(item.href) ? 'page' : undefined}>
 							{item.texto}

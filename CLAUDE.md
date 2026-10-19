@@ -71,6 +71,7 @@ docs/           BACKLOG.md con fases y datos pendientes
 El catálogo son **datos, no páginas**. El esquema está en `src/content.config.ts` y las páginas se generan solas.
 - `src/content/familias/*.md`: una familia por archivo. El nombre del archivo es la URL (`/productos/<archivo>`).
 - `src/content/categorias/*.md`: una categoría por archivo, con `familia`, `orden`, `resumen`, `tipos`, `sectores` y `marcas`.
+- `src/content/catalogos.yaml`: catálogos en PDF (en `public/catalogos/<categoria>/`) o enlaces a catálogos online de marcas. Salen en su categoría y en `/catalogos`. Nunca PDF con precios. Detalles en `docs/CATALOGOS.md`.
 - `src/content/marcas/*.md`: solo se muestran en la web las que tienen `publicar: true` (permiso confirmado).
 - **Mover una categoría** = cambiar su `familia`. **Nueva familia** = nuevo archivo. **Ocultar** = borrar el archivo.
 - `sectores` (`industria`, `agricola`, `taller`): una familia con `sectorRelacionado` muestra también las categorías de otras familias de ese sector, sin duplicarlas.

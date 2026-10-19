@@ -1,0 +1,269 @@
+# Catálogos y fichas técnicas (PDF propios o catálogo online de la marca).
+# Salen en su categoría (página de la familia) y todos juntos en /catalogos.
+#
+# Cómo añadir uno:
+#   1. Deja el PDF en public/catalogos/<categoria>/<nombre-sin-acentos>.pdf (comprimido: ver docs/CATALOGOS.md)
+#   2. Añade aquí una entrada. Las páginas y el peso se calculan solos al compilar.
+# Campos: titulo · marca (opcional) · categorias (uno o varios slugs de src/content/categorias)
+#         archivo (ruta dentro de public/catalogos) o enlace (web de la marca) · ano (opcional) · publicar (true por defecto)
+# Origen: catálogos de la web antigua (docs/CATALOGOS.md), pendientes de revisión por el equipo comercial.
+
+# ---------- Rodamientos y soportes ----------
+ntn-snr-online:
+  titulo: Catálogo online
+  marca: NTN-SNR
+  categorias: [rodamientos]
+  enlace: https://www.ntn-snr.com/es
+schaeffler-online:
+  titulo: Catálogo online de FAG e INA
+  marca: Schaeffler
+  categorias: [rodamientos]
+  enlace: https://medias.schaeffler.es/es
+timken-online:
+  titulo: Catálogo online
+  marca: Timken
+  categorias: [rodamientos]
+  enlace: https://www.timken.com/es/
+fag-tipos-de-rodamientos:
+  titulo: Tipos de rodamientos
+  marca: FAG
+  categorias: [rodamientos]
+  archivo: rodamientos/fag-tipos-de-rodamientos.pdf
+ina-rodamientos-de-agujas:
+  titulo: Rodamientos de agujas por medidas
+  marca: INA
+  categorias: [rodamientos]
+  archivo: rodamientos/ina-rodamientos-de-agujas.pdf
+challenge-soportes-triple-sello:
+  titulo: Soportes triple sello
+  marca: Challenge
+  categorias: [soportes]
+  archivo: soportes/challenge-soportes-triple-sello.pdf
+soportes-pillow-block:
+  titulo: Soportes pillow block
+  categorias: [soportes]
+  archivo: soportes/soportes-pillow-block.pdf
+soportes-partidos-snu:
+  titulo: Soportes partidos series SNU500 y SNU600
+  categorias: [soportes]
+  archivo: soportes/soportes-partidos-snu500-snu600.pdf
+manguitos:
+  titulo: Manguitos de fijación
+  categorias: [soportes]
+  archivo: soportes/manguitos.pdf
+rotulas:
+  titulo: Rótulas
+  categorias: [rotulas]
+  archivo: rotulas/rotulas.pdf
+
+# ---------- Transmisión de potencia ----------
+challenge-online:
+  titulo: Catálogo online
+  marca: Challenge
+  categorias: [correas, poleas, pinones, acoplamientos, soportes]
+  enlace: https://www.challengept.com/
+challenge-correas:
+  titulo: Correas
+  marca: Challenge
+  categorias: [correas]
+  archivo: correas/challenge-correas.pdf
+bando-correas:
+  titulo: Correas
+  marca: Bando
+  categorias: [correas]
+  archivo: correas/bando-correas.pdf
+tipos-de-cadena:
+  titulo: Tipos de cadena
+  categorias: [cadenas]
+  archivo: cadenas/tipos-de-cadena.pdf
+cadenas-europeas:
+  titulo: 'Medidas: cadenas de rodillos europeas (serie B)'
+  categorias: [cadenas]
+  archivo: cadenas/cadenas-europeas-serie-b.pdf
+cadenas-americanas:
+  titulo: 'Medidas: cadenas de rodillos americanas (serie A)'
+  categorias: [cadenas]
+  archivo: cadenas/cadenas-americanas-serie-a.pdf
+cadenas-inox:
+  titulo: 'Medidas: cadenas de acero inoxidable'
+  categorias: [cadenas]
+  archivo: cadenas/cadenas-acero-inoxidable.pdf
+cadenas-charnela:
+  titulo: 'Medidas: cadenas de charnela'
+  categorias: [cadenas]
+  archivo: cadenas/cadenas-de-charnela.pdf
+cadenas-ligeras:
+  titulo: 'Medidas: cadenas transportadoras ligeras'
+  categorias: [cadenas]
+  archivo: cadenas/cadenas-transportadoras-ligeras.pdf
+challenge-pinones-taper:
+  titulo: Piñones taper
+  marca: Challenge
+  categorias: [pinones]
+  archivo: pinones/challenge-pinones-taper.pdf
+challenge-pinones-ciegos:
+  titulo: Piñones ciegos (pilot bore)
+  marca: Challenge
+  categorias: [pinones]
+  archivo: pinones/challenge-pinones-ciegos.pdf
+challenge-casquillos-taper:
+  titulo: Casquillos taper y cubos
+  marca: Challenge
+  categorias: [pinones, poleas]
+  archivo: poleas/challenge-casquillos-taper.pdf
+challenge-poleas-taper:
+  titulo: Poleas taper
+  marca: Challenge
+  categorias: [poleas]
+  archivo: poleas/challenge-poleas-taper.pdf
+poleas-ciegas:
+  titulo: Poleas trapeciales ciegas
+  categorias: [poleas]
+  archivo: poleas/poleas-ciegas.pdf
+engranajes-cilindricos-conicos:
+  titulo: Engranajes cilíndricos y cónicos
+  categorias: [engranajes]
+  archivo: engranajes/engranajes-cilindricos-y-conicos.pdf
+engranajes-medidas:
+  titulo: 'Medidas: engranajes por módulo'
+  categorias: [engranajes]
+  archivo: engranajes/engranajes-medidas.pdf
+challenge-acoplamientos:
+  titulo: Acoplamientos
+  marca: Challenge
+  categorias: [acoplamientos]
+  archivo: acoplamientos/challenge-acoplamientos.pdf
+samiflex-acoplamientos:
+  titulo: Acoplamiento elástico
+  marca: Samiflex
+  categorias: [acoplamientos]
+  archivo: acoplamientos/samiflex-acoplamiento-elastico.pdf
+albert-acoplamientos:
+  titulo: Acoplamientos
+  marca: Albert
+  categorias: [acoplamientos]
+  archivo: acoplamientos/albert-acoplamientos.pdf
+dutchi-motores:
+  titulo: Motores eléctricos serie DMA2
+  marca: Dutchi Motors
+  categorias: [motores-electricos]
+  archivo: motores-electricos/dutchi-motores-dma2.pdf
+vibradores:
+  titulo: Vibradores
+  categorias: [motores-electricos]
+  archivo: motores-electricos/vibradores.pdf
+reductores:
+  titulo: Reductores de sinfín
+  categorias: [reductores]
+  archivo: reductores/reductores-sinfin.pdf
+
+# ---------- Estanqueidad y fluidos ----------
+retenes:
+  titulo: Retenes
+  categorias: [retenes-y-estanqueidad]
+  archivo: retenes-y-estanqueidad/retenes.pdf
+collarines:
+  titulo: Collarines
+  categorias: [retenes-y-estanqueidad]
+  archivo: retenes-y-estanqueidad/collarines.pdf
+sellos-mecanicos:
+  titulo: Sellos mecánicos
+  categorias: [retenes-y-estanqueidad]
+  archivo: retenes-y-estanqueidad/sellos-mecanicos.pdf
+elesa-lubricantes:
+  titulo: Lubricantes
+  marca: Elesa
+  categorias: [grasas-y-lubricantes]
+  archivo: grasas-y-lubricantes/elesa-lubricantes.pdf
+manguera-armorvin:
+  titulo: Manguera Armorvin
+  categorias: [mangueras]
+  archivo: mangueras/armorvin.pdf
+manguera-armorvin-pu-oil:
+  titulo: Manguera Armorvin PU Oil
+  categorias: [mangueras]
+  archivo: mangueras/armorvin-pu-oil.pdf
+manguera-cristallo-atox:
+  titulo: Manguera Cristallo Atox
+  categorias: [mangueras]
+  archivo: mangueras/cristallo-atox.pdf
+manguera-dakota:
+  titulo: Manguera Dakota
+  categorias: [mangueras]
+  archivo: mangueras/dakota.pdf
+manguera-jamaica:
+  titulo: Manguera Jamaica
+  categorias: [mangueras]
+  archivo: mangueras/jamaica.pdf
+manguera-luisiana:
+  titulo: Manguera Luisiana
+  categorias: [mangueras]
+  archivo: mangueras/luisiana.pdf
+manguera-oregon-ita:
+  titulo: Manguera Oregon ITA
+  categorias: [mangueras]
+  archivo: mangueras/oregon-ita.pdf
+manguera-oregon-poliuretano:
+  titulo: Manguera Oregon poliuretano
+  categorias: [mangueras]
+  archivo: mangueras/oregon-poliuretano.pdf
+manguera-spiralina:
+  titulo: Manguera Spiralina
+  categorias: [mangueras]
+  archivo: mangueras/spiralina.pdf
+manguera-superflex-pu:
+  titulo: Manguera Superflex PU standard
+  categorias: [mangueras]
+  archivo: mangueras/superflex-pu-standard.pdf
+manguera-termorresistente:
+  titulo: Manguera termorresistente
+  categorias: [mangueras]
+  archivo: mangueras/termorresistente.pdf
+manguera-vacupress:
+  titulo: Manguera Vacupress
+  categorias: [mangueras]
+  archivo: mangueras/vacupress.pdf
+manguera-vacupress-food:
+  titulo: Manguera Vacupress Food
+  categorias: [mangueras]
+  archivo: mangueras/vacupress-food.pdf
+
+# ---------- Taller e industria ----------
+aslak-online:
+  titulo: Catálogo online de herramientas
+  marca: Aslak
+  categorias: [herramientas-de-taller]
+  enlace: https://www.aslak.es/
+forza-extractores:
+  titulo: Extractores de rodamientos y poleas
+  marca: Forza
+  categorias: [extractores]
+  archivo: extractores/forza-extractores.pdf
+ropa-laboral:
+  titulo: Ropa laboral
+  categorias: [vestuario-laboral]
+  archivo: vestuario-laboral/ropa-laboral.pdf
+calzado-de-seguridad:
+  titulo: Calzado de seguridad
+  categorias: [vestuario-laboral]
+  archivo: vestuario-laboral/calzado-de-seguridad.pdf
+cajas-de-almacenaje:
+  titulo: Cajas de almacenaje
+  categorias: [articulos-de-almacenaje]
+  archivo: articulos-de-almacenaje/cajas-de-almacenaje.pdf
+escaleras-telescopicas:
+  titulo: Escaleras telescópicas
+  categorias: [articulos-de-almacenaje]
+  archivo: articulos-de-almacenaje/escaleras-telescopicas.pdf
+
+# ---------- Agrícola ----------
+la-magdalena-cardan:
+  titulo: Transmisiones cardan
+  marca: La Magdalena
+  categorias: [nudos-agricolas]
+  archivo: nudos-agricolas/la-magdalena-transmisiones-cardan.pdf
+traf-catalogo:
+  titulo: Catálogo de nudos agrícolas
+  marca: TRAF
+  categorias: [nudos-agricolas]
+  archivo: nudos-agricolas/traf-catalogo.pdf

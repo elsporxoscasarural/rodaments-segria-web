@@ -3,6 +3,19 @@
 Inventario de los catálogos de `www.rodsegria.es/productos.php` (web antigua, revisada el 19-10-2026).
 El equipo comercial los usa para enseñarlos en las visitas. **Hay que decidir cuáles pasan a la web nueva.**
 
+## En la web nueva (montado el 19-10-2026, pendiente de la revisión comercial)
+- **En cada categoría** (página de su familia): bloque «Catálogos y fichas técnicas».
+- **Página `/catalogos`**: todos juntos por familia, con buscador por marca o producto. Enlazada en el pie y en el menú del móvil.
+- Datos en `src/content/catalogos.yaml`; PDF en `public/catalogos/<categoria>/`. Páginas y peso se calculan al compilar.
+- Publicados ya **52 PDF + 6 catálogos online** (NTN-SNR, Schaeffler, Timken, Challenge, Aslak). Fuera por ahora: Abratools (precios), lista de precios Schaeffler, los 2 rotos, la imagen de tensores y adhesivos (sin categoría).
+- **Comprimidos** con Ghostscript: de 60 MB a 34 MB (TRAF de 23 a 10 MB, Albert de 6,9 a 1,9 MB).
+- **Quitar uno:** `publicar: false` en su entrada (o borrar la entrada y el PDF). **Añadir uno:** ver la cabecera de `catalogos.yaml`.
+- Comprimir un PDF nuevo pesado (más de 2 MB):
+  ```bash
+  gs -sDEVICE=pdfwrite -dPDFSETTINGS=/ebook -dNOPAUSE -dBATCH -dSAFER -sOutputFile=salida.pdf entrada.pdf
+  ```
+  Si no baja (escaneos a 200 ppp), forzar: `-dDownsampleColorImages=true -dColorImageDownsampleThreshold=1.0 -dColorImageResolution=150 -dPassThroughJPEGImages=false -dJPEGQ=72`. Comprobar que se lee bien.
+
 ## Cómo funcionaban
 - Un menú desplegable en «Productos» con 20 secciones (Rodamientos, Soportes, Correas…) y, dentro, enlaces directos a PDF.
 - 58 enlaces a archivos en `catalogos PDF-WEB/` + 9 enlaces a webs de marcas.
