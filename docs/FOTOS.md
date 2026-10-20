@@ -10,7 +10,7 @@ Todas las fotos tienen un **nombre descriptivo** de lo que se ve (ayuda al SEO y
 | Archivo | Qué es | Uso previsto | Estado |
 |---|---|---|---|
 | `fachada-rodaments-segria-lleida.jpg` | Fachada con el letrero corregido | **Portada (hero)** · Empresa · Contacto | ✅ 2000 px |
-| `nave-almacen-suministro-industrial.jpg` | Nave completa, camión al fondo | Inicio («El almacén…») · Empresa | ✅ Excelente |
+| `nave-almacen-suministro-industrial.jpg` | Nave completa con estanterías llenas, camión al fondo. **Versión generada con IA** (más cajas) por decisión del cliente (20-10-2026); ampliada de 1448 a 2048 px | Portada (almacén por dentro) · Empresa | 🟡 IA, decisión del cliente |
 | `pasillo-almacen-rodamientos.jpg` | Pasillo de rodamientos, vertical | Portada en móvil (alternativa) · Rodamientos | ✅ Excelente |
 | `estanterias-rodamientos-en-stock.jpg` | Pasillo de rodamientos, vertical | Stock · Empresa | ✅ Muy buena |
 | `pasillo-almacen-soportes-rodamientos.jpg` | Pasillo de soportes y unidades de rodamiento | Soportes · stock | ✅ Muy buena |
@@ -30,6 +30,7 @@ Todas las fotos tienen un **nombre descriptivo** de lo que se ve (ayuda al SEO y
 **Notas**
 - ✅ **Fachada:** versión mejorada y con el letrero corregido («RODAMENTS SEGRIÀ»), revisada letra a letra. Es la portada. 2000 px: en monitores muy grandes el diseño compensa la resolución. Original en `Botiga/Rodaments segria/fachada-rodaments-segria-corregida.jpg`.
 - **Regla:** no usar fotos mejoradas con IA donde salgan textos, logos o marcas. Las IAs reescriben lo que no leen bien.
+- **Excepción decidida por el cliente (20-10-2026):** la foto de la nave (`nave-almacen-suministro-industrial.jpg`) es una versión con IA con más stock. Motivo: los clientes no entran al almacén (se quedan en el mostrador) y se quiere transmitir mucho stock. Se le avisó de que tiene cajas inventadas y logos NTN-SNR deformados. Original en `Botiga/Rodaments segria/nave-almacen-mas-stock-ia.webp`. Si se hace la sesión de fotos, sustituirla por una real.
 - Las personas que aparecen al fondo del mostrador no son reconocibles: el cliente da el visto bueno.
 
 ## Descartadas
