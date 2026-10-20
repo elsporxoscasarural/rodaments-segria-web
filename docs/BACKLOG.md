@@ -21,6 +21,7 @@ Estado: ✅ hecho · 🔲 pendiente · ❓ decisión abierta
 - **Formulario:** `/enviar.php` (generado por `src/pages/enviar.php.ts`) envía el email con PHP al correo de `empresa.ts`. En local se abre el programa de correo.
 - **Servidor:** `public/.htaccess` (HTTPS, `rodsegria.es` → `www`, página 404, caché y cabeceras de seguridad).
 - [ ] Subdominio `pruebas.rodsegria.es` con certificado SSL → `FTP_CARPETA` apuntando a su carpeta → revisar la web y probar el formulario
+- [ ] **Antes del lanzamiento: fotos de producto provisionales** (rodamientos y correa, 612 px, probables muestras de iStock): comprar la licencia en alta resolución o sustituirlas por fotos propias. Ver `docs/FOTOS.md`
 - [ ] **Antes del lanzamiento: revisar uno a uno los catálogos** (contenido, vigencia y permiso de cada marca) y quitar los que no deban salir (`publicar: false` en `src/content/catalogos.yaml`). Ver `docs/CATALOGOS.md`
 - [ ] **Lanzamiento:** copia de la web antigua → `FTP_CARPETA` a la carpeta de www → `sitio.indexable = true` → Search Console
 
