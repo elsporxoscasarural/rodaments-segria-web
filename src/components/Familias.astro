@@ -12,12 +12,15 @@ interface Props {
 	conCarburos?: boolean;
 	/** Marca el final de la portada para que la cabecera pase a sólida (solo en la home). */
 	finPortada?: boolean;
+	/** Sin título propio: la página ya lo tiene encima (en /productos) y la rejilla sube. */
+	conCabecera?: boolean;
 }
 const {
 	titulo = 'Todo lo que mueve la maquinaria',
 	texto = 'Miles de productos de cada familia, en stock en nuestro almacén de Lleida. Por eso muchas piezas te las podemos entregar al momento.',
 	conCarburos = false,
 	finPortada = true,
+	conCabecera = true,
 } = Astro.props;
 
 const familias = (await getCollection('familias', (f) => conCarburos || !f.data.destacada)).sort(
@@ -27,11 +30,21 @@ const categorias = await getCollection('categorias');
 const cuantas = (id: string) => categorias.filter((c) => c.data.familia.id === id).length;
 ---
 
-<section class="familias" id="productos" aria-labelledby="t-familias" data-fin-portada={finPortada ? '' : undefined}>
-	<header class="familias__cabecera aparece">
-		<h2 id="t-familias">{titulo}</h2>
-		<p>{texto}</p>
-	</header>
+<section
+	class:list={['familias', { 'familias--sin-cabecera': !conCabecera }]}
+	id="productos"
+	aria-labelledby={conCabecera ? 't-familias' : undefined}
+	aria-label={conCabecera ? undefined : titulo}
+	data-fin-portada={finPortada ? '' : undefined}
+>
+	{
+		conCabecera && (
+			<header class="familias__cabecera aparece">
+				<h2 id="t-familias">{titulo}</h2>
+				<p>{texto}</p>
+			</header>
+		)
+	}
 
 	<ul class="rejilla">
 		{
@@ -74,6 +87,9 @@ const cuantas = (id: string) => categorias.filter((c) => c.data.familia.id === i
 	.familias {
 		background: var(--n1);
 		padding: var(--seccion) var(--g);
+	}
+	.familias--sin-cabecera {
+		padding-top: 0;
 	}
 	.familias__cabecera {
 		display: flex;

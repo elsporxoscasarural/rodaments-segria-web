@@ -17,14 +17,16 @@ const categorias = (await getCollection('categorias')).sort((a, b) => a.data.ord
 >
 	<section class="intro" aria-labelledby="t-catalogo">
 		<Migas ruta={[{ texto: 'Productos' }]} />
-		<h1 id="t-catalogo">Catálogo</h1>
-		<p>
-			Más de {formatoNumero(empresa.referenciasEnStock)} referencias en stock para la industria, el campo y el taller,
-			organizadas en {familias.length} familias.
-		</p>
+		<div class="intro__fila">
+			<h1 id="t-catalogo">Catálogo</h1>
+			<p>
+				Más de {formatoNumero(empresa.referenciasEnStock)} referencias en stock para la industria, el campo y el taller,
+				organizadas en {familias.length} familias. Elige una para ver sus categorías.
+			</p>
+		</div>
 	</section>
 
-	<Familias titulo="Familias de producto" texto="Elige una familia para ver sus categorías y tipos de producto." conCarburos finPortada={false} />
+	<Familias titulo="Familias de producto" conCarburos finPortada={false} conCabecera={false} />
 
 	<section class="indice" aria-labelledby="t-indice">
 		<h2 id="t-indice">Todas las categorías</h2>
@@ -54,16 +56,26 @@ const categorias = (await getCollection('categorias')).sort((a, b) => a.data.ord
 </BaseLayout>
 
 <style>
+	/* Cabecera compacta: título a la izquierda, texto a la derecha y las familias justo debajo, a la vista */
 	.intro {
-		padding: var(--s-8) var(--g) var(--s-7);
+		padding: var(--s-6) var(--g) clamp(1.5rem, 3vw, 2.5rem);
 		background: var(--n1);
 	}
+	.intro__fila {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: space-between;
+		align-items: end;
+		gap: var(--s-4) var(--s-7);
+		margin-top: var(--s-4);
+	}
 	.intro h1 {
-		margin-block: var(--s-4) var(--s-5);
 		color: var(--noche);
-		font-size: clamp(3.5rem, 9vw, 8rem);
+		font-size: var(--t-1);
+		line-height: var(--lh-display-tildes);
 	}
 	.intro p {
+		max-width: 44ch;
 		font-size: var(--t-lead);
 	}
 
