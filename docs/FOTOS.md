@@ -25,8 +25,9 @@ Todas las fotos tienen un **nombre descriptivo** de lo que se ve (ayuda al SEO y
 | `estanterias-poleas-y-recambios.jpg` | Estanterías con poleas (foto anterior) | Alternativa | 🟡 |
 | `cajas-rodamientos-en-stock.jpg` | Cajas de rodamientos de marca | Rodamientos · marcas | ✅ |
 | `estanteria-poleas.jpg` | Poleas en estantería | Poleas | ✅ |
-| `rodamientos-producto-provisional.jpg` | Rodamientos de bolas y de rodillos cónicos, fondo oscuro | **Familia Rodamientos y soportes** (prueba) | ⚠️ Provisional: 612 px y probable muestra de iStock. Comprar licencia o sustituir antes del lanzamiento |
-| `correa-polea-producto-provisional.jpg` | Correa dentada y polea tensora | **Familia Transmisión de potencia** (prueba) | ⚠️ Provisional: 612 px y probable muestra de iStock. Comprar licencia o sustituir antes del lanzamiento |
+| `rodamientos-y-soportes-producto.jpg` | Rodamientos, soportes y rótulas sobre fondo gris claro. **Generada con IA** (decisión del cliente), 1024 → 2048 px | **Familia Rodamientos y soportes** | 🟡 IA |
+| `motor-poleas-cadenas-producto.jpg` | Motor, reductor, poleas, engranajes, correas y cadenas. **Generada con IA**, 1024 → 2048 px | **Familia Transmisión de potencia** | 🟡 IA |
+| `retenes-grasas-mangueras-producto.jpg` | Retenes, bote de grasa, manguera y racores. **Generada con IA**, 1024 → 2048 px | **Familia Estanqueidad y fluidos** | 🟡 IA |
 | `estanteria-correas-de-transmision.jpg` | Correas en estantería | **Correas** (única foto de correas) | ✅ |
 
 **Notas**
