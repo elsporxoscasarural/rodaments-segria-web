@@ -29,6 +29,7 @@ Todas las fotos tienen un **nombre descriptivo** de lo que se ve (ayuda al SEO y
 | `motor-poleas-cadenas-producto.jpg` | Motor, reductor, poleas, engranajes, correas y cadenas. **Generada con IA**, 1024 → 2048 px | **Familia Transmisión de potencia** | 🟡 IA |
 | `retenes-grasas-mangueras-producto.jpg` | Retenes, bote de grasa, manguera y racores. **Generada con IA**, 1024 → 2048 px | **Familia Estanqueidad y fluidos** | 🟡 IA |
 | `herramientas-taller-producto.jpg` | Carro de herramientas, maletín de vasos, extractores, herramienta eléctrica y discos. **Generada con IA**; logos de Makita y JBM borrados con retoque (sin IA), 1024 → 2048 px | **Familia Taller e industria** | 🟡 IA |
+| `cardan-agricola-producto.jpg` | Transmisión cardan, cruceta y tubos perfilados. **Generada con IA**; recortada de cuadrada a apaisada, 2048 px | **Familia Agrícola** | 🟡 IA |
 | `estanteria-correas-de-transmision.jpg` | Correas en estantería | **Correas** (única foto de correas) | ✅ |
 
 **Notas**
